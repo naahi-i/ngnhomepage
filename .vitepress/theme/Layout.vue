@@ -62,6 +62,10 @@ html {
   max-width: 1200px;
   margin: 0 auto;
 }
+.cursor {
+  width: 15px;
+  height: 15px;
+}
 
 body {
   background-image: url('./assets/background.svg');
