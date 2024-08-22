@@ -1,6 +1,7 @@
 ---
 title: 欢迎来到测试帖
 date: 2024-8-22
+tags: [test]
 head:
   - - meta
     - name: description
