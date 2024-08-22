@@ -77,7 +77,7 @@ body {
   background-attachment: fixed;
   overflow-y: scroll;
   color: var(--font-color-grey);
-  // font-family: 'Blueaka', sans-serif;
+  font-family: 'Blueaka', sans-serif;
 } 
 
 .cursor {
