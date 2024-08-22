@@ -80,6 +80,10 @@ a:hover {
   cursor: url('./assets/cur/millennium_text.cur'), text;
 }
 
+.cursor {
+  transform: scale(0.5);
+}
+
 ul {
   list-style: none;
 }
