@@ -73,6 +73,7 @@ body {
   overflow-y: scroll;
   color: var(--font-color-grey);
   font-family: Roboto, 'LXGW WenKai GB Screen', sans-serif;
+  cursor:url('./assets/cur/ImageToStl.com_millennium_base.jpg'),auto;
 }
 
 ul {
