@@ -1,5 +1,4 @@
 <template>
-  <div class="mouse"></div>
   <template v-if="!page.isNotFound">
     <main style="min-height: 100vh">
       <Navbar></Navbar>
@@ -74,22 +73,10 @@ body {
   overflow-y: scroll;
   color: var(--font-color-grey);
   font-family: Roboto, 'LXGW WenKai GB Screen', sans-serif;
-  cursor: none;
 }
 
-.mouse {
-    position: absolute;
-    content: '';
-    width: 2em;
-    height: 2em;
-    background: url('./assets/cur/millennium_base.cur') no-repeat center center;
-    background-size: contain;
-    left: -50%;
-    top: -50%;
-    margin: -0.42em 0 0 -0.42em;
-    animation: mouse 3s linear infinite both;
-    pointer-events: none;
-    z-index: 999;
+.cursor {
+  transform: scale(0.5);
 }
 
 ul {
