@@ -52,7 +52,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     //banner区配置
     name: "Sensei's 柠果柠",
-    welcomeText: '这是个测试页',
+    // welcomeText: '这是个测试页',
     motto: '历史给人类的教训就是，人类从不会从历史中汲取教训。',
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
