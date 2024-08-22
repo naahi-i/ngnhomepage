@@ -1,4 +1,5 @@
 <template>
+  <div class="mouse"></div>
   <template v-if="!page.isNotFound">
     <main style="min-height: 100vh">
       <Navbar></Navbar>
@@ -76,7 +77,7 @@ body {
   cursor: none;
 }
 
-.mouse-back {
+.mouse {
     position: absolute;
     content: '';
     width: 2em;
