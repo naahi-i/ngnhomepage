@@ -73,15 +73,10 @@ body {
   overflow-y: scroll;
   color: var(--font-color-grey);
   font-family: Roboto, 'LXGW WenKai GB Screen', sans-serif;
-  
-}
-
-.default-cursor {
   cursor: url('./assets/cur/millennium_base.cur'),default;
 }
-
-.pointer-cursor {
-  cursor:url('./assets/cur/millennium_link.cur'),pointer;
+a:hover {
+  cursor: url('./assets/cur/millennium_link.cur'), pointer;
 }
 
 ul {
