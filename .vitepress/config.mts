@@ -24,7 +24,7 @@ export interface ThemeConfig {
 export default defineConfigWithTheme<ThemeConfig>({
   lang: 'zh-CN',
   head: [
-    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
+    ['link', { rel: 'shortcut icon', href: 'public/favicon.ico' }],
     // gitalk
     ['link', { rel: 'stylesheet', href: 'https://unpkg.com/gitalk/dist/gitalk.css' }],
     ['script', { src: 'https://unpkg.com/gitalk/dist/gitalk.min.js' }],
