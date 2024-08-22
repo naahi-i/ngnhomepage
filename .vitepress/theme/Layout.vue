@@ -77,6 +77,7 @@ body {
 }
 a:hover {
   cursor: url('./assets/cur/millennium_link.cur'), pointer;
+  cursor: url('./assets/cur/millennium_text.cur'), text;
 }
 
 ul {
