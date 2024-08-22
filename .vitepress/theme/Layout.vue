@@ -78,6 +78,9 @@ body {
 a:hover {
   cursor: url('./assets/cur/millennium_link.cur'), pointer;
 }
+input{
+	cursor:url('./assets/cur/millennium_text.ani'), text;	
+}
 
 .cursor {
   transform: scale(0.5);
