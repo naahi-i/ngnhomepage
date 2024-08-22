@@ -63,6 +63,11 @@ html {
   margin: 0 auto;
 }
 
+@font-face {
+        font-family: "Blueaka";
+        src: url('.vitepress/theme/assets/Blueaka.woff2');
+      }
+
 body {
   background-image: url('./assets/background.svg');
   background-color: var(--general-background-color);
@@ -72,8 +77,8 @@ body {
   background-attachment: fixed;
   overflow-y: scroll;
   color: var(--font-color-grey);
-  font-family: Roboto, 'LXGW WenKai GB Screen', sans-serif;
-}
+  font-family: 'Blueaka', sans-serif;
+} 
 
 .cursor {
   transform: scale(0.5);
