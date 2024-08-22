@@ -44,6 +44,14 @@ const { page } = useData()
 </script>
 
 <style lang="less">
+
+@font-face {
+  font-family: 'BaFont';
+  src: url('/.vitepress/theme/assets/bafont_cu.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .opac-enter-active,
 .opac-leave-active {
   transition: all 0.2s;
@@ -72,7 +80,7 @@ body {
   background-attachment: fixed;
   overflow-y: scroll;
   color: var(--font-color-grey);
-  font-family: Roboto, 'LXGW WenKai GB Screen', sans-serif;
+  font-family: 'bafont', sans-serif;
 }
 
 .cursor {
