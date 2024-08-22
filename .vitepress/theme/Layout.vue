@@ -62,10 +62,6 @@ html {
   max-width: 1200px;
   margin: 0 auto;
 }
-.cursor {
-  width: 15px;
-  height: 15px;
-}
 
 body {
   background-image: url('./assets/background.svg');
@@ -77,7 +73,7 @@ body {
   overflow-y: scroll;
   color: var(--font-color-grey);
   font-family: Roboto, 'LXGW WenKai GB Screen', sans-serif;
-  cursor:url('./assets/cur/millennium_base.cur'),auto;
+  cursor:url('./assets/cur'),auto;
 }
 
 ul {
