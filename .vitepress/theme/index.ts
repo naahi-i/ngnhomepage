@@ -12,20 +12,3 @@ export default {
     // ...
   },
 } satisfies Theme
-
-var mouse = document.querySelector('.mouse');
-document.addEventListener('mousemove', function(e) {
-    mouse.style.left = e.pageX + 'px';
-    mouse.style.top = e.pageY + 'px';
-});
-
-var links = document.querySelectorAll('a');
-
-links.forEach(function(link) {
-    link.addEventListener('mouseover', function() {
-        mouse.classList.add('lighter');
-    });
-    link.addEventListener('mouseout', function() {
-        mouse.classList.remove('lighter');
-    });
-});
