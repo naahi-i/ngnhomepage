@@ -41,8 +41,8 @@ export default defineConfigWithTheme<ThemeConfig>({
   sitemap: {
     hostname: 'https://vitepress-theme-bluearchive.vercel.app',
   },
-  title: "Sensei's 部落格",
-  description: "Sensei's 部落格",
+  title: "Sensei's 柠果柠",
+  description: "Sensei's 柠果柠",
   themeConfig: {
     // navBar
     menuList: [
@@ -51,14 +51,14 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     //banner区配置
-    name: "Sensei's 部落格",
-    welcomeText: 'Hello, VitePress',
-    motto: '何気ない日常で、ほんの少しの奇跡を見つける物語。',
+    name: "Sensei's 柠果柠",
+    welcomeText: '这还是个测试页',
+    motto: '历史给人类的教训就是，人类从不会从历史中汲取教训。',
     social: [
-      { icon: 'github', url: 'https://github.com/' },
-      { icon: 'bilibili', url: 'https://www.bilibili.com/' },
-      { icon: 'qq', url: 'https://im.qq.com/index/' },
-      { icon: 'wechat', url: 'https://weixin.qq.com/' },
+      { icon: 'github', url: 'https://github.com/naahi-i/' },
+      { icon: 'bilibili', url: 'https://space.bilibili.com/2082433753' },
+      { icon: 'qq', url: 'https://qm.qq.com/q/5yLJ5I3zpe' },
+      // { icon: 'wechat', url: 'https://weixin.qq.com/' },
     ],
 
     //footer配置
