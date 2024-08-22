@@ -10,7 +10,7 @@ head:
       content: vitepress theme bluearchive HelloWorld
 ---
 
-#第一个测试帖子
+# 第一个测试帖子
 
 ---
 ::: tip
