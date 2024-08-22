@@ -73,17 +73,22 @@ body {
   overflow-y: scroll;
   color: var(--font-color-grey);
   font-family: Roboto, 'LXGW WenKai GB Screen', sans-serif;
-  cursor: url('./assets/cur/millennium_base.cur'),default;
-}
-a:hover {
-  cursor: url('./assets/cur/millennium_link.cur'), pointer;
-}
-input{
-	cursor:url('./assets/cur/millennium_text.ani'), text;	
+  cursor: none;
 }
 
-.cursor {
-  transform: scale(0.5);
+.mouse-back {
+    position: absolute;
+    content: '';
+    width: 2em;
+    height: 2em;
+    background: url('./assets/cur/millennium_base.cur') no-repeat center center;
+    background-size: contain;
+    left: -50%;
+    top: -50%;
+    margin: -0.42em 0 0 -0.42em;
+    animation: mouse 3s linear infinite both;
+    pointer-events: none;
+    z-index: 999;
 }
 
 ul {
