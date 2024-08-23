@@ -1,4 +1,5 @@
 import { defineConfigWithTheme } from 'vitepress'
+import { Analytics } from "@vercel/analytics/react"
 export interface ThemeConfig {
   //navBar
   menuList: { name: string; url: string }[]
