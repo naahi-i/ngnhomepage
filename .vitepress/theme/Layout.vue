@@ -36,6 +36,7 @@ import NotFound from './components/NotFound.vue'
 import ToTop from './components/ToTop.vue'
 import Fireworks from './components/Fireworks.vue'
 import Footer from './components/Footer.vue'
+
 // @ts-ignore
 import SpinePlayer from './components/Spine-Player/index.vue'
 // 路径切换
