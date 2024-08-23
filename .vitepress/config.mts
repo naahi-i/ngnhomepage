@@ -47,7 +47,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   ],
   ignoreDeadLinks: true,
   sitemap: {
-    hostname: 'https://vitepress-theme-bluearchive.vercel.app',
+    hostname: 'https://ngnhomepage.top',
   },
   title: "Sensei's 柠果柠",
   description: "Sensei's 柠果柠",
