@@ -2,6 +2,7 @@
 title: 什么，你还不玩SCP:SL?
 date: 2024-8-23
 tags: [test , game , scp]
+head:
   - - meta
     - name: description
       content: vitepress-theme-bluearchive 什么，你还不玩SCP:SL?
