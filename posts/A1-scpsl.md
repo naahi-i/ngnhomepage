@@ -1,7 +1,7 @@
 ---
 title: 什么，你还不玩SCP:SL?
 date: 2024-8-23
-tags: [test , game , scp]
+tags: [text , game , scp]
 head:
   - - meta
     - name: description
