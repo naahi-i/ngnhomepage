@@ -36,7 +36,6 @@ import NotFound from './components/NotFound.vue'
 import ToTop from './components/ToTop.vue'
 import Fireworks from './components/Fireworks.vue'
 import Footer from './components/Footer.vue'
-
 // @ts-ignore
 import SpinePlayer from './components/Spine-Player/index.vue'
 // 路径切换
@@ -45,14 +44,6 @@ const { page } = useData()
 </script>
 
 <style lang="less">
-
-@font-face {
-  font-family: 'BaFont';
-  src: url('/.vitepress/theme/assets/bafont_cu.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .opac-enter-active,
 .opac-leave-active {
   transition: all 0.2s;
@@ -81,11 +72,7 @@ body {
   background-attachment: fixed;
   overflow-y: scroll;
   color: var(--font-color-grey);
-  font-family: 'bafont', sans-serif;
-}
-
-.cursor {
-  transform: scale(0.5);
+  font-family: 'Blueaka', sans-serif;
 }
 
 ul {
