@@ -1,14 +1,13 @@
 ---
-title: 什么，你还不知道SCP:SL?
+title: 什么，你还不玩SCP:SL?
 date: 2024-8-23
-tags: [test][game][scp]
-head:
+tags: [test , game , scp]
   - - meta
     - name: description
-      content: vitepress-theme-bluearchive 什么，你还不知道SCP:SL?
+      content: vitepress-theme-bluearchive 什么，你还不玩SCP:SL?
   - - meta
     - name: keywords
-      content: vitepress theme bluearchive 什么，你还不知道SCP:SL?
+      content: vitepress theme bluearchive 什么，你还不玩SCP:SL?
 ---
 
 # 妥妥的出生游戏
