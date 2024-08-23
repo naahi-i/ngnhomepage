@@ -5,10 +5,10 @@ tags: [text , ？]
 head:
   - - meta
     - name: description
-      content: vitepress-theme-bluearchive 牢饭的营养价值
+      content: 牢饭的营养价值
   - - meta
     - name: keywords
-      content: vitepress theme bluearchive 牢饭的营养价值
+      content: 牢饭的营养价值
 ---
 
 # 牢饭的营养价值

@@ -5,10 +5,10 @@ tags: [test , game , scp]
 head:
   - - meta
     - name: description
-      content: vitepress-theme-bluearchive 什么，你还不玩SCP:SL?
+      content: 什么，你还不玩SCP:SL?
   - - meta
     - name: keywords
-      content: vitepress theme bluearchive 什么，你还不玩SCP:SL?
+      content: 什么，你还不玩SCP:SL?
 ---
 
 # 妥妥的出生游戏
@@ -16,7 +16,7 @@ head:
 ---
 ![dd](img/dd.png)
 
-> [!NOTE]
+> [!INFO]
 > 游戏基于 [SCP:CB](https://www.scpcbgame.com/)  
 > 但是现在SL想脱离CB，花生的模型改动就是出于这个原因（有人说是因为版权？）
 

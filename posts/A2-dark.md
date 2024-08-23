@@ -5,10 +5,10 @@ tags: [😰]
 head:
   - - meta
     - name: description
-      content: vitepress-theme-bluearchive 阴暗地爬行
+      content: 阴暗地爬行
   - - meta
     - name: keywords
-      content: vitepress theme bluearchive 阴暗地爬行
+      content: 阴暗地爬行
 ---
 
 # 阴暗地爬行
