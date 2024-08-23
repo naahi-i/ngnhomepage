@@ -69,8 +69,8 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     //gitalk配置
-    clientID: 'Ov23lisNVkLJL51HnmP3',
-    clientSecret: '8de26c219901d1f34499eae4c0d76a4d1e50153d',
+    clientID: 'Ov23liweDUB3VxSW21Ab',
+    clientSecret: '6fe2f5df9e51306e81c6e4cf23270e3940598269',
     repo: 'ngn-myhomepage',
     owner: 'naahi-i',
     admin: ['naahi-i'],
