@@ -49,8 +49,8 @@ export default defineConfigWithTheme<ThemeConfig>({
   sitemap: {
     hostname: 'https://ngnhomepage.top',
   },
-  title: "Sensei's 柠果柠",
-  description: "Sensei's 柠果柠",
+  title: "Sensei 柠果柠",
+  description: "Sensei 柠果柠",
   themeConfig: {
     // navBar
     menuList: [
@@ -59,7 +59,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     //banner区配置
-    name: "Sensei's 柠果柠",
+    name: "Sensei 柠果柠",
     welcomeText: 'Ciallo～(∠・ω< )⌒★',
     motto: '历史给人类的教训就是，人类从不会从历史中汲取教训。',
     social: [
