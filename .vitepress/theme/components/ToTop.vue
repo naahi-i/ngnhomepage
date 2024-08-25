@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-const hide = `bottom: 100%; right: 100%; opacity: 0;`
+const hide = `bottom: -25%; right: -25%; opacity: 0;`
 const style = ref(hide)
 const onScroll = () => {
   window.requestAnimationFrame(() => {
