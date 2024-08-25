@@ -83,10 +83,12 @@ header {
           font-weight: 600;
           color: var(--font-color-grey);
           transition: all 0.5s;
+          transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 
           &:hover {
             color: var(--font-color-gold);
             background-color: var(--btn-background);
+            transform: translateY(-2px);
           }
         }
       }
@@ -97,6 +99,10 @@ header {
     cursor: pointer;
     font-size: 36px;
     color: var(--icon-color);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
 }
 
