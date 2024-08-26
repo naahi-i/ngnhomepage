@@ -61,7 +61,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     //banner区配置
     name: "Sensei 柠果柠",
     welcomeText: 'Ciallo～(∠・ω< )⌒★',
-    motto: '历史给人类的教训就是，人类从不会从历史中汲取教训。',
+    motto: ['历史给人类的教训就是，人类从不会从历史中汲取教训。','得不到的永远在骚动，被偏爱的都有恃无恐。'],
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
       { icon: 'bilibili', url: 'https://space.bilibili.com/2082433753' },
