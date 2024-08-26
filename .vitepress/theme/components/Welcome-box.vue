@@ -17,27 +17,31 @@
       <span class="name">{{ name }}</span>
       <span class="motto">{{ mottoText }}<span class="pointer"></span></span>
       <ul>
-        <li v-for="item in social">
+        <li v-for="item in social" :key="item.url">
           <a :href="item.url"><i :class="`iconfont icon-${item.icon} social`"></i></a>
         </li>
       </ul>
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useData } from 'vitepress'
+import { ref, onMounted } from 'vue'
+
 const themeConfig = useData().theme.value
 const name = themeConfig.name
 const welcomeText = themeConfig.welcomeText
-const motto = themeConfig.motto
+const mottoArray = themeConfig.motto as string[]
 const social = themeConfig.social
 
-import { ref } from 'vue'
 const multiple = 30
 const welcomeBoxRef = ref<HTMLElement | null>(null)
-let calcY = ref(0)
-let calcX = ref(0)
-let angle = ref(0)
+const calcY = ref(0)
+const calcX = ref(0)
+const angle = ref(0)
+const mottoText = ref('')
+
 const parallax = (e: MouseEvent) => {
   if (welcomeBoxRef.value) {
     window.requestAnimationFrame(() => {
@@ -50,30 +54,38 @@ const parallax = (e: MouseEvent) => {
     })
   }
 }
-function getMouseAngle(x, y) {
+
+function getMouseAngle(x: number, y: number) {
   const radians = Math.atan2(y, x)
   let angle = radians * (180 / Math.PI)
-
   if (angle < 0) {
     angle += 360
   }
-
   return angle
 }
+
 const reset = () => {
   calcX.value = calcY.value = angle.value = 0
 }
 
+function getRandomMotto() {
+  const randomIndex = Math.floor(Math.random() * mottoArray.length)
+  return mottoArray[randomIndex]
+}
+
 let index = 0
-let mottoText = ref('')
 function addNextCharacter() {
-  if (index < motto.length) {
-    mottoText.value += motto[index]
+  if (index < getRandomMotto().length) {
+    mottoText.value += getRandomMotto()[index]
     index++
     setTimeout(addNextCharacter, Math.random() * 150 + 30)
   }
 }
-addNextCharacter()
+
+onMounted(() => {
+  mottoText.value = getRandomMotto() // Set initial motto
+  addNextCharacter()
+})
 </script>
 <style scoped lang="less">
 .welcome-box {
