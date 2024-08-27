@@ -66,9 +66,10 @@ const reset = () => {
 
 let index = 0
 let mottoText = ref('')
+const randomMotto = motto[Math.floor(Math.random() * motto.length)] // 随机选择一条motto
 function addNextCharacter() {
-  if (index < motto.length) {
-    mottoText.value += motto[index]
+  if (index < randomMotto.length) {
+    mottoText.value += randomMotto[index]
     index++
     setTimeout(addNextCharacter, Math.random() * 150 + 30)
   }
