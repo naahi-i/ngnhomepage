@@ -12,7 +12,7 @@
 
 配置文件在`.vitepress/config.mts`
 
-```
+```ts
 export interface ThemeConfig {
   //banner
   name: string // 首页名字
