@@ -6,24 +6,30 @@
     @mouseleave="reset"
     :style="{ transform: `rotateY(${calcY}deg) rotateX(${calcX}deg)` }"
   >
-    <span class="welcome-text">{{ welcomeText }}</span>
-    <div
-      class="info-box"
-      :style="{
-        background: `linear-gradient(${angle}deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5))`,
-      }"
-    >
-      <img src="../assets/banner/avatar.jpg" alt="" class="avatar" />
-      <span class="name">{{ name }}</span>
-      <span class="motto">{{ mottoText }}<span class="pointer"></span></span>
-      <ul>
-        <li v-for="item in social">
-          <a :href="item.url"><i :class="`iconfont icon-${item.icon} social`"></i></a>
-        </li>
-      </ul>
-    </div>
+    <transition name="fade" mode="out-in">
+      <span v-if="visible" class="welcome-text">{{ welcomeText }}</span>
+    </transition>
+    <transition name="fade" mode="out-in">
+      <div
+        class="info-box"
+        v-if="visible"
+        :style="{
+          background: `linear-gradient(${angle}deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5))`,
+        }"
+      >
+        <img src="../assets/banner/avatar.jpg" alt="" class="avatar" />
+        <span class="name">{{ name }}</span>
+        <span class="motto">{{ mottoText }}<span class="pointer"></span></span>
+        <ul>
+          <li v-for="item in social" :key="item.url">
+            <a :href="item.url"><i :class="`iconfont icon-${item.icon} social`"></i></a>
+          </li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useData } from 'vitepress'
 const themeConfig = useData().theme.value
@@ -32,12 +38,14 @@ const welcomeText = themeConfig.welcomeText
 const motto = themeConfig.motto
 const social = themeConfig.social
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 const multiple = 30
 const welcomeBoxRef = ref<HTMLElement | null>(null)
 let calcY = ref(0)
 let calcX = ref(0)
 let angle = ref(0)
+let visible = ref(false)
+
 const parallax = (e: MouseEvent) => {
   if (welcomeBoxRef.value) {
     window.requestAnimationFrame(() => {
@@ -74,7 +82,13 @@ function addNextCharacter() {
     setTimeout(addNextCharacter, Math.random() * 150 + 30)
   }
 }
-addNextCharacter()
+
+onMounted(() => {
+  addNextCharacter()
+  setTimeout(() => {
+    visible.value = true
+  }, 100)
+})
 </script>
 <style scoped lang="less">
 .welcome-box {
@@ -94,6 +108,16 @@ addNextCharacter()
   color: white;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   text-align: center;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .info-box {
