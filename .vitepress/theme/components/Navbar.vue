@@ -11,7 +11,7 @@
       </span>
       <span class="control">
         <span class="music-control" @click="toggleMusic">
-          <img :src="isPlaying ? '.vitepress/theme/assets/icon/continue.png' : '.vitepress/theme/assets/icon/stop.png'" alt="音乐控制" />
+          <img :src="isPlaying ? pauseIcon : playIcon" alt="音乐控制" />
         </span>
         <span class="iconfont icon-search search" @click="showDialog = true"></span>
       </span>
@@ -40,6 +40,10 @@ const music = ref<HTMLAudioElement | null>(null)
 const closeDialog = () => {
   showDialog.value = false
 }
+
+// 音乐控制图标路径
+const playIcon = '.vitepress/theme/assets/icon/stop.svg'
+const pauseIcon = '.vitepress/theme/assets/icon/continue.svg'
 
 const toggleMusic = () => {
   if (music.value) {
@@ -151,8 +155,9 @@ header {
         transform: translateY(-3px);
       }
       img {
-        width: 35px; 
-        height: 35px; 
+        width: 55px; 
+        height: 40px; 
+        margin-top: 1px;
       }
     }
   }

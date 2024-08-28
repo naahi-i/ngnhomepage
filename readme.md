@@ -5,13 +5,15 @@
 面向GPT编程  
 
 ## 画上游以外的饼
+- [x] 背景音乐及其控件
 - [ ] 个签使用一言API
 - [ ] 更顺滑的动效
+- [ ] 随机背景图
 
 ## 主题配置
 **音乐** **首页背景** **头像**在`.vitepress/theme/assets/banner`  
 
->在 `.vitepress\theme\components\Banner.vue` 中修改背景类型(视频/图片)  
+>在 `.vitepress/theme/components/Banner.vue` 中修改背景类型(视频/图片)  
 
 **配置文件**在`.vitepress/config.mts`
 
