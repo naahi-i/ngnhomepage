@@ -91,5 +91,4 @@ export default defineConfigWithTheme<ThemeConfig>({
     lineNumbers: true,
     math: true,
   },
-  assetsInclude: ['**/*.m4v'], 
 })

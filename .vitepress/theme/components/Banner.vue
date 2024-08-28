@@ -1,7 +1,7 @@
 <template>
   <div class="banner" :class="{ postViewer: state.currPost.href }">
     <video autoplay muted loop id="bg-video">
-      <source src="../assets/banner/banner.m4v" type="video/mp4">
+      <source src="../assets/banner/banner.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <slot></slot>
