@@ -21,16 +21,26 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
+
 const emit = defineEmits(['closeDialog'])
 const closeDialog = (): void => {
-  emit('closeDialog')
+  // 添加关闭动画
+  const dialog = document.querySelector('.search-dialog') as HTMLElement
+  if (dialog) {
+    dialog.classList.add('hide-dialog')
+    setTimeout(() => {
+      emit('closeDialog')
+    }, 200) 
+  }
 }
 
 import { data as posts } from '../utils/posts.data'
 import MiniSearch, { SearchResult } from 'minisearch'
 import { useData } from 'vitepress'
+
 const base = useData().site.value.base
 const miniSearch = new MiniSearch({
   fields: ['title', 'content'],
@@ -40,10 +50,12 @@ const miniSearch = new MiniSearch({
   },
 })
 miniSearch.addAll(posts)
+
 const searchStr = defineModel<string>()
 const resultList = ref<SearchResult[]>([])
 const status = ref('这里空空的')
 let timerId: ReturnType<typeof setTimeout> | null = null
+
 function search(): void {
   status.value = '搜索中……'
   if (timerId) {
@@ -58,7 +70,15 @@ function search(): void {
     }
   }, 500)
 }
+
+onMounted(() => {
+  const dialog = document.querySelector('.search-dialog') as HTMLElement
+  if (dialog) {
+    dialog.classList.add('show-dialog')
+  }
+})
 </script>
+
 <style scoped lang="less">
 .search-dialog {
   position: fixed;
@@ -70,8 +90,10 @@ function search(): void {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  animation: fadeIn 0.2s forwards;
 }
-
+// 遮罩
 .dialog-cover {
   background: rgba(0, 0, 0, 0.8);
   position: absolute;
@@ -79,8 +101,10 @@ function search(): void {
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  animation: coverFadeIn 0.2s forwards; 
 }
-
+// 搜索框
 .dialog-content {
   position: relative;
   width: 90%;
@@ -93,6 +117,9 @@ function search(): void {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: scale(0.9); 
+  opacity: 0; 
+  animation: popUp 0.2s forwards; 
 }
 
 .dialog-content::before {
@@ -182,6 +209,83 @@ li {
 @media (max-width: 768px) {
   .dialog-content {
     top: 5%;
+  }
+}
+
+// 动画
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes coverFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes coverFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.show-dialog {
+  animation: fadeIn 0.3s forwards;
+}
+
+.hide-dialog {
+  animation: fadeOut 0.3s forwards;
+}
+
+.dialog-cover.show-dialog {
+  animation: coverFadeIn 0.3s forwards;
+}
+
+.dialog-cover.hide-dialog {
+  animation: coverFadeOut 0.3s forwards;
+}
+
+.dialog-content.show-dialog {
+  animation: popUp 0.3s forwards;
+}
+
+.dialog-content.hide-dialog {
+  animation: popDown 0.3s forwards;
+}
+
+@keyframes popDown {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
   }
 }
 </style>

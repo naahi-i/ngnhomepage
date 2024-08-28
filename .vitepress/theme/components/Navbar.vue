@@ -42,8 +42,8 @@ const closeDialog = () => {
 }
 
 // 音乐控制图标路径
-const playIcon = '.vitepress/theme/assets/icon/stop.svg'
-const pauseIcon = '.vitepress/theme/assets/icon/continue.svg'
+const playIcon = '../assets/icon/stop.svg'
+const pauseIcon = '../assets/icon/continue.svg'
 
 const toggleMusic = () => {
   if (music.value) {
