@@ -1,9 +1,14 @@
 <template>
   <div class="banner" :class="{ postViewer: state.currPost.href }">
+    <!-- 若使用图片作为背景请取消注释 -->
+    <!-- <div class="banner" :class="{ postViewer: state.currPost.href }"></div> -->
+
+    <!-- 若使用视频作为背景请取消注释 -->
     <video autoplay muted loop id="bg-video">
       <source src="../assets/banner/banner.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+
     <slot></slot>
     <canvas id="wave"></canvas>
   </div>
@@ -159,6 +164,8 @@ onMounted(() => {
   top: 0;
   width: 100%;
   height: 80vh;
+  // 若使用图片背景请取消注释
+  // background-image: url(../assets/banner/banner.jpg);
   mask: linear-gradient(to top, transparent, var(--general-background-color) 5%);
   perspective: 1000px;
   overflow: hidden;
@@ -170,7 +177,7 @@ onMounted(() => {
   height: 50vh;
 }
 
-/* 新增视频样式 */
+// 若使用视频背景请取消注释(整个#bg-video )
 #bg-video {
   position: absolute;
   top: 0;

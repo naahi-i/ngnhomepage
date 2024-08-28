@@ -9,9 +9,11 @@
 - [ ] 更顺滑的动效
 
 ## 主题配置
-首页头图和头像在`.vitepress/theme/assets/banner`
+**音乐** **首页背景** **头像**在`.vitepress/theme/assets/banner`  
 
-配置文件在`.vitepress/config.mts`
+>在 `.vitepress\theme\components\Banner.vue` 中修改背景类型(视频/图片)  
+
+**配置文件**在`.vitepress/config.mts`
 
 ```ts
 export interface ThemeConfig {
