@@ -64,6 +64,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     motto: [
       '历史给人类的教训就是，人类从不会从历史中汲取教训。',
       '得不到的永远在骚动，被偏爱的都有恃无恐。',
+      '何気ない日常で、ほんの少しの奇跡を見つける物語。',
     ],
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
