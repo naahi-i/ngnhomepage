@@ -1,14 +1,18 @@
 <template>
   <div class="banner" :class="{ postViewer: state.currPost.href }">
+    <video autoplay muted loop id="bg-video">
+      <source src="../assets/banner/banner.m4v" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
     <slot></slot>
     <canvas id="wave"></canvas>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useStore } from '../store'
 const { state } = useStore()
 import { onMounted } from 'vue';
-
 class SiriWave {
   K: number;
   F: number;
@@ -153,18 +157,28 @@ onMounted(() => {
   justify-content: center;
   position: absolute;
   top: 0;
-  background-size: cover;
-  background-position: center center;
   width: 100%;
   height: 80vh;
-  background-image: url(../assets/banner/banner.jpg);
   mask: linear-gradient(to top, transparent, var(--general-background-color) 5%);
   perspective: 1000px;
   overflow: hidden;
+  background-size: cover;
+  background-position: center center;
 }
 
 .postViewer {
   height: 50vh;
+}
+
+/* 新增视频样式 */
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* 确保视频位于其他内容的后面 */
 }
 
 #wave {
