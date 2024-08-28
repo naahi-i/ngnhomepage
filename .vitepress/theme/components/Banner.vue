@@ -178,7 +178,7 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* 确保视频位于其他内容的后面 */
+  z-index: -1;
 }
 
 #wave {
