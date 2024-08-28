@@ -1,7 +1,8 @@
 ![logo](.vitepress/theme/assets/icon/footLogo.svg)  
-## 上游模板仓库[vitepress-theme-bluearchive](https://github.com/Alittfre/vitepress-theme-bluearchive)  
+# 上游模板仓库[vitepress-theme-bluearchive](https://github.com/Alittfre/vitepress-theme-bluearchive)  
 
-## [**>在线预览<**](https://ngnhomepage.top)  
+## [**>访问网站<**](https://ngnhomepage.top)  
+面向GPT编程  
 
 ## 画上游以外的饼
 - [ ] 个签使用一言API

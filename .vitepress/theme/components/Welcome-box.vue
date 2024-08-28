@@ -151,7 +151,7 @@ onMounted(() => {
   position: relative;
   padding: 60px 40px 35px 40px;
   width: 720px;
-  border-radius: 70px;
+  border-radius: 50px;
   border: solid 2px white;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: var(--blur-val);
@@ -232,6 +232,7 @@ onMounted(() => {
     li:nth-child(4) { --index: 4; }
     li:nth-child(5) { --index: 5; }
     li:nth-child(6) { --index: 6; }
+    li:nth-child(7) { --index: 7; }
     /* 可以继续添加 */
     
     .social {
@@ -254,26 +255,27 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .welcome-text {
-    font-size: 50px;
-    margin-bottom: 20px;
-  }
+  .banner {
+    .welcome-text {
+      font-size: 45px;
+      margin-top: -20px;
+    }
 
-  .info-box {
-    width: 90%;
-    padding: 0px 20px 20px 20px;
-  }
+    .info-box {
+      width: 78vw;
+    }
 
-  .name {
-    font-size: 24px;
-  }
+    .name {
+      font-size: 22px;
+    }
 
-  .motto {
-    font-size: 18px;
-  }
+    .motto {
+      font-size: 17px;
+    }
 
-  .social {
-    font-size: 24px;
+    ul {
+      width: 180px;
+    }
   }
 }
 </style>
