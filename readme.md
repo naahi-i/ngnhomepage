@@ -33,5 +33,10 @@ export interface ThemeConfig {
   admin: string[]
 }
 ```
+
+## 已知问题
+- 手机模式下部分浏览器出现视频可被点击至新页
+- 手机模式下菜单栏选项字体可能变成竖向排版
+
 ## 引用
 - [Blueaka@kivo.fun](https://kivo.fun/) BA 游戏字体
