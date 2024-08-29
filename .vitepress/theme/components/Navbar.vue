@@ -11,7 +11,7 @@
       </span>
       <span class="control">
         <span class="music-control" @click="toggleMusic">
-          <img :src="isPlaying ? pauseIcon : playIcon" alt="音乐控制" />
+          <i :class="isPlaying ? 'iconfont icon-continue continue' : 'iconfont icon-stop stop'"></i>
         </span>
         <span class="iconfont icon-search search" @click="showDialog = true"></span>
       </span>
@@ -40,10 +40,6 @@ const music = ref<HTMLAudioElement | null>(null)
 const closeDialog = () => {
   showDialog.value = false
 }
-
-// 音乐控制图标路径
-const playIcon = '../assets/icon/stop.svg'
-const pauseIcon = '../assets/icon/continue.svg'
 
 const toggleMusic = () => {
   if (music.value) {
@@ -148,16 +144,26 @@ header {
       }
     }
 
-    .music-control{
+    .icon-continue {
       display: flex; 
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: var(--font-color-grey);
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       &:hover {
         transform: translateY(-3px);
       }
-      img {
-        width: 55px; 
-        height: 40px; 
-        margin-top: 1px;
+    }
+    .icon-stop {
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      font-size: 36px; 
+      color: var(--font-color-grey);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      &:hover {
+        transform: translateY(-3px);
       }
     }
   }
@@ -167,6 +173,9 @@ header {
   .menu {
     li {
       margin: 0 50px;
+      a {
+          font-size: 18px;
+      }
     }
   }
 }
