@@ -71,7 +71,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       { icon: 'github', url: 'https://github.com/naahi-i/' },
       { icon: 'bilibili', url: 'https://space.bilibili.com/2082433753' },
       { icon: 'qq', url: 'https://qm.qq.com/q/5yLJ5I3zpe' },
-      // { icon: 'wechat', url: 'https://weixin.qq.com/' },
+      { icon: 'tw', url: 'https://x.com/GuoPian97866?t=9TWIkJfhH9kFa53uUm1EUw&s=09' },
     ],
 
     //footer配置
