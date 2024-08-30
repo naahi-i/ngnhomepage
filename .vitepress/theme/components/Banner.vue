@@ -6,7 +6,6 @@
     <!-- 若使用视频作为背景请取消注释 -->
     <video autoplay muted loop id="bg-video">
       <source src="../assets/banner/banner.mp4" type="video/mp4">
-      Your browser does not support the video tag.
     </video>
 
     <slot></slot>
