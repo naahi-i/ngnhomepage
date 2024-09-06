@@ -174,8 +174,7 @@ onMounted(() => {
   overflow: hidden;
   background-size: cover;
   background-position: center center;
-  user-drag: none; /* 禁用视频拖动 */
-  pointer-events: none; /* 禁用鼠标事件 */
+  user-drag: none; /* 禁用拖动 */
 }
 
 .postViewer {
