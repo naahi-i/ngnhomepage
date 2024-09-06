@@ -60,7 +60,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     //banner区配置
-    videoBanner: false,
+    videoBanner: true,
     name: "Sensei 柠果柠",
     welcomeText: 'Ciallo～(∠・ω< )⌒★',
     motto: [
