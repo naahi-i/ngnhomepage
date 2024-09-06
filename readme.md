@@ -16,13 +16,12 @@
 ## 主题配置
 **音乐** **首页背景** **头像**在`.vitepress/theme/assets/banner`  
 
->在 `.vitepress/theme/components/Banner.vue` 中修改背景类型(视频/图片)  
-
 **配置文件**在`.vitepress/config.mts`
 
 ```ts
 export interface ThemeConfig {
   //banner
+  videoBanner: false, // 首页背景类型，默认为图片，可选视频
   name: string // 首页名字
   welcomeText: string // 首页问候语
   motto: [string 1 , string2],// 首页签名
