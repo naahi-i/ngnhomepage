@@ -189,7 +189,6 @@ onMounted(() => {
   height: 100%;
   object-fit: cover;
   user-drag: none; /* 禁用视频拖动 */
-  pointer-events: none; /* 禁用鼠标事件 */
   z-index: -1;
 }
 
