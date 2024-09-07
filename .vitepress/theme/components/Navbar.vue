@@ -10,19 +10,24 @@
         </ul>
       </span>
       <span class="control">
-        <span class="music-control" @click="toggleMusic">
-          <i :class="isPlaying ? 'iconfont icon-continue continue' : 'iconfont icon-stop stop'"></i>
-        </span>
         <span class="iconfont icon-search search" @click="showDialog = true"></span>
+        <label class="hamburger">
+          <input type="checkbox" @change="toggleDropdownMenu">
+          <svg viewBox="0 0 32 32">
+            <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+            <path class="line" d="M7 16 27 16"></path>
+          </svg>
+        </label>
       </span>
     </nav>
+    <DropdownMenu :showMenu="showDropdownMenu" @close-dialog="closeDropdownMenu"></DropdownMenu>
   </header>
   <SearchDialog v-if="showDialog" @close-dialog="closeDialog"></SearchDialog>
 </template>
 
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 const base = useData().site.value.base
 const themeConfig = useData().theme.value
@@ -32,33 +37,22 @@ import { useStore } from '../store'
 const { state } = useStore()
 
 import SearchDialog from './Search-Dialog.vue'
+import DropdownMenu from './DropdownMenu.vue'
 
 const showDialog = ref(false)
-const isPlaying = ref(false) // 音乐播放状态
-const music = ref<HTMLAudioElement | null>(null)
+const showDropdownMenu = ref(false)
 
 const closeDialog = () => {
   showDialog.value = false
 }
 
-const toggleMusic = () => {
-  if (music.value) {
-    if (isPlaying.value) {
-      music.value.pause()
-    } else {
-      music.value.play().catch((err) => console.log("播放失败: ", err))
-    }
-    isPlaying.value = !isPlaying.value
-  }
+const closeDropdownMenu = () => {
+  showDropdownMenu.value = false
 }
 
-onMounted(() => {
-  music.value = document.getElementById('background-music') as HTMLAudioElement
-  if (music.value) {
-    music.value.volume = 0.3 // 设置音量为30%
-    music.value.pause() // 初始状态为暂停
-  }
-})
+const toggleDropdownMenu = () => {
+  showDropdownMenu.value = !showDropdownMenu.value
+}
 </script>
 
 <style scoped lang="less">
@@ -144,26 +138,43 @@ header {
       }
     }
 
-    .icon-continue {
-      display: flex; 
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      color: var(--font-color-grey);
+    .hamburger {
+      cursor: pointer;
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       &:hover {
         transform: translateY(-3px);
       }
-    }
-    .icon-stop {
-      display: flex; 
-      align-items: center;
-      justify-content: center;
-      font-size: 36px; 
-      color: var(--font-color-grey);
-      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      &:hover {
-        transform: translateY(-3px);
+
+      input {
+        display: none;
+      }
+
+      svg {
+        height: 3em;
+        transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .line {
+        fill: none;
+        stroke: rgb(76, 88, 102);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .line-top-bottom {
+        stroke-dasharray: 12 63;
+      }
+
+      input:checked + svg {
+        transform: rotate(-45deg);
+      }
+
+      input:checked + svg .line-top-bottom {
+        stroke-dasharray: 20 300;
+        stroke-dashoffset: -32.42;
       }
     }
   }
