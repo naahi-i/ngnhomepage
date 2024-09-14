@@ -5,6 +5,8 @@ interface StoreState {
   selectedPosts: PostData[]
   currTag: string
   currPost: PostData
+  searchDialog: boolean
+  splashLoading: boolean
 }
 
 const state: StoreState = reactive({
@@ -22,6 +24,8 @@ const state: StoreState = reactive({
     cover: '',
     excerpt: '',
   },
+  searchDialog: false,
+  splashLoading: true,
 })
 
 export function useStore() {

@@ -1,10 +1,11 @@
 <template>
+  <Splash></Splash>
   <template v-if="!page.isNotFound">
     <main style="min-height: 100vh">
       <Navbar></Navbar>
       <Banner>
         <transition name="opac" mode="out-in">
-          <WelcomeBox v-if="page.filePath === 'index.md'"></WelcomeBox>
+          <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
           <Tags v-else-if="page.filePath === 'tags/index.md'"></Tags>
           <PostInnerBanner v-else></PostInnerBanner>
         </transition>
@@ -30,13 +31,14 @@
 
 <script setup lang="ts">
 // 组件导入
-import Navbar from './components/Navbar.vue'
+import Splash from './components/Splash.vue'
+import Navbar from './components/Navbar/index.vue'
 import Banner from './components/Banner.vue'
-import WelcomeBox from './components/Welcome-box.vue'
+import WelcomeBox from './components/Welcome-Box.vue'
 import PostsList from './components/Posts-List.vue'
 import Tags from './components/Tags.vue'
 import PostViewer from './components/Post-Viewer.vue'
-import PostInnerBanner from './components/Post-innerBanner.vue'
+import PostInnerBanner from './components/Post-InnerBanner.vue'
 import NotFound from './components/NotFound.vue'
 import ToTop from './components/ToTop.vue'
 import Fireworks from './components/Fireworks.vue'
@@ -46,6 +48,9 @@ import SpinePlayer from './components/Spine-Player/index.vue'
 // 路径切换
 import { useData } from 'vitepress'
 const { page } = useData()
+
+import { useStore } from './store'
+const { state } = useStore()
 </script>
 
 <style lang="less">
@@ -76,6 +81,7 @@ body {
   background-position: center;
   background-attachment: fixed;
   overflow-y: scroll;
+  overflow-x: hidden;
   color: var(--font-color-grey);
   font-family: 'Blueaka', sans-serif;
 }

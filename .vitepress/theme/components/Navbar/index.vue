@@ -1,7 +1,9 @@
 <template>
   <header :class="{ postViewer: state.currPost.href }">
     <nav class="container">
-      <span class="logo"><img @dragstart.prevent src="../assets/icon/navLogo.svg" alt="" /></span>
+      <span class="logo"
+        ><img @dragstart.prevent src="../../assets/icon/navLogo.svg" alt=""
+      /></span>
       <span class="menu">
         <ul>
           <li v-for="item in menuList">
@@ -10,19 +12,21 @@
         </ul>
       </span>
       <span class="control">
-        <span class="iconfont icon-search search" @click="showDialog = true"></span>
         <label class="hamburger">
-          <input type="checkbox" @change="toggleDropdownMenu">
+          <input type="checkbox" @change="toggleDropdownMenu" />
           <svg viewBox="0 0 32 32">
-            <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+            <path
+              class="line line-top-bottom"
+              d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+            ></path>
             <path class="line" d="M7 16 27 16"></path>
           </svg>
         </label>
       </span>
+      <DropdownMenu :showMenu="showDropdownMenu" @close-dialog="closeDropdownMenu"></DropdownMenu>
     </nav>
-    <DropdownMenu :showMenu="showDropdownMenu" @close-dialog="closeDropdownMenu"></DropdownMenu>
   </header>
-  <SearchDialog v-if="showDialog" @close-dialog="closeDialog"></SearchDialog>
+  <SearchDialog v-if="state.searchDialog" @close-dialog="closeDialog"></SearchDialog>
 </template>
 
 <script setup lang="ts">
@@ -33,17 +37,16 @@ const base = useData().site.value.base
 const themeConfig = useData().theme.value
 const menuList = themeConfig.menuList
 
-import { useStore } from '../store'
+import { useStore } from '../../store'
 const { state } = useStore()
 
 import SearchDialog from './Search-Dialog.vue'
-import DropdownMenu from './DropdownMenu.vue'
+import DropdownMenu from './Dropdown-Menu.vue'
 
-const showDialog = ref(false)
 const showDropdownMenu = ref(false)
 
 const closeDialog = () => {
-  showDialog.value = false
+  state.searchDialog = false
 }
 
 const closeDropdownMenu = () => {
@@ -91,7 +94,6 @@ header {
   }
 
   .menu {
-    margin-left: 45px; 
     ul {
       display: flex;
       align-items: center;
@@ -119,7 +121,7 @@ header {
       }
     }
   }
-  
+
   // 控制栏
   .control {
     display: flex;
@@ -127,16 +129,6 @@ header {
     justify-content: space-between;
     padding: 0;
     margin: 0;
-    width: 100px;
-    .search {
-      cursor: pointer;
-      font-size: 36px;
-      color: var(--font-color-grey);
-      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      &:hover {
-        transform: translateY(-3px);
-      }
-    }
 
     .hamburger {
       cursor: pointer;
@@ -161,7 +153,7 @@ header {
         stroke-linejoin: round;
         stroke-width: 3;
         transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-                    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+          stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .line-top-bottom {
@@ -185,7 +177,7 @@ header {
     li {
       margin: 0 50px;
       a {
-          font-size: 18px;
+        font-size: 18px;
       }
     }
   }

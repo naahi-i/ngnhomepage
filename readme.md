@@ -21,10 +21,10 @@
 ```ts
 export interface ThemeConfig {
   //banner
-  videoBanner: false, // 首页背景类型，默认为图片，可选视频
+  videoBanner: boolean // 首页背景类型，默认为图片，可选视频
   name: string // 首页名字
   welcomeText: string // 首页问候语
-  motto: [string 1 , string2],// 首页签名
+  motto: [string 1 , string2]// 首页签名,可填多个，随机显示
   social: { icon: string; url: string }[] // 社交平台，icon可选bilibili，github，tw，weibo, wechat, qq, netease_music
 
   //gitalk配置

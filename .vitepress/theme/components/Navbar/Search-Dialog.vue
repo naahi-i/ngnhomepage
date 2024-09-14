@@ -33,11 +33,11 @@ const closeDialog = (): void => {
     dialog.classList.add('hide-dialog')
     setTimeout(() => {
       emit('closeDialog')
-    }, 200) 
+    }, 200)
   }
 }
 
-import { data as posts } from '../utils/posts.data'
+import { data as posts } from '../../utils/posts.data'
 import MiniSearch, { SearchResult } from 'minisearch'
 import { useData } from 'vitepress'
 
@@ -91,7 +91,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   opacity: 0;
-  animation: fadeIn 0.2s forwards;
+  animation: fadein 0.2s forwards;
 }
 // 遮罩
 .dialog-cover {
@@ -102,7 +102,7 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   opacity: 0;
-  animation: coverFadeIn 0.2s forwards; 
+  animation: cover-fadein 0.2s forwards;
 }
 // 搜索框
 .dialog-content {
@@ -117,9 +117,9 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: scale(0.9); 
-  opacity: 0; 
-  animation: popUp 0.2s forwards; 
+  transform: scale(0.9);
+  opacity: 0;
+  animation: pop-up 0.2s forwards;
 }
 
 .dialog-content::before {
@@ -213,19 +213,19 @@ li {
 }
 
 // 动画
-@keyframes fadeIn {
+@keyframes fadein {
   to {
     opacity: 1;
   }
 }
 
-@keyframes coverFadeIn {
+@keyframes cover-fadein {
   to {
     opacity: 1;
   }
 }
 
-@keyframes popUp {
+@keyframes pop-up {
   from {
     opacity: 0;
     transform: scale(0.9);
@@ -236,7 +236,7 @@ li {
   }
 }
 
-@keyframes fadeOut {
+@keyframes fadeout {
   from {
     opacity: 1;
   }
@@ -245,7 +245,7 @@ li {
   }
 }
 
-@keyframes coverFadeOut {
+@keyframes cover-fadeout {
   from {
     opacity: 1;
   }
@@ -255,30 +255,30 @@ li {
 }
 
 .show-dialog {
-  animation: fadeIn 0.3s forwards;
+  animation: fadein 0.3s forwards;
 }
 
 .hide-dialog {
-  animation: fadeOut 0.3s forwards;
+  animation: fadeout 0.3s forwards;
 }
 
 .dialog-cover.show-dialog {
-  animation: coverFadeIn 0.3s forwards;
+  animation: cover-fadein 0.3s forwards;
 }
 
 .dialog-cover.hide-dialog {
-  animation: coverFadeOut 0.3s forwards;
+  animation: cover-fadeout 0.3s forwards;
 }
 
 .dialog-content.show-dialog {
-  animation: popUp 0.3s forwards;
+  animation: pop-up 0.3s forwards;
 }
 
 .dialog-content.hide-dialog {
-  animation: popDown 0.3s forwards;
+  animation: pop-down 0.3s forwards;
 }
 
-@keyframes popDown {
+@keyframes pop-down {
   from {
     opacity: 1;
     transform: scale(1);
