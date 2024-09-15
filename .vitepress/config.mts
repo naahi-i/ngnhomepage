@@ -83,6 +83,8 @@ export default defineConfigWithTheme<ThemeConfig>({
       '得不到的永远在骚动，被偏爱的都有恃无恐。',
       '何気ない日常で、ほんの少しの奇跡を見つける物語。',
       '人至少有一个梦想，有个理由去坚强，心若没有栖息的地方，到哪里都是流浪。',
+      '让童年的纸飞机早点飞回你的手里',
+      '不要一直责怪过去的自己，过去的自己曾经站在雾里很迷茫',
     ],
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
