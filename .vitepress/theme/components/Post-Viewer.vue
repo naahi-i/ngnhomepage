@@ -360,10 +360,10 @@ const themeConfig = useData().theme.value
     &.warning,
     &.danger {
       margin: 1rem 0;
-      border-left: 0.5rem solid;
+      border-left: 0.35rem solid;
       padding: 0.1rem 1.5rem;
       overflow-x: auto;
-      border-radius: 16px;
+      border-radius: 8px;
     }
 
     .custom-block-title {
