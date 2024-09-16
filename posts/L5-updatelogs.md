@@ -15,7 +15,15 @@ head:
 
 ---
 
-# 2024.9.15
+# ⚙️2024.9.16
+- ### 优化下拉菜单逻辑与微调样式
+  - 分隔条
+  - 拨动开关动效
+  - 点击空白处收回菜单
+  
+   <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/21f131ee407276987319aa8c3aad8c9aaa65875c)</sub>
+
+# ⚙️2024.9.15
 - ### 调整下拉菜单效果 
   - 调整动画速度  
   - 添加消失模糊过渡
@@ -33,7 +41,7 @@ head:
 
    <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/f259fa995cf8fda6de6e8734ab09217db52bbd4c)</sub>
 
-# 2024.9.14
+# ⚙️2024.9.14
 - ### 优化二级菜单层级
   - 使二级菜单在菜单控件之下
 
