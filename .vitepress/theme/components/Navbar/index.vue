@@ -13,7 +13,7 @@
       </span>
       <span class="control">
         <label class="hamburger">
-          <input type="checkbox" @change="toggleDropdownMenu" />
+          <input type="checkbox" :checked="state.showDropdownMenu" @change="toggleDropdownMenu" />
           <svg viewBox="0 0 32 32">
             <path class="line line-top-bottom"
               d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
@@ -30,7 +30,6 @@
 
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import { ref } from 'vue'
 
 const base = useData().site.value.base
 const themeConfig = useData().theme.value
@@ -41,8 +40,6 @@ const { state } = useStore()
 
 import SearchDialog from './Search-Dialog.vue'
 import DropdownMenu from './Dropdown-Menu.vue'
-
-// const showDropdownMenu = ref(false)
 
 const closeDialog = () => {
   state.searchDialog = false
@@ -139,12 +136,12 @@ header {
         top: -100%;
         left: -60px;
         right: -15px;
-        bottom: 15px;
-        border-radius: 5px;
+        bottom: 0;
+        border-radius: 0 0 30px 30px;
         background-color: white;
         z-index: -1;
         // 下部虚化
-        box-shadow: -5px 8px 8px 0 white; 
+        box-shadow: -5px 5px 8px 0 white; 
       }
 
       input {
