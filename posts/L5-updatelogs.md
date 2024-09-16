@@ -23,6 +23,11 @@ head:
   
    <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/21f131ee407276987319aa8c3aad8c9aaa65875c)</sub>
 
+- ### 帖子内视频圆角
+  - 帖子内视频圆角
+
+   <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/f9696b8c1f74bb71a86403434ce2dfc45eb0a858)</sub>
+
 # ⚙️2024.9.15
 - ### 调整下拉菜单效果 
   - 调整动画速度  
