@@ -85,7 +85,8 @@ const SwitchSpinePlayer = (event: Event) => {
     box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
     border: 3px solid white;
     transition: 
-        transform 0.25s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+        transform 0.26s cubic-bezier(0.27, 0.2, 0.25, 1.51),
+        background-color 0.1s;
 }
 
 #fireworksCheckbox:checked + .toggleSwitch::after,
@@ -94,12 +95,13 @@ const SwitchSpinePlayer = (event: Event) => {
     transition-duration: .2s;
     background-color: white;
     transition: 
-        transform 0.25s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+        transform 0.26s cubic-bezier(0.27, 0.2, 0.25, 1.51),
+        background-color 0.1s;
 }
 
 #fireworksCheckbox:checked + .toggleSwitch,
 #spinePlayerCheckbox:checked + .toggleSwitch {
     background-color: rgb(66, 92, 139);
-    transition-duration: .2s;
+    transition-duration: .3s;
 }
 </style>
