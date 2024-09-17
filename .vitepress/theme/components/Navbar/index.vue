@@ -121,7 +121,7 @@ header {
     left: 1;
     right: -2px;
     width: 150px;
-    bottom: -1.8px;
+    bottom: -1.5px;
     background-color: white;
     border-radius: 0 0 30px 30px;
   }
