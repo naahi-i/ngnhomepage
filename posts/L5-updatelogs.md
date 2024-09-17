@@ -1,6 +1,6 @@
 ---
 title: 更新日志
-date: 2024-9-14
+date: 2024-9-17
 tags: [text]
 head:
   - - meta
@@ -14,6 +14,19 @@ head:
 # 网页的更新与修改
 
 ---
+
+# ⚙️2024.9.17
+### 🔧尝试修改首页样式
+  $\qquad$ ·Welcomebox独占首页
+
+  <div style="display: flex; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/24-9-17-welcome-change.jpg' height='140px' width='auto' style='border: 2px solid #ccc;'>
+        <div style="font-size: 14px;">NEW</div>
+      </div>
+  </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/a3fd3c090cf85f28f1843fb596453b8d148c90f9)</sub>
 
 # ⚙️2024.9.16
 ### 🔧优化下拉菜单逻辑与微调样式
@@ -45,6 +58,7 @@ head:
       </div>
     </div>
 
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/22e9d4aeebc67036bf299177c6d0e97b7a190a89)</sub>
 # ⚙️2024.9.15
 ### 🔧调整下拉菜单效果 
   $\qquad$ ·调整动画速度  
