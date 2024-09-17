@@ -120,7 +120,7 @@ header {
     top: 0;
     left: 1;
     right: -2px;
-    width: 150px;
+    width: 170px;
     bottom: -1.5px;
     background-color: white;
     border-radius: 0 0 30px 30px;
