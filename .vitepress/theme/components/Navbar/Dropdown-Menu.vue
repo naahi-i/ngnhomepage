@@ -24,7 +24,7 @@ const handleClickOutside = (event: MouseEvent) => {
   if (dropdownMenu.value && !dropdownMenu.value.contains(event.target as Node)) {
     setTimeout(() => {
       state.showDropdownMenu = false;
-    }, 1); // 避免与点击菜单控件时相冲突
+    }, 2); // 避免与点击菜单控件时相冲突
   }
 }
 
@@ -102,7 +102,7 @@ watch(
 }
 
 .dropdown-menu[showmenu='false'] {
-  transform: translateY(-91px);
+  transform: translateY(-95px);
   .menu-content {
     box-shadow: none;
     transition: box-shadow 3s;
