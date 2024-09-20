@@ -6,7 +6,7 @@ export interface ThemeConfig {
   menuList: { name: string; url: string }[]
 
   //banner
-  videoBanner: False
+  videoBanner: boolean
   name: string
   welcomeText: string
   motto: string[]
@@ -75,7 +75,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     //banner区配置
-    videoBanner: true,
+    videoBanner: false,
     name: "Sensei 柠果柠",
     welcomeText: 'Ciallo～(∠・ω< )⌒★',
     motto: [
