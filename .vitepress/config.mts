@@ -6,7 +6,7 @@ export interface ThemeConfig {
   menuList: { name: string; url: string }[]
 
   //banner
-  videoBanner: true
+  videoBanner: false
   name: string
   welcomeText: string
   motto: string[]
