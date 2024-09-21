@@ -138,7 +138,7 @@ onMounted(() => {
 .welcome-text {
   font-size: 80px;
   font-weight: bold;
-  color: white;
+  color: var(--foreground-color);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   text-align: center;
   margin-bottom: 100px;
@@ -158,7 +158,7 @@ onMounted(() => {
   padding: 60px 40px 35px 40px;
   width: 720px;
   border-radius: 50px;
-  border: solid 2px white;
+  border: solid 2px var(--foreground-color);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(6.5px) saturate(120%);
   
@@ -172,7 +172,7 @@ onMounted(() => {
     width: 128px;
     height: auto;
     border-radius: 50%;
-    border: solid 3px white;
+    border: solid 3px var(--foreground-color);
     margin-bottom: 20px;
     transition: transform 0.6s ease, box-shadow 0.4s ease;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
