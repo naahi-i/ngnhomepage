@@ -1,9 +1,8 @@
 <template>
   <div class="banner" :class="{ postViewer: state.currPost.href, loadingComplete: !state.splashLoading }">
     <slot></slot>
-    <div class="downarrow-container" @click="move">
-      <span class="iconfont icon-downarrow downarrow"></span>
-    </div>
+    <span class="iconfont icon-downarrow downarrow" @click="move"
+      v-if="!state.splashLoading && page.filePath === 'index.md'"></span>
     <canvas id="wave"></canvas>
     <video autoplay muted loop class="bg-video" v-if="videoBanner">
       <source src="../assets/banner/banner_video.mp4" type="video/mp4" />
@@ -14,6 +13,7 @@
 
 <script setup lang="ts">
 import { useData } from 'vitepress'
+const { page } = useData()
 const themeConfig = useData().theme.value
 const videoBanner = themeConfig.videoBanner
 
@@ -181,20 +181,17 @@ const move = () => {
   overflow: hidden;
   -webkit-user-drag: none;
 
-  .downarrow-container {
+  .downarrow {
     position: absolute;
     bottom: 90px;
     cursor: pointer;
     z-index: 100;
     animation: float-fade 2.3s ease-in-out infinite;
-
-    .downarrow {
-      font-size: 65px;
-      color: #e9ebee;
-      text-shadow:
-        1px 0.8px 4px rgba(40, 135, 200, 1),
-        0 0 2px rgba(40, 135, 200, 0.2);
-    }
+    font-size: 65px;
+    color: #e9ebee;
+    text-shadow:
+      1px 0.8px 4px rgba(40, 135, 200, 1),
+      0 0 2px rgba(40, 135, 200, 0.2);
   }
 
   &.loadingComplete {
