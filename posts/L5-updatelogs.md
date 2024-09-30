@@ -15,6 +15,19 @@ head:
 
 ---
 
+# ⚙️2024.9.30
+### 🔧添加添加向下提示箭头
+  $\qquad$ ·添加向下提示箭头
+
+  <div style="display: flex; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/24-9-30-downarrow.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <div style="font-size: 14px;">NEW</div>
+      </div>
+  </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/99c29edcb4f136a0065e0c65da47f8e6391b240f)</sub>
+
 # ⚙️2024.9.17
 ### 🔧尝试修改首页样式
   $\qquad$ ·Welcomebox独占首页
