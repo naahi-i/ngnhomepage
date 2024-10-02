@@ -16,9 +16,9 @@ head:
 ---
 # ⚙️2024.10.2
 ### 🔧重做totop
-  $\qquad$ · 修改图标
-  $\qquad$· 增加二次确认
-  $\qquad$· 添加动效
+  $\qquad$ · 修改图标  
+  $\qquad$ · 增加二次确认  
+  $\qquad$ · 添加动效
 
   <div style="display: flex; margin-top: 10px ;gap: 25px; margin-left: 40px">
       <div style="text-align: center;">
