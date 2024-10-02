@@ -1,5 +1,5 @@
 <template>
-  <a class="totop" @click="firstclick" :style="style" aria-label="to-top">
+  <a class="totop" @click="clickcheck" :style="style" aria-label="to-top">
     <img @dragstart.prevent :style="{ transform: `scale(${scale})` }" src="../assets/toTop.svg" alt="" />
   </a>
 </template>
@@ -14,24 +14,23 @@ const click = ref(0)
 const onScroll = () => {
   window.requestAnimationFrame(() => {
     if (window.scrollY > 600) {
+      click.value = 0
       if (scale.value == 1) {
-        style.value = `bottom: 150px; right: -55px;`
+        style.value = `bottom: 150px; right: ${window.innerWidth > 768 ? '-55px' : '-35px'};`
       }
-    }
-    else {
+    } else {
       style.value = `bottom: 150px; right: -200px; opacity: 0;`
       scale.value = 1
     }
   })
 }
 
-const firstclick = () => {
-  // 二次确认
+// 二次确认
+const clickcheck = () => {
   if (click.value === 0) {
     style.value = `bottom: 150px; right: 2%;`
     click.value = 1
-  }
-  else {
+  } else {
     toTop()
     click.value = 0
   }
@@ -47,15 +46,15 @@ const handleOutsideClick = (event: MouseEvent) => {
   if (!isClickInside) {
     if (window.scrollY > 600) {
       click.value = 0  // 重置点击状态
-      style.value = `bottom: 150px; right: -55px`
+      style.value = `bottom: 150px; right: ${window.innerWidth > 768 ? '-55px' : '-35px'};`
     }
   }
 }
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll)
-  onScroll()
   document.addEventListener('click', handleOutsideClick)
+  onScroll()
 })
 
 onUnmounted(() => {
@@ -77,6 +76,11 @@ onUnmounted(() => {
     &:hover {
       scale: 0.98;
     }
+  }
+}
+@media (max-width: 768px) {
+  .totop img {
+    width: 70px;
   }
 }
 </style>
