@@ -14,6 +14,33 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.10.2
+### 🔧重做totop
+  $\qquad$ · 修改图标
+  $\qquad$· 增加二次确认
+  $\qquad$· 添加动效
+
+  <div style="display: flex; margin-top: 10px ;gap: 25px; margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/24-10-2-totop-old.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <div style="font-size: 14px;">OLD</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="display: flex; gap: 8px;">
+          <div style="text-align: center;">
+            <img src='./img/24-10-2-totop-1.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+            <div style="font-size: 14px;">Idle State</div>
+          </div>
+          <div style="text-align: center;">
+            <img src='./img/24-10-2-totop-2.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+            <div style="font-size: 14px;">Reconfirmation</div>
+          </div>
+        </div>
+        <div style="font-size: 14px;">|______NEW______|</div>
+      </div>
+  </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/b4dfb304934f0a9509d6a63ecf6570efbf142eb7)</sub>
 
 # ⚙️2024.9.30
 ### 🔧添加添加向下提示箭头
