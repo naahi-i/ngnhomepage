@@ -84,6 +84,7 @@ watch(
       left: 24%;
       width: 52%;
       height: 1px;
+      opacity: 40%;
       background-color: var(--font-color-grey);
       border-radius: 1px;
     }
