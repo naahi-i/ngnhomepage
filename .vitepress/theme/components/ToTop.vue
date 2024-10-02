@@ -67,7 +67,7 @@ onUnmounted(() => {
 .totop {
   position: fixed;
   z-index: 100;
-  right: 2%;
+  right: -200px;
   filter: drop-shadow(0 0 3px rgba(40, 42, 44, 0.42));
   transition: all 0.6s ease;
   img {
