@@ -107,10 +107,8 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   z-index: 100;
-  transform-style: preserve-3d;
   transition: all 0.2s;
-  perspective: 1000px;
-  padding-bottom: 12vh;
+  padding-bottom: 10vh;
 }
 
 .fade-up-enter-active {
