@@ -87,6 +87,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       '不要一直责怪过去的自己，过去的自己曾经站在雾里很迷茫。',
       '小时候哭着哭着就笑了，长大后笑着笑着就哭了。',
       '船停在港口是安全的，但这并不是造船的目的。',
+      '时间啊，停止吧，你是多么美丽。',
     ],
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
