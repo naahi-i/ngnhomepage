@@ -77,7 +77,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     //banner区配置
     videoBanner: false,
     name: "Sensei 柠果柠",
-    welcomeText: 'Ciallo～(∠・ω< )⌒★',
+    welcomeText: 'Ciallo～(∠・ω< )⌒',
     motto: [
       '历史给人类的教训就是，人类从不会从历史中汲取教训。',
       '得不到的永远在骚动，被偏爱的都有恃无恐。',

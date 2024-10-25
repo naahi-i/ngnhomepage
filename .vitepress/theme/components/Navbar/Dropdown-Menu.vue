@@ -112,4 +112,9 @@ watch(
     top 0.6s cubic-bezier(0.25, 1, 0.5, 1),
     transform 0.6s cubic-bezier(.9, -0.33, .51, 1.07);
 }
+@media (max-width: 768px) {
+  .dropdown-menu {
+    top: -140.7%;
+  }
+}
 </style>

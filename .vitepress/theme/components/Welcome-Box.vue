@@ -6,8 +6,10 @@
     @mouseleave="reset"
     :style="{ transform: `rotateY(${calcY}deg) rotateX(${calcX}deg)` }"
   >
-    <span class="welcome-text">{{ welcomeText }}</span>
-    <transition name="fade" appear>
+    <transition name="fade-up" appear>
+      <span class="welcome-text">{{ welcomeText }}</span>
+    </transition>
+    <transition name="fade-up" appear>
       <div
         class="info-box"
         :style="{
@@ -18,6 +20,7 @@
         <span class="name">{{ name }}</span>
         <span class="motto">
           {{ mottoText }}
+          <span class="pointer"></span>
         </span>
         <ul>
           <li v-for="item in social" :key="item.url">
@@ -99,7 +102,16 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   z-index: 100;
-  transition: transform 0.2s;
+  padding-bottom: 10vh;
+}
+
+.fade-up-enter-active {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .welcome-text {
@@ -120,7 +132,6 @@ onMounted(() => {
   padding: 60px 40px 35px 40px;
   width: 720px;
   border-radius: 50px;
-  border: solid 2px var(--foreground-color);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: var(--blur-val) saturate(120%);
 
@@ -203,10 +214,11 @@ onMounted(() => {
   .banner {
     .welcome-text {
       font-size: 45px;
+      margin-top: -20px;
     }
 
     .info-box {
-      width: 75vw;
+      width: 78vw;
       border-radius: 36px;
       padding: 48px 20px 20px 20px;
 
@@ -214,6 +226,9 @@ onMounted(() => {
         width: 100px;
         height: 100px;
       }
+    }
+    .info-box {
+      width: 78vw;
     }
 
     .name {
