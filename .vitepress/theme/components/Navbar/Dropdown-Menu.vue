@@ -23,8 +23,8 @@ const dropdownMenu = ref(null)
 const handleClickOutside = (event: MouseEvent) => {
   if (dropdownMenu.value && !dropdownMenu.value.contains(event.target as Node)) {
     setTimeout(() => {
-      state.showDropdownMenu = false;
-    }, 2); // 避免与点击菜单控件时相冲突
+      state.showDropdownMenu = false
+    }, 2) // 避免与点击菜单控件时相冲突
   }
 }
 
@@ -47,7 +47,7 @@ watch(
 .dropdown-menu {
   position: fixed;
   top: -110.7%;
-  right: -2.1px;
+  right: -1.9px;
   z-index: -1;
   display: flex;
   justify-content: center;

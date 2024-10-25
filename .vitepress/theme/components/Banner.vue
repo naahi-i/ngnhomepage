@@ -169,7 +169,7 @@ onMounted(() => {
 })
 
 const move = () => {
-  window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+  window.scrollTo({ top: window.innerHeight-75, behavior: 'smooth' })
 }
 </script>
 <style scoped lang="less">
@@ -187,6 +187,7 @@ const move = () => {
   perspective: 1000px;
   overflow: hidden;
   -webkit-user-drag: none;
+  transition: height 0.3s;
 
   .downarrow {
     position: absolute;

@@ -56,7 +56,7 @@ const toggleDropdownMenu = () => {
 
 header {
   height: 100vh;
-
+  position: relative;
   nav {
     display: flex;
     align-items: center;
@@ -89,6 +89,7 @@ header {
     z-index: 200;
 
     ul {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -96,6 +97,7 @@ header {
       margin: 0;
 
       li {
+        margin: 0 50px;
         a {
           display: block;
           padding: 10px 16px 10px 16px;
@@ -130,6 +132,8 @@ header {
 
   .hamburger {
     position: relative;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 
@@ -171,13 +175,24 @@ header {
   }
 }
 
-@media (min-width: 768px) {
-  .menu {
-    li {
-      margin: 0 50px;
-
-      a {
-        font-size: 18px;
+@media (max-width: 768px) {
+  header {
+    nav {
+      height: 64px;
+    }
+    .logo {
+      img {
+        height: 32px;
+      }
+    }
+    .menu {
+      ul {
+        li {
+          margin: 0 10px;
+          a {
+            font-size: 16px;
+          }
+        }
       }
     }
   }

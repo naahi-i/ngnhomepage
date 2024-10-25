@@ -120,7 +120,7 @@ const finalPosts = computed(() => {
 .posts-list {
   position: relative;
   overflow-wrap: break-word;
-  margin-top: 3vh;
+  margin-top: 5vh;
 
   .post {
     display: flex;
@@ -272,6 +272,19 @@ const finalPosts = computed(() => {
   .post {
     margin: 0 8px 30px 8px !important;
     background-size: cover !important;
+  }
+  .post-header {
+    padding: 20px 35px 0;
+    .name {
+      font-size: 26px;
+    }
+    .title {
+      margin-bottom: 6px;
+      .title-dot {
+        height: 18px;
+        top: 6px;
+      }
+    }
   }
 }
 </style>
