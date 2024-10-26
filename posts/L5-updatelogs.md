@@ -14,6 +14,21 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.10.26
+### 🔧修改iconfont
+  $\qquad$ ·添加酷安coolapk
+  $\qquad$ ·更换图标为线条风格
+
+  <div style="display: flex; margin-top: 10px ;margin-left: 4px">
+      <div style="text-align: center;">
+        <img src='./img/24-10-26-icon.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <div style="font-size: 14px;">NEW</div>
+      </div>
+  </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/99c29edcb4f136a0065e0c65da47f8e6391b240f)</sub>
+
+
 # ⚙️2024.10.2
 ### 🔧重做totop
   $\qquad$ · 修改图标  
