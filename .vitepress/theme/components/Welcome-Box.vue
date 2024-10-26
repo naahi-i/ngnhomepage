@@ -238,13 +238,14 @@ onMounted(() => {
     }
 
     .motto {
-      font-size: 13px;
+      font-size: 14px;
     }
 
     ul {
       width: 180px;
       .social {
-        font-size: 19px;
+        font-size: 18px;
+        font-weight: 400;
       }
     }
   }
