@@ -187,7 +187,7 @@ const move = () => {
   perspective: 1000px;
   overflow: hidden;
   -webkit-user-drag: none;
-  transition: height 0.3s;
+  transition: height 0.4s;
 
   .downarrow {
     position: absolute;
