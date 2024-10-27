@@ -1,15 +1,8 @@
 ![logo](.vitepress/theme/assets/icon/footLogo.svg)  
 # 上游模板仓库[vitepress-theme-bluearchive](https://github.com/Alittfre/vitepress-theme-bluearchive)  
 
-## [**>访问网站<**](https://ngnhomepage.top)  
+## [**>让我看看<**](https://ngnhomepage.top)  
 面向GPT编程  
-
-## 画上游以外的饼
-### 已完成
-- [x] 背景音乐及其控件  
-### 饼
-- [ ] 个签使用一言API
-- [ ] 音乐频谱效果
 
 ## 主题配置
 **音乐** **首页背景** **头像**在`.vitepress/theme/assets/banner`  
@@ -30,7 +23,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     name: "Sensei's 部落格", //首页标题
     welcomeText: 'Hello, VitePress', //首页欢迎语
     motto: ['和你的日常，就是奇迹', '何気ない日常で、ほんの少しの奇跡を見つける物語。'], //首页motto
-    social: [ //社交链接配置
+    social: [ //社交链接配置(netease_music,coolapk,reddit)
       { icon: 'github', url: 'https://github.com/' },
       { icon: 'bilibili', url: 'https://www.bilibili.com/' },
       { icon: 'qq', url: 'https://im.qq.com/index/' },
