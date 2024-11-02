@@ -104,12 +104,23 @@ const mainbox = ref<HTMLElement | null>(null);
         height: 250px;
         width: 95%;
         .item {
+            .imgbox{
+                width: 60%;
+                box-shadow: 5px 0 5px rgba(var(--blue-shadow-color), 0.3);
+                transition: all 0.5s ease;
+                &:hover{
+                    transform: scale(1.05);
+                }
+            }
+            .reverse-shadow {
+                box-shadow: -5px 0 5px rgba(var(--blue-shadow-color), 0.3);
+            }
             .textbox {
                 .title {
-                    font-size: 25px; /* 缩小标题字体 */
+                    font-size: 25px;
                 }
                 .subtitle {
-                    font-size: 15px; /* 缩小副标题字体 */
+                    font-size: 15px;
                 }
             }
         }
