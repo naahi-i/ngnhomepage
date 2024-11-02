@@ -10,6 +10,7 @@
           <PostInnerBanner v-else></PostInnerBanner>
         </transition>
       </Banner>
+      <Showcase></Showcase>
       <transition name="fade" mode="out-in">
         <PostsList
           v-if="page.filePath === 'index.md' || page.filePath === 'tags/index.md'"
@@ -43,6 +44,7 @@ import NotFound from './components/NotFound.vue'
 import ToTop from './components/ToTop.vue'
 import Fireworks from './components/Fireworks.vue'
 import Footer from './components/Footer.vue'
+import Showcase from './components/Showcase/index.vue'
 // @ts-ignore
 import SpinePlayer from './components/Spine-Player/index.vue'
 // 路径切换

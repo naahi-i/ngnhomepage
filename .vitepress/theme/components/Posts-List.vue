@@ -126,6 +126,7 @@ const finalPosts = computed(() => {
     display: flex;
     flex-direction: column;
     margin: 0 0 50px 0;
+    transform: skew(-5deg); /* 设置倾斜角度 */
     padding-bottom: 16px;
     background-color: var(--foreground-color);
     border-radius: 32px;
