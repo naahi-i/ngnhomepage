@@ -23,9 +23,8 @@ const props = defineProps<{
     subtitle1: string;
     subtitle2: string;
     isReversed?: boolean; // 用于判断布局方向
-    imgHeight: string; // 新增属性用于设置图片高度
+    imgHeight: string;
 }>();
-
 const mainbox = ref<HTMLElement | null>(null);
 </script>
 
@@ -33,7 +32,7 @@ const mainbox = ref<HTMLElement | null>(null);
 .mainbox {
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
     width: 1200px;
-    height: 360px; 
+    height: 330px; 
     overflow: hidden; /* 防止内容超出容器 */
     transform: skew(-5deg); /* 设置倾斜角度 */
     border-radius: 30px;
