@@ -14,6 +14,19 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.11.2
+### 🔧增加橱窗
+
+  <div style="display: flex; margin-top: 10px ;margin-left: 4px">
+      <div style="text-align: center;">
+        <img src='./img/24-11-2-showcase_update.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <div style="font-size: 14px;">NEW</div>
+      </div>
+  </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngn-myhomepage/commit/e690b8a453cc089147d1fb654a1e875f9f4d21e1)</sub>
+
+
 # ⚙️2024.10.26
 ### 🔧修改iconfont
   $\qquad$ ·添加酷安coolapk
