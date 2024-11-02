@@ -10,7 +10,7 @@
           <PostInnerBanner v-else></PostInnerBanner>
         </transition>
       </Banner>
-      <Showcase></Showcase>
+      <Showcase v-if="!state.splashLoading && page.filePath === 'index.md'"></Showcase>
       <transition name="fade" mode="out-in">
         <PostsList
           v-if="page.filePath === 'index.md' || page.filePath === 'tags/index.md'"
