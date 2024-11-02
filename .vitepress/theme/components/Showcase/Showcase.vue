@@ -106,14 +106,14 @@ const mainbox = ref<HTMLElement | null>(null);
         .item {
             .imgbox{
                 width: 60%;
-                box-shadow: 5px 0 5px rgba(var(--blue-shadow-color), 0.3);
+                box-shadow: 3px 0 5px rgba(var(--blue-shadow-color), 0.3);
                 transition: all 0.5s ease;
                 &:hover{
                     transform: scale(1.05);
                 }
             }
             .reverse-shadow {
-                box-shadow: -5px 0 5px rgba(var(--blue-shadow-color), 0.3);
+                box-shadow: -3px 0 5px rgba(var(--blue-shadow-color), 0.3);
             }
             .textbox {
                 .title {
