@@ -10,13 +10,13 @@
           <PostInnerBanner v-else></PostInnerBanner>
         </transition>
       </Banner>
-      <Showcase v-if="!state.splashLoading && page.filePath === 'index.md'"></Showcase>
-      <transition name="fade" mode="out-in">
+      <transition-group name="fade" mode="out-in">
+        <Showcase v-if="!state.splashLoading && page.filePath === 'index.md'"></Showcase>
         <PostsList
           v-if="page.filePath === 'index.md' || page.filePath === 'tags/index.md'"
         ></PostsList>
         <PostViewer v-else></PostViewer>
-      </transition>
+      </transition-group>
     </main>
     <Footer></Footer>
     <Fireworks v-if="state.fireworksEnabled"></Fireworks>
