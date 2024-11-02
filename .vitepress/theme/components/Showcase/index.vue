@@ -3,7 +3,7 @@
         <Showcase
             :imageSrc="img1"
             title="Windows11-tan"
-            subtitle1=" — "
+            subtitle1=""
             subtitle2="win11娘可爱捏"
             :isReversed="false"
             imgHeight="100%"
@@ -11,7 +11,7 @@
         <Showcase
             :imageSrc="img2"
             title="普拉娜"
-            subtitle1=" — "
+            subtitle1=""
             subtitle2="橱窗正在施工"
             :isReversed="true"
             imgHeight="140%"
