@@ -1,7 +1,7 @@
 <template>
     <div>
         <Showcase
-            imageSrc=".vitepress\theme\components\img\win11-tan.jpg"
+            imageSrc=".vitepress/theme/components/img/win11-tan.jpg"
             title="Windows11-tan"
             subtitle1=""
             subtitle2="win11娘可爱捏"
@@ -9,7 +9,7 @@
             imgHeight="100%"
         />
         <Showcase
-            imageSrc=".vitepress\theme\components\img\pln.jpg"
+            imageSrc=".vitepress/theme/components/img/pln.jpg"
             title="普拉娜"
             subtitle1=""
             subtitle2="橱窗正在施工"
