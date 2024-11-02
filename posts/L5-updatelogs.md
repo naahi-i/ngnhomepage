@@ -16,6 +16,7 @@ head:
 ---
 # ⚙️2024.11.2
 ### 🔧增加橱窗
+  $\qquad$ ·倾斜帖子列表
 
   <div style="display: flex; margin-top: 10px ;margin-left: 4px">
       <div style="text-align: center;">
@@ -29,7 +30,7 @@ head:
 
 # ⚙️2024.10.26
 ### 🔧修改iconfont
-  $\qquad$ ·添加酷安coolapk
+  $\qquad$ ·添加酷安coolapk  
   $\qquad$ ·更换图标为线条风格
 
   <div style="display: flex; margin-top: 10px ;margin-left: 4px">
