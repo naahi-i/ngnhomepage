@@ -1,7 +1,7 @@
 <template>
     <div class="mainbox" ref="mainbox">
         <div class="item" :class="{ 'reverse': isReversed }">
-            <div class="imgbox" :class="{ 'reverse-shadow': isReversed }">
+            <div class="imgbox" :class="{ 'reverse': isReversed }">
                 <img :src="imageSrc" :height="imgHeight" draggable="false" loading="lazy">
             </div>
             <div class="textbox">
@@ -47,11 +47,6 @@ const mainbox = ref<HTMLElement | null>(null);
         
         &.reverse {
             flex-direction: row-reverse; /* 反转布局 */
-            .imgbox {
-                img {
-                    margin-left: -3%; /* 向左移动图片，增加负值以实现向左修正 */
-                }
-            }
         }
 
         .imgbox {
@@ -59,22 +54,23 @@ const mainbox = ref<HTMLElement | null>(null);
             width: 60%; /* 设置图片容器宽度 */
             height: 100%; /* 设置图片容器高度与 mainbox 一致 */
             margin-left: -20px; /* 向左移动容器 */
-            box-shadow: 5px 0 10px rgba(var(--blue-shadow-color), 0.5); /* 默认阴影样式 */
+            box-shadow: 4px 0 8px rgba(var(--blue-shadow-color), 0.4); /* 默认阴影样式 */
             transition: all 0.5s ease; /* 设置缩放动画过渡 */
+
+            &:hover {
+                width: 70%; /* 图片容器在鼠标悬浮时扩展宽度 */
+            }
+
+            &.reverse { /* 反转阴影样式 */
+                box-shadow: -4px 0 8px rgba(var(--blue-shadow-color), 0.4); /* 调整阴影方向 */
+            }
 
             img {
                 width: 106%; /* 确保图片宽度填满容器 */
                 object-fit: cover; /* 保持图片的宽高比 */
                 transform: skew(5deg); /* 设置倾斜角度 */
+                margin-left: -3%; /* 向左移动图片，增加负值以实现向左修正 */
             }
-            
-            &:hover {
-                width: 70%;
-            }
-        }
-
-        .reverse-shadow { /* 反转阴影样式 */
-            box-shadow: -5px 0 10px rgba(var(--blue-shadow-color), 0.5); /* 调整阴影方向 */
         }
 
         .textbox {
@@ -99,26 +95,32 @@ const mainbox = ref<HTMLElement | null>(null);
         }
     }
 }
+
 @media (max-width: 768px) {
     .mainbox {
         height: 250px;
         width: 95%;
+        
         .item {
-            .imgbox{
-                width: 60%;
-                box-shadow: 3px 0 5px rgba(var(--blue-shadow-color), 0.3);
-                transition: all 0.5s ease;
-                &:hover{
-                    transform: scale(1.05);
+            .imgbox {
+                width: 60%; /* 移动端图片容器宽度 */
+                box-shadow: 3px 0 5px rgba(var(--blue-shadow-color), 0.3); /* 移动端阴影效果 */
+                transition: all 0.5s ease; /* 缩放动画过渡 */
+
+                &:hover {
+                    transform: scale(1.05); /* 图片悬浮时缩放效果 */
+                }
+
+                &.reverse {
+                    box-shadow: -3px 0 5px rgba(var(--blue-shadow-color), 0.3); /* 调整移动端反转阴影方向 */
                 }
             }
-            .reverse-shadow {
-                box-shadow: -3px 0 5px rgba(var(--blue-shadow-color), 0.3);
-            }
+
             .textbox {
                 .title {
                     font-size: 25px;
                 }
+
                 .subtitle {
                     font-size: 15px;
                 }

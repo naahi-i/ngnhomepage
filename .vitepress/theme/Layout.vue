@@ -11,10 +11,10 @@
         </transition>
       </Banner>
       <transition-group name="fade" mode="out-in">
-        <Showcase v-if="!state.splashLoading && page.filePath === 'index.md'"></Showcase>
-        <PostsList
-          v-if="page.filePath === 'index.md' || page.filePath === 'tags/index.md'"
-        ></PostsList>
+        <span v-if="page.filePath === 'index.md' || page.filePath === 'tags/index.md'">
+          <Showcase></Showcase>
+          <PostsList></PostsList>
+        </span>
         <PostViewer v-else></PostViewer>
       </transition-group>
     </main>
