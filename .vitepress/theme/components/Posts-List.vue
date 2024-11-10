@@ -252,8 +252,9 @@ const finalPosts = computed(() => {
 
 @media (max-width: 768px) {
   .post {
-    margin: 0 8px 30px;
+    margin: 0 0 30px 0;
     background-size: cover;
+    padding-bottom: 12px;
   }
   .post-header {
     padding: 20px 35px 0;
