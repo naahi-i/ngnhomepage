@@ -16,7 +16,7 @@
             <div class="wordcount seperator">约{{ post.wordCount }}字</div>
           </div>
           <ul class="tags">
-            <li v-for="tag in post.tags">
+            <li v-for="tag in post.tags" :key="tag">
               <a :href="`${base}tags/`" @click="state.currTag = tag"
                 ><i class="iconfont icon-tag"></i> {{ tag }}</a
               >
@@ -28,34 +28,24 @@
         </div>
       </article>
     </TransitionGroup>
-    <span v-if="totalPage != 1" class="pagination">
-      <button
-        :disabled="currPage === 1"
-        :class="{ hide: currPage === 1 }"
-        id="up"
-        @click="currPage--"
-      >
+    <span v-if="totalPage > 1" class="pagination">
+      <button :disabled="currPage === 1" :class="{ hide: currPage === 1 }" id="up" @click="currPage--">
         <i class="iconfont icon-arrow"></i>
       </button>
       <span>{{ currPage }} / {{ totalPage }}</span>
-      <button
-        :disabled="currPage >= totalPage"
-        :class="{ hide: currPage >= totalPage }"
-        id="next"
-        @click="currPage++"
-      >
+      <button :disabled="currPage >= totalPage" :class="{ hide: currPage >= totalPage }" id="next" @click="currPage++">
         <i class="iconfont icon-arrow"></i>
       </button>
     </span>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { ref, computed } from 'vue'
 import { data as posts } from '../utils/posts.data'
 import { useStore } from '../store'
 const { state } = useStore()
-const { page } = useData()
 const base = useData().site.value.base
 
 function formatDate(timestamp: number): string {
@@ -74,22 +64,15 @@ const postsList = computed(() => {
     currPage.value * pageSize.value,
   )
 })
-const totalPage = computed(() => {
-  return Math.ceil(finalPosts.value.length / pageSize.value) || 1
-})
+const totalPage = computed(() => Math.max(1, Math.ceil(finalPosts.value.length / pageSize.value)))
 
 // 文章传值
 const finalPosts = computed(() => {
-  if (page.value.filePath === 'index.md') {
-    currPage.value = 1
-    return posts
-  } else if (page.value.filePath === 'tags/index.md') {
-    currPage.value = 1
-    return state.selectedPosts
-  }
-  return []
+  // 优先显示 selectedPosts，如果为空则展示全部 posts
+  return state.selectedPosts.length > 0 ? state.selectedPosts : posts
 })
 </script>
+
 <style scoped lang="less">
 .list-move,
 .list-enter-active,
@@ -135,7 +118,7 @@ const finalPosts = computed(() => {
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
-    box-shadow: 0px 0px 8px rgb(var(--blue-shadow-color), 0.8);
+    box-shadow: 0px 0px 8px rgba(var(--blue-shadow-color), 0.8);
   }
 }
 
@@ -187,7 +170,6 @@ const finalPosts = computed(() => {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  padding: 0;
   margin-bottom: 6px;
 
   li {
@@ -219,20 +201,21 @@ const finalPosts = computed(() => {
 
 .pagination {
   display: flex;
+  color: black;
+  font-size: 25px;
   align-items: center;
   justify-content: space-between;
   margin-top: 50px;
-  padding: 0;
 
   button {
     background-color: transparent;
-    border-style: none;
+    border: none;
     cursor: pointer;
   }
 
   .hide {
     opacity: 0;
-    cursor: auto;
+    cursor: default;
   }
 
   .icon-arrow {
@@ -253,7 +236,6 @@ const finalPosts = computed(() => {
   from {
     transform: translateX(0) rotate(-0.25turn);
   }
-
   to {
     transform: translateX(10px) rotate(-0.25turn);
   }
@@ -263,29 +245,28 @@ const finalPosts = computed(() => {
   from {
     transform: translateX(0) rotate(0.25turn);
   }
-
   to {
     transform: translateX(-10px) rotate(0.25turn);
   }
 }
 
-@media (max-width: 768px) {
-  .post {
-    margin: 0 8px 30px 8px !important;
-    background-size: cover !important;
-  }
-  .post-header {
-    padding: 20px 35px 0;
-    .name {
-      font-size: 26px;
-    }
-    .title {
-      margin-bottom: 6px;
-      .title-dot {
-        height: 18px;
-        top: 6px;
-      }
-    }
-  }
-}
+// @media (max-width: 768px) {
+//   .post {
+//     margin: 0 8px 30px;
+//     background-size: cover;
+//   }
+//   .post-header {
+//     padding: 20px 35px 0;
+//     .name {
+//       font-size: 26px;
+//     }
+//     .title {
+//       margin-bottom: 6px;
+//       .title-dot {
+//         height: 18px;
+//         top: 6px;
+//       }
+//     }
+//   }
+// }
 </style>

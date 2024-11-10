@@ -6,19 +6,17 @@
       <Banner>
         <transition name="fade" mode="out-in">
           <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
-          <Tags v-else-if="page.filePath === 'tags/index.md'"></Tags>
-          <PostInnerBanner v-else></PostInnerBanner>
+          <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner>
         </transition>
       </Banner>
-      <transition-group name="fade" mode="out-in">
-        <span v-if="page.filePath === 'index.md' || page.filePath === 'tags/index.md'">
-          <Showcase></Showcase>
-          <PostsList></PostsList>
-        </span>
-        <PostViewer v-else></PostViewer>
-      </transition-group>
+      <transition name="fade" appear>
+        <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
+      </transition>
+      <Showcase v-show="page.filePath === 'index.md'"></Showcase>
+      <!-- <Tags v-else-if="page.filePath === 'posts/index.md'"></Tags> -->
+      <PostViewer v-if="page.filePath !== 'index.md' && page.filePath !== 'posts/index.md'"></PostViewer>
     </main>
-    <Footer></Footer>
+    <!-- <Footer></Footer> -->
     <Fireworks v-if="state.fireworksEnabled"></Fireworks>
     <SpinePlayer v-show="state.SpinePlayerEnabled"></SpinePlayer>
     <ToTop v-if="state.toTopEnabled"></ToTop>

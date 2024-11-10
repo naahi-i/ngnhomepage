@@ -1,5 +1,5 @@
 <template>
-  <header :class="{ postViewer: state.currPost.href }">
+  <header :class="{ postViewer: state.currPost.href, posts: page.filePath === 'posts/index.md'}">
     <nav class="container">
       <span class="logo">
         <img @dragstart.prevent src="../../assets/icon/navLogo.svg" alt="" />
@@ -30,6 +30,7 @@
 
 <script setup lang="ts">
 import { useData } from 'vitepress'
+const { page } = useData()
 
 const base = useData().site.value.base
 const themeConfig = useData().theme.value
@@ -54,8 +55,13 @@ const toggleDropdownMenu = () => {
   height: 50vh;
 }
 
+.posts{
+  height: 10vh;
+}
+
 header {
   height: 100vh;
+  transition: height 0.8s ease;
   position: relative;
   nav {
     display: flex;

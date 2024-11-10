@@ -71,7 +71,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     // navBar
     menuList: [
       { name: '首页', url: '' },
-      { name: '标签', url: 'tags/' },
+      { name: '帖子', url: 'posts/' },
     ],
 
     //banner区配置

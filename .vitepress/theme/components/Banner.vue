@@ -1,7 +1,12 @@
 <template>
   <div
     class="banner"
-    :class="{ postViewer: state.currPost.href, loadingComplete: !state.splashLoading }"
+    :class="{
+      postViewer: state.currPost.href,
+      posts: page.filePath === 'posts/index.md',
+      loadingComplete: !state.splashLoading,
+      blurred: page.filePath === 'posts/index.md'
+    }"
   >
     <slot></slot>
     <transition name="fade-slide">
@@ -15,52 +20,40 @@
     <video autoplay muted loop class="bg-video" v-if="videoBanner">
       <source src="../assets/banner/banner_video.mp4" type="video/mp4" />
     </video>
-    <div class="bg-img" v-else></div>
+    <div v-else class="bg-img"></div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useData } from 'vitepress'
+import { useStore } from '../store'
+import { onMounted } from 'vue'
+
 const { page } = useData()
 const themeConfig = useData().theme.value
 const videoBanner = themeConfig.videoBanner
-
-import { useStore } from '../store'
 const { state } = useStore()
-import { onMounted } from 'vue'
+
 class SiriWave {
-  K: number
-  F: number
-  speed: number
-  noise: number
-  phase: number
-  devicePixelRatio: number
-  width: number
-  height: number
-  MAX: number
-  canvas: HTMLCanvasElement
-  ctx: CanvasRenderingContext2D
-  run: boolean
-  animationFrameID: number | null
+  K = 1
+  F = 15
+  speed = 0.1
+  noise = 30
+  phase = 0
+  devicePixelRatio = window.devicePixelRatio || 1
+  width = this.devicePixelRatio * window.innerWidth
+  height = this.devicePixelRatio * 100
+  MAX = this.height / 2
+  canvas = document.getElementById('wave') as HTMLCanvasElement
+  ctx = this.canvas.getContext('2d')!
+  run = false
+  animationFrameID: number | null = null
 
   constructor() {
-    this.K = 1
-    this.F = 15
-    this.speed = 0.1
-    this.noise = 30
-    this.phase = 0
-    this.devicePixelRatio = window.devicePixelRatio || 1
-    this.width = this.devicePixelRatio * window.innerWidth
-    this.height = this.devicePixelRatio * 100
-    this.MAX = this.height / 2
-    this.canvas = document.getElementById('wave') as HTMLCanvasElement
     this.canvas.width = this.width
     this.canvas.height = this.height
-    this.canvas.style.width = this.width / this.devicePixelRatio + 'px'
-    this.canvas.style.height = this.height / this.devicePixelRatio + 'px'
-    this.ctx = this.canvas.getContext('2d')!
-    this.run = false
-    this.animationFrameID = null
+    this.canvas.style.width = `${this.width / this.devicePixelRatio}px`
+    this.canvas.style.height = `${this.height / this.devicePixelRatio}px`
   }
 
   _globalAttenuationFn(x: number) {
@@ -75,11 +68,8 @@ class SiriWave {
     F = F || this.F
     noise = noise * this.MAX || this.noise
     for (let i = -this.K; i <= this.K; i += 0.01) {
-      i = parseFloat(i.toFixed(2))
       const x = this.width * ((i + this.K) / (this.K * 2))
-      const y =
-        this.height / 2 +
-        noise * Math.pow(Math.sin(i * 10 * attenuation), 1) * Math.sin(F * i - this.phase)
+      const y = this.height / 2 + noise * Math.pow(Math.sin(i * 10 * attenuation), 1) * Math.sin(F * i - this.phase)
       this.ctx.lineTo(x, y)
     }
     this.ctx.lineTo(this.width, this.height)
@@ -95,9 +85,7 @@ class SiriWave {
   }
 
   _draw() {
-    if (!this.run) {
-      return
-    }
+    if (!this.run) return
     this.phase = (this.phase + this.speed) % (Math.PI * 64)
     this._clear()
     this._drawLine(0.5, 'rgba(234, 239, 245, 0.8)', 1, 0.35, 6)
@@ -136,22 +124,18 @@ class SiriWave {
 
 let currentWave: SiriWave | null = null
 
-function initAll() {
-  if (currentWave) {
-    currentWave.stop()
-  }
+const initAll = () => {
+  if (currentWave) currentWave.stop()
   currentWave = new SiriWave()
   currentWave.setSpeed(0.01)
   currentWave.start()
 }
 
-function debounce(func: () => void, wait: number) {
+const debounce = (func: () => void, wait: number) => {
   let timeout: number | undefined
-  return function () {
+  return () => {
     clearTimeout(timeout)
-    timeout = window.setTimeout(() => {
-      func()
-    }, wait)
+    timeout = window.setTimeout(func, wait)
   }
 }
 
@@ -160,17 +144,16 @@ onMounted(() => {
   window.addEventListener(
     'resize',
     debounce(() => {
-      if (currentWave) {
-        currentWave.stop()
-      }
+      if (currentWave) currentWave.stop()
       initAll()
     }, 100),
   )
 })
 
 const move = () => {
-  window.scrollTo({ top: window.innerHeight-75, behavior: 'smooth' })
+  window.scrollTo({ top: window.innerHeight - 75, behavior: 'smooth' })
 }
+
 </script>
 <style scoped lang="less">
 .banner {
@@ -187,7 +170,7 @@ const move = () => {
   perspective: 1000px;
   overflow: hidden;
   -webkit-user-drag: none;
-  transition: height 0.4s;
+  transition: height 0.8s cubic-bezier(.61,.15,.26,1);
 
   .downarrow {
     position: absolute;
@@ -203,14 +186,33 @@ const move = () => {
   &.loadingComplete {
     animation: fade-blur-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
+
+  &.blurred .bg-img,
+  &.blurred .bg-video {
+    filter: blur(25px);
+    opacity: .85;
+  }
+
+  .bg-img,
+  .bg-video {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    transition: filter 0.8s ease-in-out, opacity 0.8s ease-in-out;
+  }
+
+  .bg-img {
+    background-image: url(../assets/banner/banner.jpg);
+  }
 }
 
 @keyframes float-fade {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(10px);
   }
@@ -221,7 +223,6 @@ const move = () => {
     filter: var(--blur-val);
     transform: scale(1.5);
   }
-
   to {
     filter: none;
     transform: scale(1);
@@ -232,33 +233,18 @@ const move = () => {
   height: 50vh;
 }
 
-.bg-img {
-  background-image: url(../assets/banner/banner.jpg);
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
+.posts {
+  height: 160vh;
 }
 
-.bg-video {
+#wave {
   position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* 禁用视频拖动 */
-  -webkit-user-drag: none;
+  bottom: 0;
+  z-index: 50;
 }
 
-.fade-slide-enter-active {
+.fade-slide-enter-active, .fade-slide-leave-active {
   transition: opacity 1s, transform 1s;
-  transition-delay: 1s;
-}
-
-.fade-slide-leave-active {
-  transition: opacity 0.3s, transform 0.3s;
 }
 
 .fade-slide-enter-from,
@@ -267,9 +253,4 @@ const move = () => {
   transform: translateY(15px);
 }
 
-#wave {
-  position: absolute;
-  bottom: 0;
-  z-index: 50;
-}
 </style>

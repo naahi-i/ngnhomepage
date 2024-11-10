@@ -32,7 +32,7 @@ const mainbox = ref<HTMLElement | null>(null);
 .mainbox {
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
     width: 1200px;
-    height: 330px; 
+    height: 350px; 
     overflow: hidden; /* 防止内容超出容器 */
     transform: skew(-5deg); /* 设置倾斜角度 */
     border-radius: 30px;

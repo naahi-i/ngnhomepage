@@ -1,8 +1,10 @@
 <template>
-  <div class="view-box container">
-    <content class="content" />
-    <Gitalk v-if="themeConfig.clientID"></Gitalk>
-  </div>
+  <transition name="fade-up" appear>
+    <div class="view-box container">
+      <content class="content" />
+      <Gitalk v-if="themeConfig.clientID"></Gitalk>
+    </div>
+  </transition>
 </template>
 <script setup lang="ts">
 import Gitalk from './Gitalk.vue'
@@ -49,6 +51,17 @@ watch(
 const themeConfig = useData().theme.value
 </script>
 <style lang="less">
+.fade-up-enter-active,
+.fade-up-leave-active {
+  transition: opacity 0.5s ease-out, transform 1s cubic-bezier(.61,.15,.26,1);
+}
+
+.fade-up-enter-from,
+.fade-up-leave-to {
+  opacity: 0;
+  transform: translateY(150vh);
+}
+
 .view-box {
   box-sizing: border-box;
   position: relative;

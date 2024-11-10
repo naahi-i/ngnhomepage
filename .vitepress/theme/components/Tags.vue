@@ -55,7 +55,7 @@ onUnmounted(() => {
   padding: 16px;
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 32px;
-  border: solid 2px var(--foreground-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: var(--blur-val);
   margin: 50px 8px 0 8px;
   width: 768px;
