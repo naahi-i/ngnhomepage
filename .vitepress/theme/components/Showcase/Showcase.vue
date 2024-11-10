@@ -29,6 +29,7 @@ const mainbox = ref<HTMLElement | null>(null);
 </script>
 
 <style scoped lang="less">
+
 .mainbox {
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
     width: 1200px;

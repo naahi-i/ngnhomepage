@@ -2,6 +2,8 @@
 # 上游模板仓库[vitepress-theme-bluearchive](https://github.com/Alittfre/vitepress-theme-bluearchive)  
 
 ## [**>让我看看<**](https://ngnhomepage.top)  
+
+## ⚙️正在：重新设计和布局页面元素  
 面向GPT编程  
 
 ## 主题配置
