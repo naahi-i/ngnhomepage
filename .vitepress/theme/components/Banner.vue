@@ -253,4 +253,13 @@ const move = () => {
   transform: translateY(15px);
 }
 
+@media (max-width: 768px) {
+  .banner{
+    &.blurred .bg-img,
+    &.blurred .bg-video {
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+}
 </style>
