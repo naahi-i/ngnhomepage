@@ -251,10 +251,12 @@ const finalPosts = computed(() => {
 }
 
 @media (max-width: 768px) {
-  .post {
-    margin: 0 0 30px 0;
-    background-size: cover;
-    padding-bottom: 12px;
+  .posts-list {
+    .post {
+      margin: 0 0 30px 0;
+      background-size: cover;
+      padding-bottom: 10px;
+    }
   }
   .post-header {
     padding: 20px 35px 0;
