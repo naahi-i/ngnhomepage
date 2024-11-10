@@ -29,10 +29,11 @@ const mainbox = ref<HTMLElement | null>(null);
 </script>
 
 <style scoped lang="less">
+
 .mainbox {
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
     width: 1200px;
-    height: 330px; 
+    height: 350px; 
     overflow: hidden; /* 防止内容超出容器 */
     transform: skew(-5deg); /* 设置倾斜角度 */
     border-radius: 30px;
@@ -58,7 +59,7 @@ const mainbox = ref<HTMLElement | null>(null);
             transition: all 0.5s ease; /* 设置缩放动画过渡 */
 
             &:hover {
-                width: 70%;
+                width: 70%; /* 图片容器在鼠标悬浮时扩展宽度 */
             }
 
             &.reverse { /* 反转阴影样式 */
@@ -69,16 +70,13 @@ const mainbox = ref<HTMLElement | null>(null);
                 width: 106%; /* 确保图片宽度填满容器 */
                 object-fit: cover; /* 保持图片的宽高比 */
                 transform: skew(5deg); /* 设置倾斜角度 */
-    
-                &.reverse {
-                    margin-left: -3%; /* 向左修正图片 */
-                }
+                margin-left: -3%; /* 向左移动图片，增加负值以实现向左修正 */
             }
         }
 
         .textbox {
             padding: 10px; 
-            color: var(--font-color-grey);
+            color: var(--font-color-grey); /* 文本颜色 */
             width: 50%; /* 固定文本框宽度 */
             display: flex; /* 让文本框内部内容也使用 flexbox */
             flex-direction: column; /* 使内容纵向排列 */
@@ -86,13 +84,13 @@ const mainbox = ref<HTMLElement | null>(null);
             align-items: center; /* 水平居中 */
 
             .title {
-                font-size: 48px;
-                font-weight: bold;
+                font-size: 48px; /* 设置标题字体大小 */
+                font-weight: bold; /* 加粗标题 */
                 margin: 0; /* 去掉默认边距 */
             }
 
             .subtitle {
-                font-size: 20px;
+                font-size: 20px; /* 设置副标题字体大小 */
                 margin: 5px 0; /* 设置上下边距 */
             }
         }
