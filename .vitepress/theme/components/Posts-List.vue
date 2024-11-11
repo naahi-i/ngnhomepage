@@ -250,23 +250,29 @@ const finalPosts = computed(() => {
   }
 }
 
-// @media (max-width: 768px) {
-//   .post {
-//     margin: 0 8px 30px;
-//     background-size: cover;
-//   }
-//   .post-header {
-//     padding: 20px 35px 0;
-//     .name {
-//       font-size: 26px;
-//     }
-//     .title {
-//       margin-bottom: 6px;
-//       .title-dot {
-//         height: 18px;
-//         top: 6px;
-//       }
-//     }
-//   }
-// }
+@media (max-width: 768px) {
+  .posts-list {
+    .post {
+      margin: 0 0 30px 0;
+      background-size: cover;
+      padding-bottom: 10px;
+    }
+  }
+  .post-header {
+    padding: 20px 35px 0;
+    .name {
+       font-size: 26px;
+    }
+    .title {
+        margin-bottom: 6px;
+      .title-dot {
+        height: 18px;
+        top: 6px;
+      }
+    }
+  }
+  .pagination {
+     font-size: 18px;
+  }
+}
 </style>
