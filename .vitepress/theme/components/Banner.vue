@@ -170,7 +170,7 @@ const move = () => {
   perspective: 1000px;
   overflow: hidden;
   -webkit-user-drag: none;
-  transition: height 0.8s cubic-bezier(.61,.15,.26,1);
+  transition: height 0.8s;
 
   .downarrow {
     position: absolute;
@@ -187,11 +187,11 @@ const move = () => {
     animation: fade-blur-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
-  &.blurred .bg-img,
-  &.blurred .bg-video {
-    filter: blur(25px);
-    opacity: .85;
-  }
+  // &.blurred .bg-img,
+  // &.blurred .bg-video {
+    // filter: blur(25px);
+    // opacity: .85;
+  // }
 
   .bg-img,
   .bg-video {
