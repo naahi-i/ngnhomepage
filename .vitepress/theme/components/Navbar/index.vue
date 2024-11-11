@@ -61,7 +61,7 @@ const toggleDropdownMenu = () => {
 
 header {
   height: 100vh;
-  transition: height 0.8s ease;
+  // transition: height 0.8s ease;
   position: relative;
   nav {
     display: flex;
