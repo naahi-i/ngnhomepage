@@ -185,7 +185,7 @@ const getCardStyle = (index: number) => {
     }
     
     .showcase-items-wrapper {
-        transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .dots-wrapper {
