@@ -68,12 +68,16 @@ const fadeOutSplash = () => {
     easing: 'easeInOutQuad',
     complete: () => {
       isVisible.value = false // 隐藏splash
+      // 恢复页面滚动
+      document.body.style.overflow = 'auto'
     },
   })
   state.splashLoading = false
 }
 
 onMounted(() => {
+  // 禁用页面滚动
+  document.body.style.overflow = 'hidden'
   createBreathingAnimation()
   setTimeout(() => {
     fadeOutSplash()

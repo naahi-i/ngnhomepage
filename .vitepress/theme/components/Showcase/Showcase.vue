@@ -7,7 +7,7 @@
             <div class="textbox">
                 <h1 class="title">{{ title }}</h1>
                 <hr>
-                <p class="subtitle">{{ subtitle1 }}</p>
+                <!-- <p class="subtitle">{{ subtitle1 }}</p> -->
                 <p class="subtitle">{{ subtitle2 }}</p>
             </div>
         </div>
@@ -20,7 +20,7 @@ import { ref, defineProps } from 'vue';
 const props = defineProps<{
     imageSrc: string;
     title: string;
-    subtitle1: string;
+    // subtitle1: string;
     subtitle2: string;
     isReversed?: boolean; // 用于判断布局方向
     imgHeight: string;
@@ -64,13 +64,15 @@ const mainbox = ref<HTMLElement | null>(null);
 
             &.reverse { /* 反转阴影样式 */
                 box-shadow: -4px 0 8px rgba(var(--blue-shadow-color), 0.4); /* 调整阴影方向 */
+                img {
+                    margin-left: -10px; /* 向左移动图片，增加负值以实现向左修正 */
+                }
             }
 
             img {
                 width: 106%; /* 确保图片宽度填满容器 */
                 object-fit: cover; /* 保持图片的宽高比 */
                 transform: skew(5deg); /* 设置倾斜角度 */
-                margin-left: -3%; /* 向左移动图片，增加负值以实现向左修正 */
             }
         }
 
@@ -100,13 +102,16 @@ const mainbox = ref<HTMLElement | null>(null);
 @media (max-width: 768px) {
     .mainbox {
         height: 250px;
-        width: 95%;
+        width: 30%;
         
         .item {
             .imgbox {
                 width: 60%; /* 移动端图片容器宽度 */
                 box-shadow: 3px 0 5px rgba(var(--blue-shadow-color), 0.3); /* 移动端阴影效果 */
                 transition: all 0.5s ease; /* 缩放动画过渡 */
+                img {
+                    width: 120%;
+                }
 
                 &:hover {
                     transform: scale(1.05); /* 图片悬浮时缩放效果 */

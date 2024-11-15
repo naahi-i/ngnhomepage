@@ -104,6 +104,7 @@ const finalPosts = computed(() => {
   position: relative;
   overflow-wrap: break-word;
   margin-top: 5vh;
+  z-index: 90;
 
   .post {
     display: flex;

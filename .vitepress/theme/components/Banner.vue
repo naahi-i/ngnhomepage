@@ -9,15 +9,16 @@
     }"
   >
     <slot></slot>
-    <transition name="fade-slide">
+    <!-- 提示箭头 -->
+    <!-- <transition name="fade-slide">
       <span
         class="iconfont icon-downarrow downarrow"
         @click="move"
         v-if="!state.splashLoading && page.filePath === 'index.md'"
       ></span>
-    </transition>
+    </transition> -->
     <canvas id="wave"></canvas>
-    <video autoplay muted loop class="bg-video" v-if="videoBanner">
+    <video v-if="videoBanner" autoplay muted loop class="bg-video">
       <source src="../assets/banner/banner_video.mp4" type="video/mp4" />
     </video>
     <div v-else class="bg-img"></div>
@@ -27,12 +28,14 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { useStore } from '../store'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const { page } = useData()
 const themeConfig = useData().theme.value
 const videoBanner = themeConfig.videoBanner
 const { state } = useStore()
+
+const currentWave = ref<SiriWave | null>(null)
 
 class SiriWave {
   K = 1
@@ -122,13 +125,11 @@ class SiriWave {
   }
 }
 
-let currentWave: SiriWave | null = null
-
-const initAll = () => {
-  if (currentWave) currentWave.stop()
-  currentWave = new SiriWave()
-  currentWave.setSpeed(0.01)
-  currentWave.start()
+const initWave = () => {
+  if (currentWave.value) currentWave.value.stop()
+  currentWave.value = new SiriWave()
+  currentWave.value.setSpeed(0.01)
+  currentWave.value.start()
 }
 
 const debounce = (func: () => void, wait: number) => {
@@ -140,21 +141,20 @@ const debounce = (func: () => void, wait: number) => {
 }
 
 onMounted(() => {
-  initAll()
+  initWave()
   window.addEventListener(
     'resize',
     debounce(() => {
-      if (currentWave) currentWave.stop()
-      initAll()
-    }, 100),
+      initWave()
+    }, 200), // 增加等待时间，减少 resize 事件的触发频率
   )
 })
 
 const move = () => {
   window.scrollTo({ top: window.innerHeight - 75, behavior: 'smooth' })
 }
-
 </script>
+
 <style scoped lang="less">
 .banner {
   transform: translateZ(0);
@@ -171,6 +171,7 @@ const move = () => {
   overflow: hidden;
   -webkit-user-drag: none;
   transition: height 0.8s;
+  will-change: height;
 
   .downarrow {
     position: absolute;
@@ -187,11 +188,10 @@ const move = () => {
     animation: fade-blur-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
-  // &.blurred .bg-img,
-  // &.blurred .bg-video {
-    // filter: blur(25px);
-    // opacity: .85;
-  // }
+  &.blurred .bg-img,
+  &.blurred .bg-video {
+    filter: blur(20px);
+  }
 
   .bg-img,
   .bg-video {
@@ -201,7 +201,8 @@ const move = () => {
     height: 100%;
     background-size: cover;
     background-position: center center;
-    transition: filter 0.8s ease-in-out, opacity 0.8s ease-in-out;
+    transition: filter 0.8s ease-in-out;
+    will-change: filter;
   }
 
   .bg-img {
@@ -244,7 +245,7 @@ const move = () => {
 }
 
 .fade-slide-enter-active, .fade-slide-leave-active {
-  transition: opacity 1s, transform 1s;
+  transition: transform 1s;
 }
 
 .fade-slide-enter-from,

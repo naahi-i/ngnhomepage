@@ -9,7 +9,7 @@
           <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner>
         </transition>
       </Banner>
-      <transition name="fade" appear>
+      <transition name="post-list-fade" appear>
         <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
       </transition>
       <Showcase v-show="page.filePath === 'index.md'"></Showcase>
@@ -61,6 +61,14 @@ const { state } = useStore()
 
 .fade-enter-from,
 .fade-leave-to {
+  opacity: 0;
+}
+
+.post-list-fade-enter-active {
+  transition: opacity 0.5s;
+}
+
+.post-list-fade-enter-from {
   opacity: 0;
 }
 
