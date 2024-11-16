@@ -2,7 +2,7 @@
     <div class="mainbox" ref="mainbox">
         <div class="item" :class="{ 'reverse': isReversed }">
             <div class="imgbox" :class="{ 'reverse': isReversed }">
-                <img :src="imageSrc" :height="imgHeight" draggable="false">
+                <img :src="imageSrc" :style="{ marginLeft: imgOffsetX }" :height="imgHeight" draggable="false">
             </div>
             <div class="textbox">
                 <h1 class="title">{{ title }}</h1>
@@ -24,12 +24,12 @@ const props = defineProps<{
     subtitle2: string;
     isReversed?: boolean; // 用于判断布局方向
     imgHeight: string;
+    imgOffsetX: string; // 新增，控制图片的水平偏移量
 }>();
 const mainbox = ref<HTMLElement | null>(null);
 </script>
 
 <style scoped lang="less">
-
 .mainbox {
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
     width: 1200px;

@@ -1,7 +1,4 @@
 <template>
-  <head>
-    <link rel="preload" href="../assets/banner/avatar.webp" as="image" type="image/webp" />
-  </head>
   <div
     class="welcome-box"
     ref="welcomeBoxRef"

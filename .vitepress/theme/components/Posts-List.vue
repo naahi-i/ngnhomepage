@@ -204,9 +204,11 @@ const finalPosts = computed(() => {
   display: flex;
   color: black;
   font-size: 25px;
-  align-items: center;
   justify-content: space-between;
   margin-top: 50px;
+  span {
+    z-index: 900;
+  }
 
   button {
     background-color: transparent;
@@ -254,7 +256,7 @@ const finalPosts = computed(() => {
 @media (max-width: 768px) {
   .posts-list {
     .post {
-      margin: 0 0 30px 0;
+      margin: 0 20px 30px 20px;
       background-size: cover;
       padding-bottom: 10px;
     }
@@ -262,7 +264,7 @@ const finalPosts = computed(() => {
   .post-header {
     padding: 20px 35px 0;
     .name {
-       font-size: 26px;
+      font-size: 26px;
     }
     .title {
         margin-bottom: 6px;
@@ -273,7 +275,7 @@ const finalPosts = computed(() => {
     }
   }
   .pagination {
-     font-size: 18px;
+    font-size: 18px;
   }
 }
 </style>

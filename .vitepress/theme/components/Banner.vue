@@ -235,7 +235,7 @@ const move = () => {
 }
 
 .posts {
-  height: 160vh;
+  height: 135vh;
 }
 
 #wave {
@@ -261,6 +261,9 @@ const move = () => {
       filter: blur(0px);
       opacity: 1;
     }
+  }
+  .posts {
+    height: 160%;
   }
 }
 </style>

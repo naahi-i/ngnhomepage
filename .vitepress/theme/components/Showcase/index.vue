@@ -3,9 +3,16 @@
         <div class="showcase-wrapper" ref="showcaseWrapper" @wheel="handleWheel" @touchstart="handleTouchStart"
             @touchend="handleTouchEnd">
             <div class="showcase-items-wrapper" :style="wrapperStyle">
-                <Showcase v-for="(item, index) in showcaseItems" :key="index" :imageSrc="item.imageSrc"
-                    :title="item.title" :subtitle1="item.subtitle1" :subtitle2="item.subtitle2"
-                    :isReversed="item.isReversed" :imgHeight="item.imgHeight" :style="getCardStyle(index)" />
+                <Showcase
+                    v-for="(item, index) in showcaseItems"
+                    :key="index"
+                    :imageSrc="item.imageSrc"
+                    :title="item.title"
+                    :subtitle2="item.subtitle2"
+                    :isReversed="item.isReversed"
+                    :imgHeight="item.imgHeight"
+                    :imgOffsetX="item.imgOffsetX"
+                />
             </div>
             <div class="dots-wrapper">
                 <span v-for="(item, index) in showcaseItems" :key="'dot-' + index"
@@ -25,10 +32,10 @@ import img4 from '../img/Tsukiyuki_Miyako.jpg';
 
 // 橱窗数据列表
 const showcaseItems = [
-    { imageSrc: img1, title: 'Windows11-tan', subtitle2: 'win11娘可爱捏', isReversed: false, imgHeight: '100%' },
-    { imageSrc: img2, title: '普拉娜', subtitle2: '橱窗正在施工', isReversed: true, imgHeight: '140%' },
-    { imageSrc: img3, title: '喜多郁代', subtitle2: '喜多光环！', isReversed: false, imgHeight: '180%' },
-    { imageSrc: img4, title: '月雪宫子', subtitle2: '这里是RABBIT1、现在作战开始。', isReversed: false, imgHeight: '110%' },
+    { imageSrc: img1, title: 'Windows11-tan', subtitle2: 'win11娘可爱捏', isReversed: false, imgHeight: '100%', imgOffsetX: '-12px' },
+    { imageSrc: img2, title: '普拉娜', subtitle2: '橱窗正在施工', isReversed: true, imgHeight: '140%', imgOffsetX: '-10px' },
+    { imageSrc: img3, title: '喜多郁代', subtitle2: '喜多光环！', isReversed: false, imgHeight: '180%', imgOffsetX: '-8px' },
+    { imageSrc: img4, title: '月雪宫子', subtitle2: '这里是RABBIT1、现在作战开始。', isReversed: true, imgHeight: '100%', imgOffsetX: '-15px' },
 ];
 
 const currentIndex = ref(0); // 当前显示卡片的索引
@@ -122,7 +129,6 @@ const getCardStyle = (index: number) => {
         transform: `scale(${scale}) skew(-5deg)`, 
         opacity,
         transition: 'transform 0.3s ease, opacity 0.3s ease',
-        boxShadow: index === currentIndex.value ? '0 10px 20px rgba(0, 0, 0, 0.15)' : 'none',
     };
 };
 </script>
