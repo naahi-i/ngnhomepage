@@ -29,31 +29,31 @@ head:
 
   <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
       <div style="text-align: center;">
-        <img src='./img/24-11-10-oldshowcase.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-11-10-oldshowcase.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">OLD [Showcase]</div>
       </div>  
       <div style="text-align: center;">
-        <img src='./img/24-11-10-newshowcase.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-11-10-newshowcase.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">NEW [Showcase]</div>
       </div>
     </div>
   <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
       <div style="text-align: center;">
-        <img src='./img/24-11-10-oldtags.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-11-10-oldtags.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">OLD [Tags]</div>
       </div>  
       <div style="text-align: center;">
-        <img src='./img/24-11-10-newpostlist.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-11-10-newpostlist.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">NEW [Postlist]</div>
       </div>
     </div>
   <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
       <div style="text-align: center;">
-        <img src='./img/24-11-10-oldmean.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-11-10-oldmean.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">OLD [Mean]</div>
       </div>  
       <div style="text-align: center;">
-        <img src='./img/24-11-10-newmean.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-11-10-newmean.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">NEW [Mean]</div>
       </div>
     </div>
@@ -67,7 +67,7 @@ head:
 
   <div style="display: flex; margin-top: 10px ;margin-left: 4px">
       <div style="text-align: center;">
-        <img src='./img/24-11-2-showcase_update.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-11-2-showcase_update.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">NEW</div>
       </div>
   </div>
@@ -82,7 +82,7 @@ head:
 
   <div style="display: flex; margin-top: 10px ;margin-left: 4px">
       <div style="text-align: center;">
-        <img src='./img/24-10-26-icon.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-10-26-icon.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">NEW</div>
       </div>
   </div>
@@ -98,17 +98,17 @@ head:
 
   <div style="display: flex; margin-top: 10px ;gap: 25px; margin-left: 40px">
       <div style="text-align: center;">
-        <img src='./img/24-10-2-totop-old.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-10-2-totop-old.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">OLD</div>
       </div>
       <div style="text-align: center;">
         <div style="display: flex; gap: 8px;">
           <div style="text-align: center;">
-            <img src='./img/24-10-2-totop-1.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+            <img src='./img/24-10-2-totop-1.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
             <div style="font-size: 14px;">Idle State</div>
           </div>
           <div style="text-align: center;">
-            <img src='./img/24-10-2-totop-2.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+            <img src='./img/24-10-2-totop-2.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
             <div style="font-size: 14px;">Reconfirmation</div>
           </div>
         </div>
@@ -124,7 +124,7 @@ head:
 
   <div style="display: flex; margin-top: 10px ;margin-left: 40px">
       <div style="text-align: center;">
-        <img src='./img/24-9-30-downarrow.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-9-30-downarrow.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">NEW</div>
       </div>
   </div>
@@ -137,7 +137,7 @@ head:
 
   <div style="display: flex; margin-top: 10px ;margin-left: 40px">
       <div style="text-align: center;">
-        <img src='./img/24-9-17-welcome-change.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/24-9-17-welcome-change.jpg' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">NEW</div>
       </div>
   </div>
@@ -165,11 +165,11 @@ head:
 
   <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
       <div style="text-align: center;">
-        <img src='./img/Dropdown-Menu-old.png' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/Dropdown-Menu-old.png' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">OLD</div>
       </div>  
       <div style="text-align: center;">
-        <img src='./img/Dropdown-Menu-new.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;'>
+        <img src='./img/Dropdown-Menu-new.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">NEW</div>
       </div>
     </div>

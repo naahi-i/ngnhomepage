@@ -1,4 +1,7 @@
 <template>
+  <head>
+    <link rel="preload" href="../assets/banner/avatar.webp" as="image" type="image/webp" />
+  </head>
   <div
     class="welcome-box"
     ref="welcomeBoxRef"
@@ -16,7 +19,7 @@
           background: `linear-gradient(${angle}deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5))`,
         }"
       >
-        <img @dragstart.prevent src="../assets/banner/avatar.jpg" alt="" class="avatar" />
+        <img @dragstart.prevent src="../assets/banner/avatar.webp" alt="" class="avatar" />
         <span class="name">{{ name }}</span>
         <span class="motto">
           {{ mottoText }}

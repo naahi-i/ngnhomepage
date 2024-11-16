@@ -2,7 +2,7 @@
     <div class="mainbox" ref="mainbox">
         <div class="item" :class="{ 'reverse': isReversed }">
             <div class="imgbox" :class="{ 'reverse': isReversed }">
-                <img :src="imageSrc" :height="imgHeight" draggable="false" loading="lazy">
+                <img :src="imageSrc" :height="imgHeight" draggable="false">
             </div>
             <div class="textbox">
                 <h1 class="title">{{ title }}</h1>

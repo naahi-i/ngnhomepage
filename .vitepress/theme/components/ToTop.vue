@@ -1,6 +1,6 @@
 <template>
   <a class="totop" @click="clickcheck" :style="style" aria-label="to-top">
-    <img @dragstart.prevent :style="{ transform: `scale(${scale})` }" src="../assets/toTop.svg" alt="" />
+    <img @dragstart.prevent :style="{ transform: `scale(${scale})` }" src="../assets/toTop.svg" alt="totop"  loading="lazy"/>
   </a>
 </template>
 
