@@ -15,8 +15,8 @@
                 />
             </div>
             <div class="dots-wrapper">
-                <span v-for="(item, index) in showcaseItems" :key="'dot-' + index"
-                    :class="['dot', { 'active': index === currentIndex }]" @click="goToIndex(index)"></span>
+                <span v-for="(item, index) in originalItems" :key="'dot-' + index"
+                    :class="['dot', { 'active': index === currentDotIndex }]" @click="goToIndex(index)"></span>
             </div>
         </div>
     </transition>
@@ -30,34 +30,50 @@ import img2 from '../img/pln.jpg';
 import img3 from '../img/xdyd.jpg';
 import img4 from '../img/Tsukiyuki_Miyako.jpg';
 
-// 橱窗数据列表
-const showcaseItems = [
+// 保存原始的 showcaseItems
+const originalItems = [
     { imageSrc: img1, title: 'Windows11-tan', subtitle2: 'win11娘可爱捏', isReversed: false, imgHeight: '100%', imgOffsetX: '-12px' },
     { imageSrc: img2, title: '普拉娜', subtitle2: '橱窗正在施工', isReversed: true, imgHeight: '140%', imgOffsetX: '-10px' },
     { imageSrc: img3, title: '喜多郁代', subtitle2: '喜多光环！', isReversed: false, imgHeight: '180%', imgOffsetX: '-8px' },
     { imageSrc: img4, title: '月雪宫子', subtitle2: '这里是RABBIT1、现在作战开始。', isReversed: true, imgHeight: '100%', imgOffsetX: '-15px' },
 ];
 
-const currentIndex = ref(0); // 当前显示卡片的索引
+// 创建新的 showcaseItems，在开头和结尾添加元素副本
+const showcaseItems = ref([
+    originalItems[originalItems.length - 1], // 添加最后一个元素作为第一个
+    ...originalItems,
+    originalItems[0], // 添加第一个元素作为最后一个
+]);
+
+const currentIndex = ref(1); // 初始索引为1，对应原始数据的第一个元素
 const isScrolling = ref(false); // 控制滚动是否正在进行
-const itemWidth = ref(0); // 每个卡片的宽度，初始化为 0
-
-// 根据屏幕大小动态调整 itemWidth
-const updateItemWidth = () => {
-    itemWidth.value = window.innerWidth; // 设置卡片宽度为屏幕的宽度
-};
-
-// 初始化时设置 itemWidth
-updateItemWidth();
+const itemWidth = ref(window.innerWidth); // 每个卡片的宽度，初始化为屏幕宽度
 
 // 监听窗口大小变化，动态更新 itemWidth
-window.addEventListener('resize', updateItemWidth);
+window.addEventListener('resize', () => {
+    itemWidth.value = window.innerWidth;
+});
+
+// 用于控制过渡效果的标志
+const isTransitioning = ref(true);
+const isAnimating = ref(false); // 用于跟踪动画状态
 
 // 计算 showcase-items-wrapper 的样式
 const wrapperStyle = computed(() => ({
     '--current-x': `${currentIndex.value * -itemWidth.value}px`, // 使用动态的 itemWidth 来控制横向滑动
-    width: `${itemWidth.value * showcaseItems.length}px`, // 设置宽度为卡片总宽度
+    width: `${itemWidth.value * showcaseItems.value.length}px`, // 设置宽度为卡片总宽度
+    transition: isTransitioning.value ? 'transform 0.8s ease' : 'none',
 }));
+
+// 计算当前激活的点阵索引
+const currentDotIndex = computed(() => {
+    if (currentIndex.value === 0) {
+        return originalItems.length - 1;
+    } else if (currentIndex.value === showcaseItems.value.length - 1) {
+        return 0;
+    }
+    return currentIndex.value - 1;
+});
 
 // 记录起始的触摸位置
 let startX = 0;
@@ -70,66 +86,71 @@ const handleTouchStart = (event: TouchEvent) => {
 
 // 触摸结束事件处理函数，判断滑动方向并更新当前索引
 const handleTouchEnd = (event: TouchEvent) => {
+    if (isAnimating.value) return; // 动画进行中则忽略
     const endX = event.changedTouches[0].clientX;
     if (Math.abs(startX - endX) < 30) return; // 防止误触
 
     // 根据滑动方向更新索引
-    if (startX > endX && currentIndex.value < showcaseItems.length - 1) {
-        currentIndex.value++; // 向右滑动
-    } else if (startX < endX && currentIndex.value > 0) {
-        currentIndex.value--; // 向左滑动
-    }
+    currentIndex.value += startX > endX ? 1 : -1;
 
-    // 开始滚动
+    isTransitioning.value = true;
+    isAnimating.value = true; // 开始动画
     isScrolling.value = true;
-    // 结束滚动动画后解锁滚动
+
     setTimeout(() => {
+        adjustIndex();
+        isAnimating.value = false; // 动画结束
         isScrolling.value = false;
-    }, 700); // 与动画时长匹配，确保动画完成后才能滚动
+    }, 800);
 };
 
 // 滚轮事件处理函数
 const handleWheel = (event: WheelEvent) => {
+    if (isAnimating.value || isScrolling.value) return; // 动画进行中或滚动中则忽略
     event.preventDefault();
-    if (isScrolling.value) return; // 如果已经在滚动中，忽略新的滚动事件
 
     // 滚动到底部或顶部时不再处理
     if (
         (currentIndex.value === 0 && event.deltaY < 0) ||
-        (currentIndex.value === showcaseItems.length - 1 && event.deltaY > 0)
-    ) {
-        return; // 防止滚动越界
-    }
+        (currentIndex.value === showcaseItems.value.length - 1 && event.deltaY > 0)
+    ) return; // 防止滚动越界
 
     // 根据滚轮方向更新索引
-    if (event.deltaY > 0 && currentIndex.value < showcaseItems.length - 1) {
-        currentIndex.value++; // 向下滚动
-    } else if (event.deltaY < 0 && currentIndex.value > 0) {
-        currentIndex.value--; // 向上滚动
-    }
+    currentIndex.value += event.deltaY > 0 ? 1 : -1;
 
-    // 开始滚动
+    isTransitioning.value = true;
+    isAnimating.value = true; // 开始动画
     isScrolling.value = true;
-    // 结束滚动动画后解锁滚动
+
     setTimeout(() => {
+        adjustIndex();
+        isAnimating.value = false; // 动画结束
         isScrolling.value = false;
-    }, 700);
+    }, 800);
 };
 
 // 跳转到指定的卡片
 const goToIndex = (index: number) => {
-    currentIndex.value = index;
+    if (isAnimating.value) return; // 动画进行中则忽略
+    currentIndex.value = index + 1;
+    isTransitioning.value = true;
+    isAnimating.value = true; // 开始动画
+
+    setTimeout(() => {
+        adjustIndex();
+        isAnimating.value = false; // 动画结束
+    }, 800);
 };
 
-// 获取每个卡片的动画样式
-const getCardStyle = (index: number) => {
-    const scale = index === currentIndex.value ? 1 : 0.85;
-    const opacity = index === currentIndex.value ? 1 : 0.7;
-    return {
-        transform: `scale(${scale}) skew(-5deg)`, 
-        opacity,
-        transition: 'transform 0.3s ease, opacity 0.3s ease',
-    };
+// 监听滚动结束，调整索引实现无缝循环
+const adjustIndex = () => {
+    if (currentIndex.value === 0) {
+        isTransitioning.value = false;
+        currentIndex.value = showcaseItems.value.length - 2;
+    } else if (currentIndex.value === showcaseItems.value.length - 1) {
+        isTransitioning.value = false;
+        currentIndex.value = 1;
+    }
 };
 </script>
 
