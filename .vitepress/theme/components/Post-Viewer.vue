@@ -349,12 +349,14 @@ const themeConfig = useData().theme.value
       overflow-y: hidden;
     }
 
+    .vp-code {
+      font-family: monospace;
+    }
+
     .line-numbers-wrapper {
       border-right: 2px solid #dfdfdf;
-      // padding: 0 8px;
-      margin-right: 5px;
+      text-align: center;
       user-select: none;
-      font-weight: lighter;
     }
 
     pre,
