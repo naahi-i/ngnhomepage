@@ -1,7 +1,7 @@
 <template>
     <transition name="fade" appear>
         <div class="showcase-wrapper" ref="showcaseWrapper" @wheel="handleWheel" @touchstart="handleTouchStart"
-            @touchend="handleTouchEnd">
+            @touchend="handleTouchEnd" @mouseenter="disableScroll" @mouseleave="enableScroll">
             <div class="showcase-items-wrapper" :style="wrapperStyle">
                 <Showcase
                     v-for="(item, index) in showcaseItems"
@@ -24,16 +24,16 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import Showcase from './Showcase.vue';
-import img1 from '../img/win11-tan.jpg';
-import img2 from '../img/pln.jpg';
-import img3 from '../img/xdyd.jpg';
-import img4 from '../img/Tsukiyuki_Miyako.jpg';
+import Showcase from './ImgShowcase-template.vue';
+import img1 from '../../img/win11-tan.png';
+import img2 from '../../img/pln.png';
+import img3 from '../../img/xdyd.png';
+import img4 from '../../img/Tsukiyuki_Miyako.png';
 
 // 保存原始的 showcaseItems
 const originalItems = [
     { imageSrc: img1, title: 'Windows11-tan', subtitle2: 'win11娘可爱捏', isReversed: false, imgHeight: '100%', imgOffsetX: '-12px' },
-    { imageSrc: img2, title: '普拉娜', subtitle2: '橱窗正在施工', isReversed: true, imgHeight: '140%', imgOffsetX: '-10px' },
+    { imageSrc: img2, title: '普拉娜', subtitle2: '阿洛娜前辈？', isReversed: true, imgHeight: '140%', imgOffsetX: '-10px' },
     { imageSrc: img3, title: '喜多郁代', subtitle2: '喜多光环！', isReversed: false, imgHeight: '180%', imgOffsetX: '-8px' },
     { imageSrc: img4, title: '月雪宫子', subtitle2: '这里是RABBIT1、现在作战开始。', isReversed: true, imgHeight: '100%', imgOffsetX: '-15px' },
 ];
@@ -151,6 +151,16 @@ const adjustIndex = () => {
         isTransitioning.value = false;
         currentIndex.value = 1;
     }
+};
+
+// 禁用页面滚动
+const disableScroll = () => {
+    document.body.style.overflow = 'hidden';
+};
+
+// 启用页面滚动
+const enableScroll = () => {
+    document.body.style.overflow = '';
 };
 </script>
 

@@ -46,7 +46,6 @@ watch(
 <style scoped lang="less">
 .dropdown-menu {
   position: fixed;
-  top: -110.7%;
   right: -1.9px;
   z-index: -1;
   display: flex;
@@ -80,7 +79,7 @@ watch(
     &::after {
       content: '';
       position: fixed;
-      top: 51%;
+      top: 45%;
       left: 24%;
       width: 52%;
       height: 1px;
@@ -92,26 +91,25 @@ watch(
 }
 
 .dropdown-menu[showmenu='true'] {
-  transform: translateY(80px);
+  transform: translateY(38%);
   .menu-content {
     box-shadow: 0px 0px 8px rgb(var(--blue-shadow-color), 0.8);
     transition: box-shadow 0.2s;
   }
   transition:
-    top 0.6s cubic-bezier(0.25, 1, 0.5, 1),
     transform 0.63s cubic-bezier(.7, .5, .2, 1.24);
 }
 
 .dropdown-menu[showmenu='false'] {
-  transform: translateY(-91px);
+  transform: translateY(-50%);
   .menu-content {
     box-shadow: none;
-    transition: box-shadow 3s;
+    transition: box-shadow  3s;
   }
   transition: 
-    top 0.6s cubic-bezier(0.25, 1, 0.5, 1),
     transform 0.6s cubic-bezier(.9, -0.33, .51, 1.07);
 }
+
 @media (max-width: 768px) {
   .dropdown-menu {
     top: -140.7%;

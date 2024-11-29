@@ -16,7 +16,8 @@ const { state } = useStore()
 const toggles = {
     fireworksEnabled: '烟花',
     SpinePlayerEnabled: '阿罗娜',
-    toTopEnabled: '回顶'
+    toTopEnabled: '回顶',
+    Animation : '动画效果',
 }
 
 // 页面加载时从 localStorage 读取状态并应用
@@ -29,10 +30,10 @@ onMounted(() => {
     });
 });
 
-// 切换开关状态并保存到 localStorage
 const toggleSwitch = (key: string) => {
     const isChecked = state[key];
     state[key] = !isChecked;
+    // 切换开关状态并保存到 localStorage
     localStorage.setItem(key, JSON.stringify(!isChecked));
 };
 </script>

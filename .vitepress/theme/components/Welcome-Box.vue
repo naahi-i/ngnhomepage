@@ -38,6 +38,9 @@
 import { useData } from 'vitepress'
 import { ref, onMounted } from 'vue'
 
+import { useStore } from '../store'
+const { state } = useStore()
+
 const themeConfig = useData().theme.value
 const name = themeConfig.name
 const welcomeText = themeConfig.welcomeText

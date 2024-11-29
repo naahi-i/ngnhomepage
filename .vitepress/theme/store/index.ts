@@ -11,6 +11,7 @@ interface StoreState {
   SpinePlayerEnabled: boolean
   toTopEnabled: boolean
   showDropdownMenu: boolean
+  Animation: boolean
 }
 
 const state: StoreState = reactive({

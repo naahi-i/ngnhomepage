@@ -4,15 +4,30 @@
     <main>
       <Navbar></Navbar>
       <Banner>
-        <transition name="fade" mode="out-in">
+
+        <template v-if="state.Animation">
+          <transition name="fade" mode="out-in">
+            <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
+            <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner>
+          </transition>
+        </template>
+        <template v-else>
           <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
           <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner>
-        </transition>
+        </template>
+
       </Banner>
-      <transition name="post-list-fade" appear>
+
+      <template v-if="state.Animation">
+        <transition name="post-list-fade" appear>
+          <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
+        </transition>
+      </template>
+      <template v-else>
         <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
-      </transition>
-      <Showcase v-show="page.filePath === 'index.md'"></Showcase>
+      </template>
+
+      <ShowcaseList v-show="page.filePath === 'index.md'"></ShowcaseList>
       <!-- <Tags v-else-if="page.filePath === 'posts/index.md'"></Tags> -->
       <PostViewer v-if="page.filePath !== 'index.md' && page.filePath !== 'posts/index.md'"></PostViewer>
     </main>
@@ -20,7 +35,6 @@
     <Fireworks v-if="state.fireworksEnabled"></Fireworks>
     <SpinePlayer v-show="state.SpinePlayerEnabled"></SpinePlayer>
     <ToTop v-if="state.toTopEnabled"></ToTop>
-    <!-- 背景音乐元素 -->
     <audio id="background-music" loop>
       <source src="./assets/banner/bgm.mp3" type="audio/mpeg" />
     </audio>
@@ -42,7 +56,7 @@ import NotFound from './components/NotFound.vue'
 import ToTop from './components/ToTop.vue'
 import Fireworks from './components/Fireworks.vue'
 import Footer from './components/Footer.vue'
-import Showcase from './components/Showcase/index.vue'
+import ShowcaseList from './components/Showcase-List/index.vue'
 // @ts-ignore
 import SpinePlayer from './components/Spine-Player/index.vue'
 // 路径切换
