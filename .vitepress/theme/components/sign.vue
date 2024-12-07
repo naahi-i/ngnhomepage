@@ -50,7 +50,7 @@ export default {
     right: 20px; /* 调整位置 */
     width: 120px; /* 调整大小 */
     height: 120px; /* 调整大小 */
-    background: url('@theme/assets/gamelogo.png') no-repeat center center;
+    background: url('../assets/gamelogo.png') no-repeat center center;
     background-size: contain;
     transform: skew(5deg); /* 修正倾斜 */
 }
