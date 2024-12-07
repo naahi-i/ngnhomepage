@@ -26,6 +26,9 @@ importers:
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
+      vara:
+        specifier: ^1.4.1
+        version: 1.4.1
     devDependencies:
       '@types/animejs':
         specifier: ^3.1.12
@@ -1027,6 +1030,9 @@ packages:
   valid-data-url@3.0.1:
     resolution: {integrity: sha512-jOWVmzVceKlVVdwjNSenT4PbGghU0SBIizAev8ofZVgivk/TVHXSbNL8LP6M3spZvkR9/QolkyJavGSX5Cs0UA==, tarball: https://r2.cnpmjs.org/valid-data-url/-/valid-data-url-3.0.1.tgz}
     engines: {node: '>=10'}
+
+  vara@1.4.1:
+    resolution: {integrity: sha512-oX+D+jXIJTmdQb7+OeuhvxSvSJB1PG8X2mzI3u7wTbuJ4v2QskA2fNlkNnyI2883YBRmEoA6R9gJg4jHiVNvXQ==}
 
   vfile-message@4.0.2:
     resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
@@ -2102,6 +2108,8 @@ snapshots:
       unist-util-visit-parents: 6.0.1
 
   valid-data-url@3.0.1: {}
+
+  vara@1.4.1: {}
 
   vfile-message@4.0.2:
     dependencies:
