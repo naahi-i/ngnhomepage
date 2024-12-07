@@ -36,7 +36,7 @@ const mainbox = ref<HTMLElement | null>(null);
     height: 350px; 
     overflow: hidden; /* 防止内容超出容器 */
     transform: skew(-5deg); /* 设置倾斜角度 */
-    border-radius: 30px;
+    border-radius: 24px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.5); /* 调整阴影样式 */
 

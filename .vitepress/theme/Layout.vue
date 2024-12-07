@@ -25,7 +25,7 @@
       <template v-else>
         <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
       </template>
-      <sing></sing>
+      <Sing v-if="!state.splashLoading && page.filePath === 'index.md'"></Sing>
 
       <ShowcaseList v-show="page.filePath === 'index.md'"></ShowcaseList>
       <!-- <Tags v-else-if="page.filePath === 'posts/index.md'"></Tags> -->
@@ -57,7 +57,7 @@ import ToTop from './components/ToTop.vue'
 import Fireworks from './components/Fireworks.vue'
 import Footer from './components/Footer.vue'
 import ShowcaseList from './components/Showcase-List/index.vue'
-import sing from './components/sign.vue'
+import Sing from './components/Sign.vue'
 // @ts-ignore
 import SpinePlayer from './components/Spine-Player/index.vue'
 // 路径切换
