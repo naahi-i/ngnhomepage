@@ -57,7 +57,7 @@ import ToTop from './components/ToTop.vue'
 import Fireworks from './components/Fireworks.vue'
 import Footer from './components/Footer.vue'
 import ShowcaseList from './components/Showcase-List/index.vue'
-import Sing from './components/Sign.vue'
+import Sing from './components/SignText.vue'
 // @ts-ignore
 import SpinePlayer from './components/Spine-Player/index.vue'
 // 路径切换
