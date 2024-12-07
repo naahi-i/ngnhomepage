@@ -8,12 +8,13 @@
 
 <script>
 import Vara from 'vara';
+import fontJson from '../assets/fonts/SatisfySL.json';
 
 export default {
     name: 'HelloWorld',
     mounted() {
         const fontSize = window.innerWidth <= 768 ? 90 : 100; // 根据屏幕宽度调整字体大小
-        new Vara("#text-container", ".../node_modules/vara/fonts/Satisfy/SatisfySL.json", [
+        new Vara("#text-container", fontJson, [
             { text: "Test text" }  
         ], {
             fontSize: fontSize,
