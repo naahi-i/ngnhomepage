@@ -10,13 +10,13 @@
   >
     <slot></slot>
     <!-- 提示箭头 -->
-    <!-- <transition name="fade-slide">
+    <transition name="fade-slide">
       <span
         class="iconfont icon-downarrow downarrow"
         @click="move"
         v-if="!state.splashLoading && page.filePath === 'index.md'"
       ></span>
-    </transition> -->
+    </transition>
     <canvas id="wave"></canvas>
     <video v-if="videoBanner" autoplay muted loop class="bg-video">
       <source src="../assets/banner/banner_video.mp4" type="video/mp4" />
@@ -150,9 +150,11 @@ onMounted(() => {
   )
 })
 
+// 下滑箭头
 const move = () => {
-  window.scrollTo({ top: window.innerHeight - 75, behavior: 'smooth' })
+  window.scrollTo({ top: window.innerHeight + 10, behavior: 'smooth' })
 }
+
 </script>
 
 <style scoped lang="less">

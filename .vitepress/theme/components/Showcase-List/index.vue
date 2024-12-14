@@ -1,17 +1,26 @@
 <template>
     <div class="Showcase-list">
         <div class="ImgShowcase">
-            <p>Image</p>
+            <!-- <p>Image</p> -->
             <ImgShowcase />
+            <TestBox />
+            <TestBox />
+            <TestBox />
+            <TestBox />
+            <SignText></SignText>
         </div>
     </div>
 </template>
-
 <script setup lang="ts">
 import ImgShowcase from './ImgShowcase/index.vue';
+import TestBox from './TestBox/Testbox.vue';
+import SignText from '../SignText.vue'
 </script>
 
 <style scoped lang="less">
+.Showcase-list {
+    margin: 50px auto;
+}
 p {
     margin: 10px 0 20px 60px;
     font-size: 40px;
@@ -27,6 +36,7 @@ p {
         background-color: var(--font-color-gold);
     }
 }
+
 @media (max-width: 768px) {
     p {
         margin: 0 0 10px 20px;

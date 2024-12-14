@@ -165,23 +165,20 @@ const enableScroll = () => {
 </script>
 
 <style scoped lang="less">
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.61, .15, .26, 1);
-}
+// .fade-enter-active,
+// .fade-leave-active {
+//     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.61, .15, .26, 1);
+// }
 
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-    transform: translateX(50vw); /* 横向的动画效果 */
-}
+// .fade-enter-from,
+// .fade-leave-to {
+//     opacity: 0;
+//     transform: translateX(50vw); /* 横向的动画效果 */
+// }
 
 .showcase-wrapper {
     position: relative;
-    width: 100%;
-    height: 400px; /* 固定高度 */
     overflow: hidden;
-    margin: 0 auto;
 }
 
 .showcase-items-wrapper {
@@ -193,7 +190,7 @@ const enableScroll = () => {
 
 .dots-wrapper {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     display: flex;

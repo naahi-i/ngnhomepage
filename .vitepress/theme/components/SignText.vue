@@ -12,15 +12,17 @@ import Vara from 'vara';
 export default {
     name: 'HelloWorld',
     mounted() {
-        const fontSize = window.innerWidth <= 768 ? 90 : 100; // 根据屏幕宽度调整字体大小
+        const fontSize = window.innerWidth <= 768 ? 40 : 100; // 根据屏幕宽度调整字体大小
         new Vara("#text-container", "https://cdn.jsdelivr.net/gh/akzhy/Vara/fonts/Satisfy/SatisfySL.json", [
-            { text: "Test text" }  
+            { text: "S.C.A.L.E" }  
         ], {
             fontSize: fontSize,
             color: "#000",
             strokeWidth: 2,
-            duration: 3000,
+            duration: 4000,
             autoAnimation: true,
+            textAlign: "center",
+            letterSpacing: 10
         });
     }
 }
@@ -35,12 +37,12 @@ export default {
     align-items: center;
     padding: 50px; /* 修改内边距 */
     overflow: hidden; /* 超出部分隐藏 */
-    background-color: white; /* 白色背景 */
+    background-color: var(--foreground-color); /* 白色背景 */
     border-radius: 24px; /* 圆角 */
     box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.3); /* 阴影 */
     transform: skew(-5deg); /* 倾斜容器 */
     position: relative; /* 添加相对定位 */
-    margin: 80px auto 80px ; /* 增底部间距 */
+    margin: 80px auto 80px ;
 }
 
 .text-drawing-animations::after {

@@ -4,29 +4,27 @@
     <main>
       <Navbar></Navbar>
       <Banner>
-        <template v-if="state.Animation">
-          <transition name="fade" mode="out-in">
-            <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
-            <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner>
-          </transition>
-        </template>
-        <template v-else>
-          <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
-          <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner>
-        </template>
+        <!-- <template v-if="state.Animation"> -->
+        <!-- <transition name="fade" mode="out-in"> -->
+        <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
+        <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner>
+        <!-- </transition> -->
+        <!-- </template> -->
+        <!-- <template v-else> -->
+        <!-- <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox> -->
+        <!-- <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner> -->
+        <!-- </template> -->
 
       </Banner>
 
-      <template v-if="state.Animation">
-        <transition name="post-list-fade" appear>
-          <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
-        </transition>
-      </template>
-      <template v-else>
-        <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
-      </template>
-      <Sing v-if="!state.splashLoading && page.filePath === 'index.md'"></Sing>
-
+      <!-- <template v-if="state.Animation"> -->
+      <!-- <transition name="post-list-fade" appear> -->
+      <!-- <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList> -->
+      <!-- </transition> -->
+      <!-- </template> -->
+      <!-- <template v-else> -->
+      <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
+      <!-- </template> -->
       <ShowcaseList v-show="page.filePath === 'index.md'"></ShowcaseList>
       <!-- <Tags v-else-if="page.filePath === 'posts/index.md'"></Tags> -->
       <PostViewer v-if="page.filePath !== 'index.md' && page.filePath !== 'posts/index.md'"></PostViewer>
@@ -57,7 +55,6 @@ import ToTop from './components/ToTop.vue'
 import Fireworks from './components/Fireworks.vue'
 import Footer from './components/Footer.vue'
 import ShowcaseList from './components/Showcase-List/index.vue'
-import Sing from './components/SignText.vue'
 // @ts-ignore
 import SpinePlayer from './components/Spine-Player/index.vue'
 // 路径切换
@@ -66,33 +63,80 @@ const { page } = useData()
 
 import { useStore } from './store'
 const { state } = useStore()
+
+let lastScroll = 0;
+let touchStartY = 0;
+// 滚动监听
+document.addEventListener('scroll', (e) => {
+  const currentScroll = window.scrollY;
+  if (currentScroll < window.innerHeight && currentScroll < lastScroll) {
+    e.preventDefault(); // 禁用默认滚动行为
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto'
+    })
+  }
+  else if (currentScroll >= 0 && currentScroll < window.innerHeight && currentScroll > lastScroll) {
+    e.preventDefault(); // 禁用默认滚动行为
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    })
+  }
+  lastScroll = currentScroll;
+});
+
+// 触摸事件监听
+document.addEventListener('touchstart', (e) => {
+  touchStartY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', (e) => {
+  const touchY = e.touches[0].clientY;
+  const currentScroll = window.scrollY;
+  
+  if (currentScroll < window.innerHeight) {
+    e.preventDefault(); // 禁用默认滚动行为
+    if (touchStartY - touchY > 80) { // 向上滑动
+      window.scrollTo({
+        top: window.innerHeight + 5,
+        behavior: 'smooth'
+      });
+    } else if (touchY - touchStartY > 100) { // 向下滑动
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+}, { passive: false });
 </script>
 
 <style lang="less">
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
+// .fade-enter-active,
+// .fade-leave-active {
+//   transition: opacity 0.5s;
+// }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+// .fade-enter-from,
+// .fade-leave-to {
+//   opacity: 0;
+// }
 
-.post-list-fade-enter-active {
-  transition: opacity 0.5s;
-}
+// .post-list-fade-enter-active {
+//   transition: opacity 0.5s;
+// }
 
-.post-list-fade-enter-from {
-  opacity: 0;
-}
+// .post-list-fade-enter-from {
+//   opacity: 0;
+// }
 
 html {
   scroll-behavior: smooth;
 }
 
 .container {
-  max-width: 1200px;
+  width: 70vw;
   margin: 0 auto;
 }
 
@@ -126,5 +170,11 @@ a {
   border-radius: 3px;
   background: var(--color-blue);
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100vw;
+  }
 }
 </style>

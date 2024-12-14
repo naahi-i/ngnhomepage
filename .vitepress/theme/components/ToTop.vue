@@ -13,7 +13,7 @@ const click = ref(0)
 
 const onScroll = () => {
   window.requestAnimationFrame(() => {
-    if (window.scrollY > 500) {
+    if (window.scrollY > 800) {
       click.value = 0
       if (scale.value == 1) {
         style.value = `bottom: 150px; right: ${window.innerWidth > 768 ? '-55px' : '-35px'};`

@@ -89,6 +89,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       '船停在港口是安全的，但这并不是造船的目的。',
       '时间啊，停止吧，你是多么美丽。',
       '与其说是为了纪念，更像是为了忘却。',
+      '失去人性，失去很多；失去兽性，失去一切。',
     ],
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
