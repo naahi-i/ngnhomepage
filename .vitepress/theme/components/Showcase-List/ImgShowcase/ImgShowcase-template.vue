@@ -102,7 +102,7 @@ const mainbox = ref<HTMLElement | null>(null);
 @media (max-width: 768px) {
     .mainbox {
         height: 250px;
-        width: 12% !important;
+        width: 13% !important;
         
         .item {
             .imgbox {

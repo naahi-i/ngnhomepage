@@ -268,7 +268,7 @@ const move = () => {
     }
   }
   .posts {
-    height: 160%;
+    height: 140%;
   }
 }
 </style>
