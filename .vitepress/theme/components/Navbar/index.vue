@@ -184,7 +184,7 @@ header {
 @media (max-width: 768px) {
   header {
     nav {
-      height: 64px;
+      height: 58px;
     }
     .logo {
       img {

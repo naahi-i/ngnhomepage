@@ -11,19 +11,32 @@ import Vara from 'vara';
 
 export default {
     name: 'HelloWorld',
+    data() {
+        return {
+            hasRendered: false
+        }
+    },
     mounted() {
-        const fontSize = window.innerWidth <= 768 ? 40 : 100; // 根据屏幕宽度调整字体大小
-        new Vara("#text-container", "https://cdn.jsdelivr.net/gh/akzhy/Vara/fonts/Satisfy/SatisfySL.json", [
-            { text: "S.C.A.L.E" }  
-        ], {
-            fontSize: fontSize,
-            color: "#000",
-            strokeWidth: 2,
-            duration: 4000,
-            autoAnimation: true,
-            textAlign: "center",
-            letterSpacing: 10
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !this.hasRendered) {
+                this.hasRendered = true;
+                const fontSize = window.innerWidth <= 768 ? 40 : 100;
+                new Vara("#text-container", "https://cdn.jsdelivr.net/gh/akzhy/Vara/fonts/Satisfy/SatisfySL.json", [
+                    { text: "S.C.A.L.E" }  
+                ], {
+                    fontSize: fontSize,
+                    color: "#000",
+                    strokeWidth: 2,
+                    duration: 4000,
+                    autoAnimation: true,
+                    textAlign: "center",
+                    letterSpacing: 10
+                });
+                observer.disconnect(); // 渲染完成后停止观察
+            }
         });
+        
+        observer.observe(this.$el);
     }
 }
 </script>

@@ -14,6 +14,25 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.12.14
+### 🔧添加主页滑动阻尼与签名(实验)
+  $\qquad$ **·** 添加主页滑动阻尼与签名(实验) 
+  $\qquad$ **·** 合并部分上游更新
+  $\qquad$ **·** 删除部分动画
+
+  ::: warning
+  测试版更新
+  :::
+
+  <div style="display: flex; margin-top: 10px ;margin-left: 4px">
+      <div style="text-align: center;">
+        <img src='./img/24-12-14-SignText.png' height='140px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">NEW</div>
+      </div>
+  </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/e90ec73b56be9703a2e9415ee5bd5eacf89b11a8)</sub>  
+
 # ⚙️2024.11.17
 ### 🔧实现卡片列表无缝切换
   $\qquad$ **·** 实现卡片列表无缝切换  
@@ -29,10 +48,6 @@ head:
   $\qquad$ **·** 优化banner随页面切换的动画   
   $\qquad$ **·** 新增帖子列表进入退出动画  
   $\qquad$ **·** 暂时移除Tags元素  
-
-  ::: warning
-  目前帖子列表的动画有掉帧问题 
-  :::
 
   <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
       <div style="text-align: center;">

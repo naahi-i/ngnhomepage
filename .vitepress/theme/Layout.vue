@@ -68,22 +68,25 @@ let lastScroll = 0;
 let touchStartY = 0;
 // 滚动监听
 document.addEventListener('scroll', (e) => {
+  console.log(window.location.pathname);
   const currentScroll = window.scrollY;
-  if (currentScroll < window.innerHeight && currentScroll < lastScroll) {
-    e.preventDefault(); // 禁用默认滚动行为
-    window.scrollTo({
-      top: 0,
-      behavior: 'auto'
-    })
+  if (window.location.pathname === '/') {
+    if (currentScroll < window.innerHeight && currentScroll < lastScroll) {
+      e.preventDefault(); // 禁用默认滚动行为
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto'
+      })
+    }
+    else if (currentScroll >= 0 && currentScroll < window.innerHeight && currentScroll > lastScroll) {
+      e.preventDefault(); // 禁用默认滚动行为
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      })
+    }
+    lastScroll = currentScroll;
   }
-  else if (currentScroll >= 0 && currentScroll < window.innerHeight && currentScroll > lastScroll) {
-    e.preventDefault(); // 禁用默认滚动行为
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    })
-  }
-  lastScroll = currentScroll;
 });
 
 // 触摸事件监听
@@ -94,19 +97,20 @@ document.addEventListener('touchstart', (e) => {
 document.addEventListener('touchmove', (e) => {
   const touchY = e.touches[0].clientY;
   const currentScroll = window.scrollY;
-  
-  if (currentScroll < window.innerHeight) {
-    e.preventDefault(); // 禁用默认滚动行为
-    if (touchStartY - touchY > 80) { // 向上滑动
-      window.scrollTo({
-        top: window.innerHeight + 5,
-        behavior: 'smooth'
-      });
-    } else if (touchY - touchStartY > 100) { // 向下滑动
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+  if (window.location.pathname === '/') {
+    if (currentScroll < window.innerHeight) {
+      e.preventDefault(); // 禁用默认滚动行为
+      if (touchStartY - touchY > 60) { // 向上滑动
+        window.scrollTo({
+          top: window.innerHeight + 10,
+          behavior: 'smooth'
+        });
+      } else if (touchY - touchStartY > 70) { // 向下滑动
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
     }
   }
 }, { passive: false });
