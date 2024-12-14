@@ -20,7 +20,7 @@ export default {
         const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting && !this.hasRendered) {
                 this.hasRendered = true;
-                const fontSize = window.innerWidth <= 768 ? 40 : 100;
+                const fontSize = window.innerWidth <= 768 ? 35 : 100;
                 new Vara("#text-container", "https://cdn.jsdelivr.net/gh/akzhy/Vara/fonts/Satisfy/SatisfySL.json", [
                     { text: "S.C.A.L.E" }  
                 ], {

@@ -102,7 +102,7 @@ document.addEventListener('touchmove', (e) => {
       e.preventDefault(); // 禁用默认滚动行为
       if (touchStartY - touchY > 60) { // 向上滑动
         window.scrollTo({
-          top: window.innerHeight + 10,
+          top: window.innerHeight + 25,
           behavior: 'smooth'
         });
       } else if (touchY - touchStartY > 70) { // 向下滑动

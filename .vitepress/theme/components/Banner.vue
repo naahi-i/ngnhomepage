@@ -152,7 +152,7 @@ onMounted(() => {
 
 // 下滑箭头
 const move = () => {
-  window.scrollTo({ top: window.innerHeight + 10, behavior: 'smooth' })
+  window.scrollTo({ top: window.innerHeight + 25, behavior: 'smooth' })
 }
 
 </script>
