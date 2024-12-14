@@ -1,6 +1,6 @@
 <template>
   <div class="container posts-content">
-    <TransitionGroup class="posts-list" name="list" tag="div">
+    <div class="posts-list" name="list" tag="div">
       <article class="post" v-for="post in postsList" :key="post.href">
         <header class="post-header">
           <div class="title">
@@ -27,7 +27,7 @@
           <p>{{ post.excerpt }}</p>
         </div>
       </article>
-    </TransitionGroup>
+    </div>
     <span v-if="totalPage > 1" class="pagination">
       <button :disabled="currPage === 1" :class="{ hide: currPage === 1 }" id="up" @click="currPage--">
         <i class="iconfont icon-arrow"></i>
@@ -74,23 +74,6 @@ const finalPosts = computed(() => {
 </script>
 
 <style scoped lang="less">
-.list-move,
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s;
-}
-
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-}
-
-.list-leave-active {
-  position: absolute;
-  right: 0;
-  left: 0;
-}
-
 .posts-content {
   article,
   h1,
@@ -187,6 +170,10 @@ const finalPosts = computed(() => {
       background-color: var(--btn-background);
       border-radius: 5px;
       transition: all 0.5s;
+      font-size: 20px;
+      i {
+        font-size: 18px;
+      }
 
       &:hover {
         background-color: var(--btn-hover);
@@ -198,6 +185,10 @@ const finalPosts = computed(() => {
 
 .excerpt {
   padding: 0 40px;
+  p {
+      margin: 18px 0 15px 0;
+      font-size: 20px;
+    }
 }
 
 .pagination {
@@ -258,19 +249,45 @@ const finalPosts = computed(() => {
     .post {
       margin: 0 20px 30px 20px;
       background-size: cover;
-      padding-bottom: 10px;
+      padding-bottom: 1px;
+    }
+  }
+  .tags {
+    margin-bottom: 0px;
+    li {
+    padding-top: 2px;
+    margin-right: 14px;
+
+    a {
+      padding: 1px 5px;
+      border-radius: 5px;
+      font-size: 15px;
+
+      i {
+        font-size: 12px;
+      }
+    }
+  }
+}
+  .excerpt {
+    padding: 0 40px;
+    p {
+      margin: 10px 0 15px 0;
+      font-size: 13px;
+
     }
   }
   .post-header {
     padding: 20px 35px 0;
     .name {
-      font-size: 26px;
+      font-size: 22px;
     }
     .title {
         margin-bottom: 6px;
       .title-dot {
         height: 18px;
-        top: 6px;
+        top: 5px;
+        left: -10px;
       }
     }
   }

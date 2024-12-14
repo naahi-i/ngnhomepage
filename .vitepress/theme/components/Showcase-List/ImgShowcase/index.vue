@@ -1,25 +1,16 @@
 <template>
-    <transition name="fade" appear>
-        <div class="showcase-wrapper" ref="showcaseWrapper" @wheel="handleWheel" @touchstart="handleTouchStart"
-            @touchend="handleTouchEnd" @mouseenter="disableScroll" @mouseleave="enableScroll">
-            <div class="showcase-items-wrapper" :style="wrapperStyle">
-                <Showcase
-                    v-for="(item, index) in showcaseItems"
-                    :key="index"
-                    :imageSrc="item.imageSrc"
-                    :title="item.title"
-                    :subtitle2="item.subtitle2"
-                    :isReversed="item.isReversed"
-                    :imgHeight="item.imgHeight"
-                    :imgOffsetX="item.imgOffsetX"
-                />
-            </div>
-            <div class="dots-wrapper">
-                <span v-for="(item, index) in originalItems" :key="'dot-' + index"
-                    :class="['dot', { 'active': index === currentDotIndex }]" @click="goToIndex(index)"></span>
-            </div>
+    <div class="showcase-wrapper" ref="showcaseWrapper" @wheel="handleWheel" @touchstart="handleTouchStart"
+        @touchend="handleTouchEnd" @mouseenter="disableScroll" @mouseleave="enableScroll">
+        <div class="showcase-items-wrapper" :style="wrapperStyle">
+            <Showcase v-for="(item, index) in showcaseItems" :key="index" :imageSrc="item.imageSrc" :title="item.title"
+                :subtitle2="item.subtitle2" :isReversed="item.isReversed" :imgHeight="item.imgHeight"
+                :imgOffsetX="item.imgOffsetX" />
         </div>
-    </transition>
+        <div class="dots-wrapper">
+            <span v-for="(item, index) in originalItems" :key="'dot-' + index"
+                :class="['dot', { 'active': index === currentDotIndex }]" @click="goToIndex(index)"></span>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -29,6 +20,7 @@ import img1 from '../../img/win11-tan.png';
 import img2 from '../../img/pln.png';
 import img3 from '../../img/xdyd.png';
 import img4 from '../../img/Tsukiyuki_Miyako.png';
+import img5 from '../../img/tlbk.jpg';
 
 // 保存原始的 showcaseItems
 const originalItems = [
@@ -36,6 +28,7 @@ const originalItems = [
     { imageSrc: img2, title: '普拉娜', subtitle2: '阿洛娜前辈？', isReversed: true, imgHeight: '140%', imgOffsetX: '-10px' },
     { imageSrc: img3, title: '喜多郁代', subtitle2: '喜多光环！', isReversed: false, imgHeight: '180%', imgOffsetX: '-8px' },
     { imageSrc: img4, title: '月雪宫子', subtitle2: '这里是RABBIT1、现在作战开始。', isReversed: true, imgHeight: '100%', imgOffsetX: '-15px' },
+    { imageSrc: img5, title: '特莉波卡', subtitle2: '是小死神', isReversed: true, imgHeight: '100%', imgOffsetX: '-15px' },
 ];
 
 // 创建新的 showcaseItems，在开头和结尾添加元素副本
@@ -165,17 +158,6 @@ const enableScroll = () => {
 </script>
 
 <style scoped lang="less">
-// .fade-enter-active,
-// .fade-leave-active {
-//     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.61, .15, .26, 1);
-// }
-
-// .fade-enter-from,
-// .fade-leave-to {
-//     opacity: 0;
-//     transform: translateX(50vw); /* 横向的动画效果 */
-// }
-
 .showcase-wrapper {
     position: relative;
     overflow: hidden;
@@ -183,8 +165,10 @@ const enableScroll = () => {
 
 .showcase-items-wrapper {
     display: flex;
-    flex-direction: row; /* 改为横向排列 */
-    transform: translateX(var(--current-x, 0)); /* 使用 CSS 变量动态控制位置 */
+    flex-direction: row;
+    /* 改为横向排列 */
+    transform: translateX(var(--current-x, 0));
+    /* 使用 CSS 变量动态控制位置 */
     transition: transform 1.1s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -205,7 +189,8 @@ const enableScroll = () => {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: width 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
-    &.active{
+
+    &.active {
         width: 18px;
         height: 6px;
         border-radius: 10px;
@@ -217,7 +202,7 @@ const enableScroll = () => {
     .showcase-wrapper {
         height: 300px;
     }
-    
+
     .showcase-items-wrapper {
         transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
@@ -225,7 +210,7 @@ const enableScroll = () => {
     .dots-wrapper {
         gap: 6px;
     }
-    
+
     .dot {
         width: 5px;
         height: 5px;

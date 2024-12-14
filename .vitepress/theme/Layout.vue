@@ -100,7 +100,7 @@ document.addEventListener('touchmove', (e) => {
   if (window.location.pathname === '/') {
     if (currentScroll < window.innerHeight) {
       e.preventDefault(); // 禁用默认滚动行为
-      if (touchStartY - touchY > 60) { // 向上滑动
+      if (touchStartY - touchY > 50) { // 向上滑动
         window.scrollTo({
           top: window.innerHeight + 25,
           behavior: 'smooth'

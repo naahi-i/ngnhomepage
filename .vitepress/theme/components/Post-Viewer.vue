@@ -63,6 +63,7 @@ const themeConfig = useData().theme.value
 }
 
 .view-box {
+  width: 96vw !important;
   box-sizing: border-box;
   position: relative;
   padding: 36px;

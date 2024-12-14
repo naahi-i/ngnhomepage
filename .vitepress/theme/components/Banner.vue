@@ -258,6 +258,9 @@ const move = () => {
 
 @media (max-width: 768px) {
   .banner{
+    .downarrow {
+      font-size: 50px;
+    }
     &.blurred .bg-img,
     &.blurred .bg-video {
       filter: blur(0px);

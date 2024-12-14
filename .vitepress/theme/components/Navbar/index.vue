@@ -89,6 +89,7 @@ header {
       width: auto;
       filter: drop-shadow(0 0 5px rgba(18, 138, 250, 0.5));
     }
+    z-index: -2;
   }
 
   .menu {

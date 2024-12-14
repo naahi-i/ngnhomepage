@@ -218,8 +218,11 @@ onMounted(() => {
 @media (max-width: 768px) {
   .banner {
     .welcome-text {
-      font-size: 45px;
-      margin-top: -20px;
+      display: none;
+    }
+
+    .welcome-box {
+      padding-bottom: 0;
     }
 
     .info-box {
