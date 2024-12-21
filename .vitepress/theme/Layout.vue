@@ -64,56 +64,56 @@ const { page } = useData()
 import { useStore } from './store'
 const { state } = useStore()
 
-let lastScroll = 0;
-let touchStartY = 0;
-// 滚动监听
-document.addEventListener('scroll', (e) => {
-  console.log(window.location.pathname);
-  const currentScroll = window.scrollY;
-  if (window.location.pathname === '/') {
-    if (currentScroll < window.innerHeight && currentScroll < lastScroll) {
-      e.preventDefault(); // 禁用默认滚动行为
-      window.scrollTo({
-        top: 0,
-        behavior: 'auto'
-      })
-    }
-    else if (currentScroll >= 0 && currentScroll < window.innerHeight && currentScroll > lastScroll) {
-      e.preventDefault(); // 禁用默认滚动行为
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: 'smooth'
-      })
-    }
-    lastScroll = currentScroll;
-  }
-});
+// let lastScroll = 0;
+// let touchStartY = 0;
+// // 滚动监听
+// document.addEventListener('scroll', (e) => {
+//   console.log(window.location.pathname);
+//   const currentScroll = window.scrollY;
+//   if (window.location.pathname === '/') {
+//     if (currentScroll < window.innerHeight && currentScroll < lastScroll) {
+//       e.preventDefault(); // 禁用默认滚动行为
+//       window.scrollTo({
+//         top: 0,
+//         behavior: 'auto'
+//       })
+//     }
+//     else if (currentScroll >= 0 && currentScroll < window.innerHeight && currentScroll > lastScroll) {
+//       e.preventDefault(); // 禁用默认滚动行为
+//       window.scrollTo({
+//         top: window.innerHeight,
+//         behavior: 'smooth'
+//       })
+//     }
+//     lastScroll = currentScroll;
+//   }
+// });
 
-// 触摸事件监听
-document.addEventListener('touchstart', (e) => {
-  touchStartY = e.touches[0].clientY;
-});
+// // 触摸事件监听
+// document.addEventListener('touchstart', (e) => {
+//   touchStartY = e.touches[0].clientY;
+// });
 
-document.addEventListener('touchmove', (e) => {
-  const touchY = e.touches[0].clientY;
-  const currentScroll = window.scrollY;
-  if (window.location.pathname === '/') {
-    if (currentScroll < window.innerHeight) {
-      e.preventDefault(); // 禁用默认滚动行为
-      if (touchStartY - touchY > 50) { // 向上滑动
-        window.scrollTo({
-          top: window.innerHeight + 25,
-          behavior: 'smooth'
-        });
-      } else if (touchY - touchStartY > 70) { // 向下滑动
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }
-    }
-  }
-}, { passive: false });
+// document.addEventListener('touchmove', (e) => {
+//   const touchY = e.touches[0].clientY;
+//   const currentScroll = window.scrollY;
+//   if (window.location.pathname === '/') {
+//     if (currentScroll < window.innerHeight) {
+//       e.preventDefault(); // 禁用默认滚动行为
+//       if (touchStartY - touchY > 50) { // 向上滑动
+//         window.scrollTo({
+//           top: window.innerHeight + 25,
+//           behavior: 'smooth'
+//         });
+//       } else if (touchY - touchStartY > 70) { // 向下滑动
+//         window.scrollTo({
+//           top: 0,
+//           behavior: 'smooth'
+//         });
+//       }
+//     }
+//   }
+// }, { passive: false });
 </script>
 
 <style lang="less">
