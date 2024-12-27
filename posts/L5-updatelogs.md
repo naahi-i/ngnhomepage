@@ -14,6 +14,25 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.12.27
+### 🔧修改主页样式
+  $\qquad$ **·** 去除容器倾斜   
+  $\qquad$ **·** 修改ImgShowcase为竖向滑动  
+  $\qquad$ **·** 统一容器宽度  
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/24-12-27-old.png' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">OLD</div>
+      </div>  
+      <div style="text-align: center;">
+        <img src='./img/24-12-27-new.png' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">NEW</div>
+      </div>
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/0df2400beec965311952171a40c844117a18de2c)</sub>  
+
 # ⚙️2024.12.14
 ### 🔧添加主页滑动阻尼与签名(实验)
   $\qquad$ **·** 添加主页滑动阻尼与签名(实验)  
