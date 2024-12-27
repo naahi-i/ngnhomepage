@@ -3,10 +3,6 @@
         <div class="ImgShowcase">
             <!-- <p>Image</p> -->
             <ImgShowcase />
-            <TestBox />
-            <TestBox />
-            <TestBox />
-            <TestBox />
             <SignText></SignText>
         </div>
     </div>
@@ -14,13 +10,13 @@
 <script setup lang="ts">
 import ImgShowcase from './ImgShowcase/index.vue';
 import TestBox from './TestBox/Testbox.vue';
-import SignText from '../SignText.vue'
+import SignText from './SignText.vue'
 </script>
 
 <style scoped lang="less">
-.Showcase-list {
-    margin: 50px auto;
-}
+// .Showcase-list {
+//     margin: 50px auto;
+// }
 p {
     margin: 10px 0 20px 60px;
     font-size: 40px;

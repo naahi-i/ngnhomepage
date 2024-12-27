@@ -43,31 +43,28 @@ export default {
 
 <style>
 .text-drawing-animations {
-    width: 60%; /* 修改宽度为卡片宽度 */
+    width: calc(65vw * 0.95);
     height: auto; /* 高度自动 */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px; /* 修改内边距 */
     overflow: hidden; /* 超出部分隐藏 */
     background-color: var(--foreground-color); /* 白色背景 */
     border-radius: 24px; /* 圆角 */
     box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.3); /* 阴影 */
-    transform: skew(-5deg); /* 倾斜容器 */
-    position: relative; /* 添加相对定位 */
-    margin: 80px auto 80px ;
+    position: relative; /* 相对定位 */
+    margin: 50px auto 50px;
 }
 
 .text-drawing-animations::after {
     content: '';
     position: absolute;
-    bottom: -35px; /* 调整位置 */
-    right: 20px; /* 调整位置 */
-    width: 120px; /* 调整大小 */
-    height: 120px; /* 调整大小 */
-    background: url('../assets/gamelogo.png') no-repeat center center;
+    bottom: -35px;
+    right: 30px;
+    width: 120px;
+    height: 120px;
+    background: url('../img/gamelogo.png') no-repeat center center;
     background-size: contain;
-    transform: skew(5deg); /* 修正倾斜 */
 }
 
 .grid-background {
@@ -76,45 +73,43 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px; /* 修改内边距 */
     background-image: linear-gradient(90deg, rgba(159, 219, 252, 0.25) 3%, transparent 0), /* 调整网格颜色 */
                           linear-gradient(1turn, rgba(159, 219, 252, 0.25) 3%, transparent 0); /* 调整网格颜色 */
     background-size: 20px 20px; /* 网格大小 */
     border-radius: 24px; /* 圆角 */
     position: relative; /* 添加相对定位 */
+    margin: 50px;
+
 }
 
 #text-container {
     width: 100%;
     display: flex;
+    margin: 50px;
     justify-content: center;
     align-items: center;
-    transform: skew(5deg); /* 修正倾斜 */
-    text-align: center; /* 居中文本 */
-    white-space: normal; /* 支持换行 */
-    word-wrap: break-word; /* 长词语会换行 */
 }
 
 @media (max-width: 768px) {
     .text-drawing-animations {
-        width: 75%; /* 调整宽度 */
-        padding: 25px; /* 调整内边距 */
-        margin: 20px auto; /* 调整外边距 */
+        width: 90vw;
+        margin: 20px auto 20px;
     }
 
     .text-drawing-animations::after {
-        width: 60px; /* 调整大小 */
-        height: 60px; /* 调整大小 */
-        right: 20px; /* 调整位置 */
-        bottom: -15px; /* 调整位置 */
+        width: 60px;
+        height: 60px;
+        right: 20px;
+        bottom: -15px;
     }
 
     .grid-background {
-        padding: 30px; /* 调整内边距 */
+        margin: 25px 15px;
     }
 
     #text-container {
-        font-size: 14px; /* 调整字体大小 */
+        margin: 25px 0;
+        font-size: 14px;
     }
 }
 </style>

@@ -32,10 +32,9 @@ const mainbox = ref<HTMLElement | null>(null);
 <style scoped lang="less">
 .mainbox {
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
-    width: 1200px;
-    height: 350px; 
+    height: 410px; 
+    width: 95%;
     overflow: hidden; /* 防止内容超出容器 */
-    transform: skew(-5deg); /* 设置倾斜角度 */
     border-radius: 24px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.5); /* 调整阴影样式 */
@@ -72,7 +71,6 @@ const mainbox = ref<HTMLElement | null>(null);
             img {
                 width: 106%; /* 确保图片宽度填满容器 */
                 object-fit: cover; /* 保持图片的宽高比 */
-                transform: skew(5deg); /* 设置倾斜角度 */
             }
         }
 
@@ -101,8 +99,8 @@ const mainbox = ref<HTMLElement | null>(null);
 
 @media (max-width: 768px) {
     .mainbox {
-        height: 250px;
-        width: 14% !important;
+        height: 310px;
+        width: 90%;
         
         .item {
             .imgbox {

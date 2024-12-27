@@ -1,10 +1,20 @@
 <template>
-    <div class="showcase-wrapper" ref="showcaseWrapper" @wheel="handleWheel" @touchstart="handleTouchStart"
-        @touchend="handleTouchEnd" @mouseenter="disableScroll" @mouseleave="enableScroll">
+    <div class="showcase-wrapper" ref="showcaseWrapper" 
+        @wheel="handleWheel"
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd">
         <div class="showcase-items-wrapper" :style="wrapperStyle">
-            <Showcase v-for="(item, index) in showcaseItems" :key="index" :imageSrc="item.imageSrc" :title="item.title"
-                :subtitle2="item.subtitle2" :isReversed="item.isReversed" :imgHeight="item.imgHeight"
-                :imgOffsetX="item.imgOffsetX" />
+            <Showcase v-for="(item, index) in showcaseItems" 
+                :key="index" 
+                :imageSrc="item.imageSrc" 
+                :title="item.title"
+                :subtitle2="item.subtitle2" 
+                :isReversed="item.isReversed" 
+                :imgHeight="item.imgHeight"
+                :imgOffsetX="item.imgOffsetX" 
+                :style="getCardStyle(index)"
+            />
         </div>
         <div class="dots-wrapper">
             <span v-for="(item, index) in originalItems" :key="'dot-' + index"
@@ -31,153 +41,144 @@ const originalItems = [
     { imageSrc: img5, title: '特莉波卡', subtitle2: '是小死神', isReversed: true, imgHeight: '100%', imgOffsetX: '-15px' },
 ];
 
-// 创建新的 showcaseItems，在开头和结尾添加元素副本
+// 创建循环数组
 const showcaseItems = ref([
-    originalItems[originalItems.length - 1], // 添加最后一个元素作为第一个
+    originalItems[originalItems.length - 1],
     ...originalItems,
-    originalItems[0], // 添加第一个元素作为最后一个
+    originalItems[0]
 ]);
 
-const currentIndex = ref(1); // 初始索引为1，对应原始数据的第一个元素
-const isScrolling = ref(false); // 控制滚动是否正在进行
-const itemWidth = ref(window.innerWidth); // 每个卡片的宽度，初始化为屏幕宽度
+const currentIndex = ref(1);  // 初始索引为1
+const isScrolling = ref(false);
+const isTransitioning = ref(true);
+const itemHeight = ref(window.innerWidth <= 768 ? 310 : 410);
 
-// 监听窗口大小变化，动态更新 itemWidth
+// 监听窗口大小变化
 window.addEventListener('resize', () => {
-    itemWidth.value = window.innerWidth;
+    itemHeight.value = window.innerWidth <= 768 ? 310 : 410;
 });
 
-// 用于控制过渡效果的标志
-const isTransitioning = ref(true);
-const isAnimating = ref(false); // 用于跟踪动画状态
-
-// 计算 showcase-items-wrapper 的样式
+// 计算wrapper样式
 const wrapperStyle = computed(() => ({
-    '--current-x': `${currentIndex.value * -itemWidth.value}px`, // 使用动态的 itemWidth 来控制横向滑动
-    width: `${itemWidth.value * showcaseItems.value.length}px`, // 设置宽度为卡片总宽度
-    transition: isTransitioning.value ? 'transform 0.8s ease' : 'none',
+    transform: `translateY(${currentIndex.value * -itemHeight.value}px)`,
+    transition: isTransitioning.value ? 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)' : 'none',
+    height: `${showcaseItems.value.length * itemHeight.value}px`,
 }));
 
-// 计算当前激活的点阵索引
-const currentDotIndex = computed(() => {
-    if (currentIndex.value === 0) {
-        return originalItems.length - 1;
-    } else if (currentIndex.value === showcaseItems.value.length - 1) {
-        return 0;
+// 调整卡片样式计算
+const getCardStyle = (index: number) => ({
+    transform: `scale(${index === currentIndex.value ? 1 : 0.9})`,
+    opacity: index === currentIndex.value ? 1 : 0.5,
+    transition: `transform ${isTransitioning.value ? '0.6s' : '0s'} cubic-bezier(0.25, 0.8, 0.25, 1), opacity ${isTransitioning.value ? '0.6s' : '0s'} cubic-bezier(0.25, 0.8, 0.25, 1)`,
+    willChange: 'opacity'
+});
+
+// 更新滚轮处理函数
+const handleWheel = (event: WheelEvent) => {
+    event.preventDefault();
+    if (isScrolling.value) return;
+
+    isScrolling.value = true;
+    currentIndex.value += event.deltaY > 0 ? 1 : -1;
+    
+    setTimeout(() => {
+        adjustIndex();
+        isScrolling.value = false;
+    }, 600);
+};
+
+// 优化索引调整函数
+const adjustIndex = () => {
+    if (currentIndex.value === 0 || currentIndex.value === showcaseItems.value.length - 1) {
+        requestAnimationFrame(() => {
+            isTransitioning.value = false;
+            currentIndex.value = currentIndex.value === 0 
+                ? showcaseItems.value.length - 2 
+                : 1;
+            
+            requestAnimationFrame(() => {
+                isTransitioning.value = true;
+            });
+        });
     }
+};
+
+// 点击跳转函数
+const goToIndex = (index: number) => {
+    if (isScrolling.value) return;
+    currentIndex.value = index + 1;
+    isTransitioning.value = true;
+};
+
+// 计算当前点的索引
+const currentDotIndex = computed(() => {
+    if (currentIndex.value === 0) return originalItems.length - 1;
+    if (currentIndex.value === showcaseItems.value.length - 1) return 0;
     return currentIndex.value - 1;
 });
 
-// 记录起始的触摸位置
-let startX = 0;
+// 添加触摸相关的状态
+const touchStartY = ref(0);
+const touchStartX = ref(0);
+const minSwipeDistance = 50; // 最小滑动距离
 
-// 触摸开始事件处理函数
-const handleTouchStart = (event: TouchEvent) => {
-    event.preventDefault(); // 阻止默认的滚动行为
-    startX = event.touches[0].clientX;
+// 触摸开始
+const handleTouchStart = (e: TouchEvent) => {
+    touchStartY.value = e.touches[0].clientY;
+    touchStartX.value = e.touches[0].clientX;
 };
 
-// 触摸结束事件处理函数，判断滑动方向并更新当前索引
-const handleTouchEnd = (event: TouchEvent) => {
-    if (isAnimating.value) return; // 动画进行中则忽略
-    const endX = event.changedTouches[0].clientX;
-    if (Math.abs(startX - endX) < 30) return; // 防止误触
-
-    // 根据滑动方向更新索引
-    currentIndex.value += startX > endX ? 1 : -1;
-
-    isTransitioning.value = true;
-    isAnimating.value = true; // 开始动画
-    isScrolling.value = true;
-
-    setTimeout(() => {
-        adjustIndex();
-        isAnimating.value = false; // 动画结束
-        isScrolling.value = false;
-    }, 800);
+// 触摸移动
+const handleTouchMove = (e: TouchEvent) => {
+    if (isScrolling.value) return;
+    e.preventDefault(); // 阻止页面滚动
 };
 
-// 滚轮事件处理函数
-const handleWheel = (event: WheelEvent) => {
-    if (isAnimating.value || isScrolling.value) return; // 动画进行中或滚动中则忽略
-    event.preventDefault();
+// 优化触摸结束处理
+const handleTouchEnd = (e: TouchEvent) => {
+    if (isScrolling.value) return;
 
-    // 滚动到底部或顶部时不再处理
-    if (
-        (currentIndex.value === 0 && event.deltaY < 0) ||
-        (currentIndex.value === showcaseItems.value.length - 1 && event.deltaY > 0)
-    ) return; // 防止滚动越界
+    const deltaY = e.changedTouches[0].clientY - touchStartY.value;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.value;
 
-    // 根据滚轮方向更新索引
-    currentIndex.value += event.deltaY > 0 ? 1 : -1;
+    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > minSwipeDistance) {
+        isScrolling.value = true;
+        isTransitioning.value = true;
+        currentIndex.value += deltaY < 0 ? 1 : -1;
 
-    isTransitioning.value = true;
-    isAnimating.value = true; // 开始动画
-    isScrolling.value = true;
-
-    setTimeout(() => {
-        adjustIndex();
-        isAnimating.value = false; // 动画结束
-        isScrolling.value = false;
-    }, 800);
-};
-
-// 跳转到指定的卡片
-const goToIndex = (index: number) => {
-    if (isAnimating.value) return; // 动画进行中则忽略
-    currentIndex.value = index + 1;
-    isTransitioning.value = true;
-    isAnimating.value = true; // 开始动画
-
-    setTimeout(() => {
-        adjustIndex();
-        isAnimating.value = false; // 动画结束
-    }, 800);
-};
-
-// 监听滚动结束，调整索引实现无缝循环
-const adjustIndex = () => {
-    if (currentIndex.value === 0) {
-        isTransitioning.value = false;
-        currentIndex.value = showcaseItems.value.length - 2;
-    } else if (currentIndex.value === showcaseItems.value.length - 1) {
-        isTransitioning.value = false;
-        currentIndex.value = 1;
+        setTimeout(() => {
+            adjustIndex();
+            isScrolling.value = false;
+        }, 600);
     }
 };
 
-// 禁用页面滚动
-const disableScroll = () => {
-    document.body.style.overflow = 'hidden';
-};
-
-// 启用页面滚动
-const enableScroll = () => {
-    document.body.style.overflow = '';
-};
 </script>
 
 <style scoped lang="less">
 .showcase-wrapper {
     position: relative;
     overflow: hidden;
+    width: 65vw;
+    margin: auto;
+    height: 410px; // 固定容器高度
 }
 
 .showcase-items-wrapper {
     display: flex;
-    flex-direction: row;
-    /* 改为横向排列 */
-    transform: translateX(var(--current-x, 0));
-    /* 使用 CSS 变量动态控制位置 */
-    transition: transform 1.1s cubic-bezier(0.25, 0.8, 0.25, 1);
+    flex-direction: column; // 纵向排列
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
 }
 
 .dots-wrapper {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 1%; // 右侧定位
+    top: 50%; // 垂直居中
+    transform: translateY(-50%); // 垂直居中对齐
     display: flex;
+    flex-direction: column;
     gap: 8px;
     align-items: center;
 }
@@ -188,11 +189,11 @@ const enableScroll = () => {
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: width 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+    transition: height 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
 
     &.active {
-        width: 18px;
-        height: 6px;
+        width: 6px;
+        height: 18px; // 垂直方向拉长
         border-radius: 10px;
         background-color: var(--color-blue);
     }
@@ -200,20 +201,28 @@ const enableScroll = () => {
 
 @media (max-width: 768px) {
     .showcase-wrapper {
-        height: 300px;
+        width: 100vw;
+        height: 310px;
+        touch-action: none; // 禁用浏览器默认触摸行为
     }
 
     .showcase-items-wrapper {
-        transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .dots-wrapper {
-        gap: 6px;
+        right: 8px;
+        gap: 4px;
     }
 
     .dot {
-        width: 5px;
-        height: 5px;
+        width: 4px;
+        height: 4px;
+
+        &.active {
+            width: 4px;
+            height: 12px;
+        }
     }
 }
 </style>
