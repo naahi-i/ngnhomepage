@@ -37,7 +37,7 @@ const mainbox = ref<HTMLElement | null>(null);
     overflow: hidden; /* 防止内容超出容器 */
     border-radius: 24px;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.5); /* 调整阴影样式 */
+    box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.3); /* 调整阴影样式 */
 
     .item {
         display: flex; /* 使用 Flexbox 使内容水平排列 */
@@ -54,7 +54,7 @@ const mainbox = ref<HTMLElement | null>(null);
             width: 60%; /* 设置图片容器宽度 */
             height: 100%; /* 设置图片容器高度与 mainbox 一致 */
             margin-left: -20px; /* 向左移动容器 */
-            box-shadow: 4px 0 8px rgba(var(--blue-shadow-color), 0.4); /* 默认阴影样式 */
+            box-shadow: 4px 0 8px rgba(var(--blue-shadow-color), 0.3); /* 默认阴影样式 */
             transition: all 0.5s ease; /* 设置缩放动画过渡 */
 
             &:hover {
@@ -75,23 +75,31 @@ const mainbox = ref<HTMLElement | null>(null);
         }
 
         .textbox {
-            padding: 10px; 
+            padding: 10px 20px 10px 10px;  /* 内边距 */
             color: var(--font-color-grey); /* 文本颜色 */
-            width: 50%; /* 固定文本框宽度 */
+            width: 40%; /* 固定文本框宽度 */
             display: flex; /* 让文本框内部内容也使用 flexbox */
             flex-direction: column; /* 使内容纵向排列 */
             justify-content: center; /* 垂直居中对齐 */
             align-items: center; /* 水平居中 */
+            overflow-wrap: break-word; /* 添加文字换行 */
+            word-wrap: break-word; /* 兼容性支持 */
 
             .title {
                 font-size: 48px; /* 设置标题字体大小 */
                 font-weight: bold; /* 加粗标题 */
                 margin: 0; /* 去掉默认边距 */
+                text-align: center; /* 文字居中 */
+                overflow-wrap: break-word; /* 添加文字换行 */
+                word-wrap: break-word; /* 兼容性支持 */
             }
 
             .subtitle {
                 font-size: 20px; /* 设置副标题字体大小 */
                 margin: 5px 0; /* 设置上下边距 */
+                text-align: center; /* 文字居中 */
+                overflow-wrap: break-word; /* 添加文字换行 */
+                word-wrap: break-word; /* 兼容性支持 */
             }
         }
     }
@@ -104,15 +112,13 @@ const mainbox = ref<HTMLElement | null>(null);
         
         .item {
             .imgbox {
-                width: 60%; /* 移动端图片容器宽度 */
                 box-shadow: 3px 0 5px rgba(var(--blue-shadow-color), 0.3); /* 移动端阴影效果 */
-                transition: all 0.5s ease; /* 缩放动画过渡 */
                 img {
                     width: 120%;
                 }
 
                 &:hover {
-                    transform: scale(1.05); /* 图片悬浮时缩放效果 */
+                    transform: none;
                 }
 
                 &.reverse {
@@ -122,11 +128,11 @@ const mainbox = ref<HTMLElement | null>(null);
 
             .textbox {
                 .title {
-                    font-size: 25px;
+                    font-size: 22px;
                 }
 
                 .subtitle {
-                    font-size: 15px;
+                    font-size: 12px;
                 }
             }
         }

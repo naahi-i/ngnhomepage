@@ -3,14 +3,15 @@
         <div class="ImgShowcase">
             <!-- <p>Image</p> -->
             <ImgShowcase />
-            <SignText></SignText>
+            <ImgCard></ImgCard>
+            <!-- <SignText></SignText> -->
         </div>
     </div>
 </template>
 <script setup lang="ts">
 import ImgShowcase from './ImgShowcase/index.vue';
-import TestBox from './TestBox/Testbox.vue';
 import SignText from './SignText.vue'
+import ImgCard from './ImgCard.vue';
 </script>
 
 <style scoped lang="less">

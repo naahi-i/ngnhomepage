@@ -162,6 +162,7 @@ const handleTouchEnd = (e: TouchEvent) => {
     width: 65vw;
     margin: auto;
     height: 410px; // 固定容器高度
+    mask: linear-gradient(to bottom, transparent, black 4%, black 97%, transparent);
 }
 
 .showcase-items-wrapper {

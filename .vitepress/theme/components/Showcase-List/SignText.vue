@@ -22,7 +22,7 @@ export default {
                 this.hasRendered = true;
                 const fontSize = window.innerWidth <= 768 ? 35 : 100;
                 new Vara("#text-container", "https://cdn.jsdelivr.net/gh/akzhy/Vara/fonts/Satisfy/SatisfySL.json", [
-                    { text: "S.C.A.L.E" }  
+                    { text: "S.H.C.A.L.E" }  
                 ], {
                     fontSize: fontSize,
                     color: "#000",
