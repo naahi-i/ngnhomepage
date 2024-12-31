@@ -124,10 +124,6 @@ const mainbox = ref<HTMLElement | null>(null);
                     width: 120%;
                 }
 
-                &:hover {
-                    transform: none;
-                }
-
                 &.reverse {
                     box-shadow: -3px 0 5px rgba(var(--blue-shadow-color), 0.3); /* 调整移动端反转阴影方向 */
                 }
