@@ -29,5 +29,6 @@ onMounted(() => {
 <style>
 .gt-container .gt-header-textarea {
   color: #000;
+  background-color: var(--general-background-color) !important;
 }
 </style>

@@ -39,7 +39,7 @@ const mainbox = ref<HTMLElement | null>(null);
     width: 95%;
     overflow: hidden; /* 防止内容超出容器 */
     border-radius: 24px;
-    box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.3); /* 调整阴影样式 */
+    box-shadow: 0 0px 8px rgba(var(--blue-shadow-color), 0.4); /* 调整阴影样式 */
 
     .item {
         display: flex; /* 使用 Flexbox 使内容水平排列 */
@@ -56,15 +56,13 @@ const mainbox = ref<HTMLElement | null>(null);
             width: 60%; /* 设置图片容器宽度 */
             height: 100%; /* 设置图片容器高度与 mainbox 一致 */
             margin-left: -20px; /* 向左移动容器 */
-            box-shadow: 4px 0 8px rgba(var(--blue-shadow-color), 0.3); /* 默认阴影样式 */
             transition: width 0.5s; /* 设置缩放动画过渡 */
 
             &:hover {
                 width: 65%; /* 图片容器在鼠标悬浮时扩展宽度 */
             }
 
-            &.reverse { /* 反转阴影样式 */
-                box-shadow: -4px 0 8px rgba(var(--blue-shadow-color), 0.4); /* 调整阴影方向 */
+            &.reverse { 
                 img {
                     margin-left: -10px; /* 向左移动图片，增加负值以实现向左修正 */
                 }
@@ -79,10 +77,10 @@ const mainbox = ref<HTMLElement | null>(null);
         }
 
         .textbox {
-            padding: 10px 20px 10px 10px;  /* 内边距 */
+            padding: 10px 25px 10px 10px;  /* 内边距 */
             color: var(--font-color-grey); /* 文本颜色 */
             width: 40%; /* 固定文本框宽度 */
-            display: flex; /* 让文本框内部内容也使��� flexbox */
+            display: flex; /* 让文本框内部内容也使用 flexbox */
             flex-direction: column; /* 使内容纵向排列 */
             justify-content: center; /* 垂直居中对齐 */
             align-items: center; /* 水平居中 */
@@ -119,13 +117,8 @@ const mainbox = ref<HTMLElement | null>(null);
         
         .item {
             .imgbox {
-                box-shadow: 3px 0 5px rgba(var(--blue-shadow-color), 0.3); /* 移动端阴影效果 */
                 img {
                     width: 120%;
-                }
-
-                &.reverse {
-                    box-shadow: -3px 0 5px rgba(var(--blue-shadow-color), 0.3); /* 调整移动端反转阴影方向 */
                 }
             }
 

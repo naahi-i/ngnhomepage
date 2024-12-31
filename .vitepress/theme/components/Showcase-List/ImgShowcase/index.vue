@@ -28,17 +28,19 @@ import { ref, computed } from 'vue';
 import Showcase from './ImgShowcase-template.vue';
 import img1 from '../../img/win11-tan.png';
 import img2 from '../../img/pln.png';
-import img3 from '../../img/xdyd.png';
+import img3 from '../../img/Cecilia.jpg';
 import img4 from '../../img/Tsukiyuki_Miyako.png';
 import img5 from '../../img/tlbk.jpg';
+import img6 from '../../img/Al1s.jpg';
 
 // 保存原始的 showcaseItems
 const originalItems = [
-    { imageSrc: img1, title: 'Windows11-tan', subtitle2: 'win11娘可爱捏', isReversed: false, imgHeight: '100%', imgOffsetX: '-12px' },
-    { imageSrc: img2, title: '普拉娜', subtitle2: '阿洛娜前辈？', isReversed: true, imgHeight: '140%', imgOffsetX: '-10px' },
-    { imageSrc: img3, title: '喜多郁代', subtitle2: '喜多光环！', isReversed: false, imgHeight: '180%', imgOffsetX: '-8px' },
-    { imageSrc: img4, title: '月雪宫子', subtitle2: '这里是RABBIT1、现在作战开始。', isReversed: true, imgHeight: '100%', imgOffsetX: '-15px' },
-    { imageSrc: img5, title: '特莉波卡', subtitle2: '是小死神', isReversed: true, imgHeight: '100%', imgOffsetX: '-15px' },
+    { imageSrc: img1, title: 'Windows11-tan', subtitle2: 'win11娘可爱捏', isReversed: false, imgHeight: '100%', imgOffsetX: '15px' },
+    { imageSrc: img2, title: '普拉娜', subtitle2: '阿洛娜前辈？', isReversed: true, imgHeight: '140%'},
+    { imageSrc: img3, title: '塞西莉亚', subtitle2: '简直就是小天使', isReversed: false, imgHeight: '130%'},
+    { imageSrc: img4, title: '月雪宫子', subtitle2: '这里是RABBIT1、现在作战开始。', isReversed: true, imgHeight: '100%', imgOffsetX: '-25px' },
+    { imageSrc: img5, title: '特莉波卡', subtitle2: '是小死神', isReversed: false, imgHeight: '100%'},
+    { imageSrc: img6, title: '爱丽丝', subtitle2: '邦邦咔邦！', isReversed: true, imgHeight: '100%'},
 ];
 
 // 创建循环数组
