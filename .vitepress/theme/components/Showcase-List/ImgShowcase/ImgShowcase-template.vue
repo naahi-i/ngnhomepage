@@ -30,13 +30,15 @@ const mainbox = ref<HTMLElement | null>(null);
 </script>
 
 <style scoped lang="less">
+.mainbox{
+    transition: all 0.8s ; /* 添加过渡效果 */
+}
 .mainbox {
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
     height: 410px; 
     width: 95%;
     overflow: hidden; /* 防止内容超出容器 */
     border-radius: 24px;
-    background-color: white;
     box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.3); /* 调整阴影样式 */
 
     .item {
@@ -55,10 +57,10 @@ const mainbox = ref<HTMLElement | null>(null);
             height: 100%; /* 设置图片容器高度与 mainbox 一致 */
             margin-left: -20px; /* 向左移动容器 */
             box-shadow: 4px 0 8px rgba(var(--blue-shadow-color), 0.3); /* 默认阴影样式 */
-            transition: all 0.5s ease; /* 设置缩放动画过渡 */
+            transition: width 0.5s; /* 设置缩放动画过渡 */
 
             &:hover {
-                width: 70%; /* 图片容器在鼠标悬浮时扩展宽度 */
+                width: 65%; /* 图片容器在鼠标悬浮时扩展宽度 */
             }
 
             &.reverse { /* 反转阴影样式 */
@@ -71,6 +73,8 @@ const mainbox = ref<HTMLElement | null>(null);
             img {
                 width: 106%; /* 确保图片宽度填满容器 */
                 object-fit: cover; /* 保持图片的宽高比 */
+                filter: var(--img-brightness); /* 添加亮度过滤器 */
+                transition: filter 0.5s ease; /* 添加过渡效果 */
             }
         }
 
@@ -78,12 +82,15 @@ const mainbox = ref<HTMLElement | null>(null);
             padding: 10px 20px 10px 10px;  /* 内边距 */
             color: var(--font-color-grey); /* 文本颜色 */
             width: 40%; /* 固定文本框宽度 */
-            display: flex; /* 让文本框内部内容也使用 flexbox */
+            display: flex; /* 让文本框内部内容也使��� flexbox */
             flex-direction: column; /* 使内容纵向排列 */
             justify-content: center; /* 垂直居中对齐 */
             align-items: center; /* 水平居中 */
             overflow-wrap: break-word; /* 添加文字换行 */
             word-wrap: break-word; /* 兼容性支持 */
+            transition: all 0.5s; /* 添加过渡效果 */
+            background-color: var(--foreground-color); /* 背景色 */
+
 
             .title {
                 font-size: 48px; /* 设置标题字体大小 */

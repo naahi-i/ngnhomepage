@@ -1,7 +1,7 @@
 <template>
     <div v-for="(label, id) in toggles" :key="id">
         <input type="checkbox" :id="id" :checked="state[id]" @change="toggleSwitch(id)">
-        <label :for="id" class="toggleSwitch">
+        <label :for="id" class="toggleSwitch" :class="{ 'cooling': id === 'darkMode' && isButtonCooling }">
             <span class="text">{{ label }}</span>
         </label>
     </div>
@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { useStore } from '../../store'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 const { state } = useStore()
 
 // 定义可切换的项
@@ -17,7 +17,8 @@ const toggles = {
     fireworksEnabled: '烟花',
     SpinePlayerEnabled: '阿罗娜',
     toTopEnabled: '回顶',
-    Animation : '动画效果',
+    Animation: '动画效果',
+    darkMode: 'Dark(施工中)'
 }
 
 // 页面加载时从 localStorage 读取状态并应用
@@ -28,14 +29,34 @@ onMounted(() => {
             state[key] = JSON.parse(storedValue);
         }
     });
+    // 应用主题
+    applyTheme(state.darkMode);
 });
 
+const isButtonCooling = ref(false);
+
 const toggleSwitch = (key: string) => {
+    if (key === 'darkMode' && isButtonCooling.value) {
+        return;
+    }
+
     const isChecked = state[key];
     state[key] = !isChecked;
     // 切换开关状态并保存到 localStorage
     localStorage.setItem(key, JSON.stringify(!isChecked));
+    
+    if (key === 'darkMode') {
+        applyTheme(!isChecked);
+        isButtonCooling.value = true;
+        setTimeout(() => {
+            isButtonCooling.value = false;
+        }, 800); // 设置0.8秒冷却时间
+    }
 };
+
+const applyTheme = (isDark: boolean) => {
+  document.documentElement.setAttribute('theme', isDark ? 'dark' : 'light');
+}
 </script>
 
 <style scoped lang="less">
@@ -63,6 +84,7 @@ input[type="checkbox"] {
         right: -42px;
         font-size: 12px;
         user-select: none;
+        white-space: pre-line;
     }
 }
 
@@ -86,5 +108,10 @@ input:checked + .toggleSwitch::after {
 
 input:checked + .toggleSwitch {
     background-color: rgb(66, 92, 139);
+}
+
+.cooling {
+    pointer-events: none;
+    opacity: 0.7;
 }
 </style>

@@ -5,7 +5,6 @@
       postViewer: state.currPost.href,
       posts: page.filePath === 'posts/index.md',
       loadingComplete: !state.splashLoading,
-      blurred: page.filePath === 'posts/index.md'
     }"
   >
     <slot></slot>
@@ -91,8 +90,13 @@ class SiriWave {
     if (!this.run) return
     this.phase = (this.phase + this.speed) % (Math.PI * 64)
     this._clear()
-    this._drawLine(0.5, 'rgba(234, 239, 245, 0.8)', 1, 0.35, 6)
-    this._drawLine(1, 'rgba(234, 239, 245, 0.5)', 1, 0.25, 6)
+    
+    // 获取计算后的 CSS 变量值
+    const wave1Color = getComputedStyle(document.documentElement).getPropertyValue('--wave-color1').trim()
+    const wave2Color = getComputedStyle(document.documentElement).getPropertyValue('--wave-color2').trim()
+    
+    this._drawLine(0.5, wave1Color, 1, 0.35, 6)
+    this._drawLine(1, wave2Color, 1, 0.25, 6)
     this.animationFrameID = requestAnimationFrame(this._draw.bind(this))
   }
 
@@ -190,11 +194,6 @@ const move = () => {
     animation: fade-blur-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
-  &.blurred .bg-img,
-  &.blurred .bg-video {
-    filter: blur(20px);
-  }
-
   .bg-img,
   .bg-video {
     position: absolute;
@@ -203,8 +202,8 @@ const move = () => {
     height: 100%;
     background-size: cover;
     background-position: center center;
-    transition: filter 0.8s ease-in-out;
-    will-change: filter;
+    filter: var(--img-brightness-banner); /* 添加亮度过滤器 */
+    transition: filter 0.5s; /* 添加过渡效果 */
   }
 
   .bg-img {
@@ -260,11 +259,6 @@ const move = () => {
   .banner{
     .downarrow {
       font-size: 50px;
-    }
-    &.blurred .bg-img,
-    &.blurred .bg-video {
-      filter: blur(0px);
-      opacity: 1;
     }
   }
   .posts {

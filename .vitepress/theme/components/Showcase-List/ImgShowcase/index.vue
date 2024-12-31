@@ -170,7 +170,6 @@ const handleTouchEnd = (e: TouchEvent) => {
     flex-direction: column; // 纵向排列
     will-change: transform;
     backface-visibility: hidden;
-    transform-style: preserve-3d;
 }
 
 .dots-wrapper {
@@ -188,15 +187,15 @@ const handleTouchEnd = (e: TouchEvent) => {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--dot);
     cursor: pointer;
-    transition: height 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+    transition: height 0.3s, background-color 0.3s;
 
     &.active {
         width: 6px;
         height: 18px; // 垂直方向拉长
         border-radius: 10px;
-        background-color: var(--color-blue);
+        background-color: var(--dot-active);
     }
 }
 
@@ -205,10 +204,6 @@ const handleTouchEnd = (e: TouchEvent) => {
         width: 100vw;
         height: 310px;
         touch-action: none; // 禁用浏览器默认触摸行为
-    }
-
-    .showcase-items-wrapper {
-        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .dots-wrapper {

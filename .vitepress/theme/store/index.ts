@@ -12,6 +12,7 @@ interface StoreState {
   toTopEnabled: boolean
   showDropdownMenu: boolean
   Animation: boolean
+  darkMode: boolean
 }
 
 const state: StoreState = reactive({
@@ -35,6 +36,7 @@ const state: StoreState = reactive({
   SpinePlayerEnabled: true,
   toTopEnabled: true,
   showDropdownMenu: false,
+  darkMode: false,
 })
 
 export function useStore() {

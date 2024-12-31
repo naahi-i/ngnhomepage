@@ -88,6 +88,7 @@ header {
       height: 36px;
       width: auto;
       filter: drop-shadow(0 0 5px rgba(18, 138, 250, 0.5));
+      user-select: none;
     }
     z-index: -2;
   }

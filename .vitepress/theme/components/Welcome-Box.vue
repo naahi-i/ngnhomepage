@@ -13,7 +13,7 @@
       <div
         class="info-box"
         :style="{
-          background: `linear-gradient(${angle}deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5))`,
+          background: `linear-gradient(${angle}deg, var(--infobox-background-initial), var(--infobox-background-final))`,
         }"
       >
         <img @dragstart.prevent src="../assets/banner/avatar.webp" alt="" class="avatar" />
@@ -121,11 +121,12 @@ onMounted(() => {
 .welcome-text {
   font-size: 80px;
   font-weight: bold;
-  color: var(--foreground-color);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  color: var(--welcome-text-color);
+  text-shadow: var(--welcome-text-shadow);
   text-align: center;
   margin-bottom: 100px;
   user-select: none;
+  transition: color 0.5s, text-shadow 0.5s; /* 添加过渡效果 */
 }
 
 .info-box {
@@ -136,8 +137,9 @@ onMounted(() => {
   padding: 60px 40px 35px 40px;
   width: 720px;
   border-radius: 50px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--info-box-shadow);
   backdrop-filter: var(--blur-val) saturate(120%);
+  transition: backdrop-filter 0.5s; /* 添加过渡效果 */
 
   .avatar {
     position: absolute;
@@ -152,6 +154,7 @@ onMounted(() => {
     transition: transform 0.6s ease, box-shadow 0.4s ease;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
     cursor: pointer;
+    user-select: none;
 
     &:hover {
       transform: translate(-50%, -50%) rotate(1turn) scale(1.1);

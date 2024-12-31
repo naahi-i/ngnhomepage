@@ -79,7 +79,7 @@ watch(
     &::after {
       content: '';
       position: fixed;
-      top: 45%;
+      top: 40%;
       left: 24%;
       width: 52%;
       height: 1px;
@@ -112,7 +112,7 @@ watch(
 
 @media (max-width: 768px) {
   .dropdown-menu {
-    top: -140.7%;
+    top: -200%;
   }
 }
 </style>
