@@ -51,11 +51,6 @@ watch(
 const themeConfig = useData().theme.value
 </script>
 <style lang="less">
-.fade-up-enter-active,
-.fade-up-leave-active {
-  transition: opacity 0.5s ease-out, transform 1s cubic-bezier(.61,.15,.26,1);
-}
-
 .fade-up-enter-from,
 .fade-up-leave-to {
   opacity: 0;
@@ -71,11 +66,12 @@ const themeConfig = useData().theme.value
   border: solid 2px var(--foreground-color);
   background: var(--foreground-color);
   box-shadow: 0px 0px 8px rgb(var(--blue-shadow-color), 0.8);
+  transition: opacity 0.5s ease-out, transform 1s cubic-bezier(.61,.15,.26,1), border 0.5s, background 0.5s, box-shadow 0.5s;
 }
 
 .content {
-  background-image: linear-gradient(90deg, rgba(159, 219, 252, 0.15) 3%, transparent 0),
-    linear-gradient(1turn, rgba(159, 219, 252, 0.15) 3%, transparent 0);
+  background-image: linear-gradient(90deg, rgba(159, 219, 252, var(--content-opacity)) 3%, transparent 0),
+    linear-gradient(1turn, rgba(159, 219, 252, var(--content-opacity)) 3%, transparent 0);
   background-size: 20px 20px;
   background-position: 50%;
   /**
@@ -93,9 +89,9 @@ const themeConfig = useData().theme.value
 
   blockquote {
     margin: 16px 0;
-    border-left: 3px solid #5cd3ff;
+    border-left: 3px solid #9d7cd8; // 更改引用块边框颜色
     padding-left: 16px;
-    background-color: #5cd4ff25;
+    background-color: rgba(157, 124, 216, 0.1); // 更改引用块背景色
     border-radius: 8px;
   }
 
@@ -117,7 +113,7 @@ const themeConfig = useData().theme.value
   }
 
   code {
-    background-color: #f0f0f0;
+    background-color: rgba(157, 124, 216, 0.1); // 更改内联代码背景色
     border-radius: 3px;
   }
 
@@ -144,7 +140,7 @@ const themeConfig = useData().theme.value
 
   h2 {
     margin: 48px 0 16px;
-    border-top: 2px solid #ced4da;
+    border-top: 2px solid rgba(157, 124, 216, 0.3); // 更改二级标题边框颜色
     padding-top: 24px;
     letter-spacing: -0.02em;
     line-height: 32px;
@@ -214,7 +210,7 @@ const themeConfig = useData().theme.value
  * -------------------------------------------------------------------------- */
   hr {
     border: 0;
-    border-top: 2px dashed #ced4da;
+    border-top: 2px dashed rgba(157, 124, 216, 0.3); // 更改分割线颜色
   }
 
   /**
@@ -251,7 +247,7 @@ const themeConfig = useData().theme.value
   table {
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid #cad4d5;
+    border: 2px solid #383852; // 更改表格边框颜色
   }
 
   th,
@@ -263,20 +259,21 @@ const themeConfig = useData().theme.value
   }
 
   th {
-    background-color: #e7f6fa;
-    color: var(--btn-hover);
+    background-color: rgba(157, 124, 216, 0.1); // 更改表头背景色
+    color: #e0e0e6; // 更改表头文字颜色
   }
 
   th:nth-child(odd) {
-    background-color: #e0f0f2;
+    background-color: rgba(157, 124, 216, 0.15); // 更改奇数列表头背景色
   }
 
   td {
-    background-color: #f7f7f6;
+    background-color: rgba(31, 31, 44, 0.6); // 更改单元格背景色
+    color: #c8c8dc; // 更改单元格文字颜色
   }
 
   td:nth-child(odd) {
-    background-color: #ececeb;
+    background-color: rgba(31, 31, 44, 0.8); // 更改奇数列单元格背景色
   }
 
   /**
@@ -287,10 +284,10 @@ const themeConfig = useData().theme.value
     display: flex;
     flex-direction: row-reverse;
     position: relative;
-    background-color: #efefef;
-    border: 2px solid var(--foreground-color);
+    background-color: #1f1f2c; // 更改代码块背景色
+    border: 2px solid #383852; // 更改代码块边框颜色
     border-radius: 16px;
-    box-shadow: 0px 0px 5px #c1c1c1;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); // 调整阴影
     overflow: hidden;
     padding-top: 48px;
     margin-bottom: 10px;
@@ -334,9 +331,9 @@ const themeConfig = useData().theme.value
       left: 0;
       right: 0;
       height: 48px;
-      border-bottom: 3px solid rgb(213, 217, 219);
+      border-bottom: 3px solid #383852; // 更改顶部边框颜色
       box-sizing: border-box;
-      background-color: rgb(239, 242, 244);
+      background-color: rgba(31, 31, 44, 0.8); // 更改顶部背景色
       background-image: var(--deco2);
       background-repeat: no-repeat;
       background-position: left;
@@ -355,7 +352,7 @@ const themeConfig = useData().theme.value
     }
 
     .line-numbers-wrapper {
-      border-right: 2px solid #dfdfdf;
+      border-right: 2px solid #383852; // 更改行号边框颜色
       text-align: center;
       user-select: none;
     }
@@ -371,6 +368,8 @@ const themeConfig = useData().theme.value
  * -------------------------------------------------------------------------- */
 
   .custom-block {
+    transition: background-color 0.5s, border-color 0.5s, color 0.5s;
+
     &.tip,
     &.info,
     &.warning,
@@ -394,9 +393,13 @@ const themeConfig = useData().theme.value
       border-color: #57b6f6;
       color: #005e86;
 
-      .custom-block-title {
-        &::before {
-          content: var(--icon-tip);
+      html[theme='dark'] & {
+        background-color: rgba(158, 124, 216, 0.18);
+        border-color: #9e7cd8ae;
+        color: #e0e0e6;
+
+        .custom-block-title {
+          color: #b8a5e3;
         }
       }
     }
@@ -405,9 +408,13 @@ const themeConfig = useData().theme.value
       background-color: #f3f5f7;
       border-color: var(--font-color-grey);
 
-      .custom-block-title {
-        &::before {
-          content: var(--icon-info);
+      html[theme='dark'] & {
+        background-color: rgba(108, 182, 255, 0.161);
+        border-color: #6cb6ffcf;
+        color: #e0e0e6;
+
+        .custom-block-title {
+          color: #89c4ff;
         }
       }
     }
@@ -417,11 +424,12 @@ const themeConfig = useData().theme.value
       color: #6b5900;
       background-color: #fff7d0;
 
-      .custom-block-title {
-        color: #b29400;
+      html[theme='dark'] & {
+        background-color: rgba(231, 192, 0, 0.1);
+        color: #f0d87d;
 
-        &::before {
-          content: var(--icon-warning);
+        .custom-block-title {
+          color: #e7c000;
         }
       }
     }
@@ -431,26 +439,24 @@ const themeConfig = useData().theme.value
       color: #4d0000;
       background-color: #ffe6e6;
 
-      .custom-block-title {
-        color: #900000;
+      html[theme='dark'] & {
+        background-color: rgba(213, 141, 134, 0.1);
+        color: #ffc4c0;
 
-        &::before {
-          content: var(--icon-danger);
+        .custom-block-title {
+          color: #ff9b93;
         }
       }
     }
 
     &.details {
-      summary {
-        font-weight: bold;
-      }
-
-      margin: 1rem 0;
-      padding: 1rem 1.5rem;
-      overflow-x: auto;
-      border-radius: 16px;
       background-color: #f3f5f7;
       border-color: var(--font-color-grey);
+
+      html[theme='dark'] & {
+        background-color: rgba(157, 124, 216, 0.05);
+        border-color: #383852;
+      }
     }
   }
 
@@ -468,6 +474,8 @@ const themeConfig = useData().theme.value
   iframe {
     max-width: 100%;
     border-radius: 8px;
+    filter: var(--img-brightness); /* 添加亮度过滤器 */
+    transition: filter 0.5s; /* 添加过渡效果 */
   }
 
   code,

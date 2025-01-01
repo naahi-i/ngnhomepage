@@ -149,7 +149,7 @@ onMounted(() => {
     width: 128px;
     height: 128px;
     border-radius: 50%;
-    border: solid 3px var(--foreground-color);
+    border: solid 3px var(--infobox-border-color);
     margin-bottom: 20px;
     transition: transform 0.6s ease, box-shadow 0.4s ease;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);

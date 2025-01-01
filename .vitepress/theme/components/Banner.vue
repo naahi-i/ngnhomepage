@@ -186,7 +186,7 @@ const move = () => {
     z-index: 100;
     animation: float-fade 2s ease-in-out infinite;
     font-size: 60px;
-    color: var(--foreground-color);
+    color: var(--downarrow-color);
     text-shadow: 1px 0.8px 4px rgba(var(--blue-shadow-color), 1), 0 0 2px rgba(40, 135, 200, 0.2);
   }
 
@@ -202,12 +202,16 @@ const move = () => {
     height: 100%;
     background-size: cover;
     background-position: center center;
-    filter: var(--img-brightness-banner); /* 添加亮度过滤器 */
+    filter: var(--img-brightness); /* 添加亮度过滤器 */
     transition: filter 0.5s; /* 添加过渡效果 */
   }
 
   .bg-img {
     background-image: url(../assets/banner/banner.jpg);
+    html[theme="dark"] & {
+      background-image: url(../assets/banner/banner_dark.jpg), url(../assets/banner/banner.jpg);
+    }
+    transition: background-image 0.5s; /* 添加过渡效果 */
   }
 }
 
