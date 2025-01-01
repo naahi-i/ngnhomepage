@@ -126,7 +126,7 @@ onMounted(() => {
   text-align: center;
   margin-bottom: 100px;
   user-select: none;
-  transition: color 0.5s, text-shadow 0.5s; /* 添加过渡效果 */
+  transition: color 0.5s, text-shadow 0.5s;
 }
 
 .info-box {
@@ -220,6 +220,9 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .banner {
+    .welcome-text {
+      font-size: 34px;
+    }
     .welcome-box {
       padding-bottom: 0;
     }
