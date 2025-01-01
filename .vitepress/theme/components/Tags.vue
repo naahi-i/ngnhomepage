@@ -53,7 +53,7 @@ onUnmounted(() => {
   flex-wrap: wrap;
   box-sizing: border-box;
   padding: 16px;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: var(--infobox-background-initial);
   border-radius: 32px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: var(--blur-val);

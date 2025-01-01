@@ -151,10 +151,11 @@ onMounted(() => {
     border-radius: 50%;
     border: solid 3px var(--infobox-border-color);
     margin-bottom: 20px;
-    transition: transform 0.6s ease, box-shadow 0.4s ease;
+    transition: transform 0.6s ease, box-shadow 0.4s ease, filter 0.5s;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
     cursor: pointer;
     user-select: none;
+    filter: var(--img-brightness);
 
     &:hover {
       transform: translate(-50%, -50%) rotate(1turn) scale(1.1);
@@ -228,7 +229,7 @@ onMounted(() => {
     }
 
     .info-box {
-      width: 78vw;
+      width: 75vw;
       border-radius: 36px;
       padding: 48px 20px 20px 20px;
 

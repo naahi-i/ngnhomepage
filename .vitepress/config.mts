@@ -112,7 +112,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     admin: ['naahi-i'],
   },
   markdown: {
-    theme: 'github-light',
+    theme: 'solarized-dark',
     lineNumbers: true,
     math: true,
     config: (md) => {

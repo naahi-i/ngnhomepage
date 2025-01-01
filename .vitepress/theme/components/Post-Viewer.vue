@@ -1,10 +1,8 @@
 <template>
-  <transition name="fade-up" appear>
-    <div class="view-box container">
-      <content class="content" />
-      <Gitalk v-if="themeConfig.clientID"></Gitalk>
-    </div>
-  </transition>
+  <div class="view-box container">
+    <content class="content" />
+    <Gitalk v-if="themeConfig.clientID"></Gitalk>
+  </div>
 </template>
 <script setup lang="ts">
 import Gitalk from './Gitalk.vue'
@@ -51,14 +49,7 @@ watch(
 const themeConfig = useData().theme.value
 </script>
 <style lang="less">
-.fade-up-enter-from,
-.fade-up-leave-to {
-  opacity: 0;
-  transform: translateY(150vh);
-}
-
 .view-box {
-  width: 95vw !important;
   box-sizing: border-box;
   position: relative;
   padding: 36px;
@@ -70,8 +61,8 @@ const themeConfig = useData().theme.value
 }
 
 .content {
-  background-image: linear-gradient(90deg, rgba(159, 219, 252, var(--content-opacity)) 3%, transparent 0),
-    linear-gradient(1turn, rgba(159, 219, 252, var(--content-opacity)) 3%, transparent 0);
+  background-image: linear-gradient(90deg, rgba(159, 219, 252, 0.15) 3%, transparent 0),
+    linear-gradient(1turn, rgba(159, 219, 252, 0.15) 3%, transparent 0);
   background-size: 20px 20px;
   background-position: 50%;
   /**
@@ -89,12 +80,15 @@ const themeConfig = useData().theme.value
 
   blockquote {
     margin: 16px 0;
-    border-left: 3px solid #9d7cd8; // 更改引用块边框颜色
+    border-left: 3px solid #5cd3ff;
     padding-left: 16px;
-    background-color: rgba(157, 124, 216, 0.1); // 更改引用块背景色
+    background-color: #5cd4ff25;
     border-radius: 8px;
+    html[theme='dark'] & {
+      background-color: rgba(157, 124, 216, 0.1); // 更改引用块背景色
+      border-left: 3px solid #9d7cd8; // 更改引用块边框颜色
+    }
   }
-
   blockquote > p {
     margin: 0;
     font-size: 16px;
@@ -113,8 +107,11 @@ const themeConfig = useData().theme.value
   }
 
   code {
-    background-color: rgba(157, 124, 216, 0.1); // 更改内联代码背景色
+    background-color: #f0f0f0;
     border-radius: 3px;
+    html[theme='dark'] & {
+      background-color: rgba(157, 124, 216, 0.1);
+    }
   }
 
   /**
@@ -140,7 +137,7 @@ const themeConfig = useData().theme.value
 
   h2 {
     margin: 48px 0 16px;
-    border-top: 2px solid rgba(157, 124, 216, 0.3); // 更改二级标题边框颜色
+    border-top: 2px solid #ced4da;
     padding-top: 24px;
     letter-spacing: -0.02em;
     line-height: 32px;
@@ -210,7 +207,10 @@ const themeConfig = useData().theme.value
  * -------------------------------------------------------------------------- */
   hr {
     border: 0;
-    border-top: 2px dashed rgba(157, 124, 216, 0.3); // 更改分割线颜色
+    border-top: 2px dashed #ced4da;
+    html[theme='dark'] & {
+      border-top: 2px dashed rgba(157, 124, 216, 0.3); // 更改分割线颜色
+    }
   }
 
   /**
@@ -247,7 +247,10 @@ const themeConfig = useData().theme.value
   table {
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid #383852; // 更改表格边框颜色
+    border: 2px solid #cad4d5;
+    html[theme='dark'] & {
+      border: 2px solid #383852; // 更改表格边框颜色
+    }
   }
 
   th,
@@ -259,21 +262,34 @@ const themeConfig = useData().theme.value
   }
 
   th {
-    background-color: rgba(157, 124, 216, 0.1); // 更改表头背景色
-    color: #e0e0e6; // 更改表头文字颜色
+    background-color: #e7f6fa;
+    color: var(--btn-hover);
+    html[theme='dark'] & {
+      background-color: rgba(157, 124, 216, 0.1);
+      color: #e0e0e6; 
+    }
   }
 
   th:nth-child(odd) {
-    background-color: rgba(157, 124, 216, 0.15); // 更改奇数列表头背景色
+    background-color: #e0f0f2;
+    html[theme='dark'] & {
+      background-color: rgba(157, 124, 216, 0.15);
+    }
   }
 
   td {
-    background-color: rgba(31, 31, 44, 0.6); // 更改单元格背景色
-    color: #c8c8dc; // 更改单元格文字颜色
+    background-color: #f7f7f6;
+    html[theme='dark'] & {
+      background-color: rgba(31, 31, 44, 0.6);
+      color: #c8c8dc;
+    }
   }
 
   td:nth-child(odd) {
-    background-color: rgba(31, 31, 44, 0.8); // 更改奇数列单元格背景色
+    background-color: #ececeb;
+    html[theme='dark'] & {
+      background-color: rgba(31, 31, 44, 0.8);
+    }
   }
 
   /**
@@ -284,13 +300,18 @@ const themeConfig = useData().theme.value
     display: flex;
     flex-direction: row-reverse;
     position: relative;
-    background-color: #1f1f2c; // 更改代码块背景色
-    border: 2px solid #383852; // 更改代码块边框颜色
+    background-color: #efefef;
+    border: 2px solid var(--foreground-color);
     border-radius: 16px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); // 调整阴影
+    box-shadow: 0px 0px 5px #c1c1c1;
     overflow: hidden;
     padding-top: 48px;
     margin-bottom: 10px;
+    html[theme='dark'] & {
+      background-color: #1f1f2c;
+      border: 2px solid #383852;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    }
 
     .lang {
       position: absolute;
@@ -331,13 +352,17 @@ const themeConfig = useData().theme.value
       left: 0;
       right: 0;
       height: 48px;
-      border-bottom: 3px solid #383852; // 更改顶部边框颜色
+      border-bottom: 3px solid rgb(213, 217, 219);
       box-sizing: border-box;
-      background-color: rgba(31, 31, 44, 0.8); // 更改顶部背景色
+      background-color: rgb(239, 242, 244);
       background-image: var(--deco2);
       background-repeat: no-repeat;
       background-position: left;
       background-size: contain;
+      html[theme='dark'] & {
+        border-bottom: 3px solid #383852;
+        background-color: rgba(31, 31, 44, 0.8); 
+      }
     }
 
     pre {
@@ -352,9 +377,12 @@ const themeConfig = useData().theme.value
     }
 
     .line-numbers-wrapper {
-      border-right: 2px solid #383852; // 更改行号边框颜色
+      border-right: 2px solid #dfdfdf;
       text-align: center;
       user-select: none;
+      html[theme='dark'] & {
+        border-right: 2px solid #383852;
+      }
     }
 
     pre,
@@ -367,7 +395,7 @@ const themeConfig = useData().theme.value
  * Custom Block
  * -------------------------------------------------------------------------- */
 
-  .custom-block {
+ .custom-block {
     transition: background-color 0.5s, border-color 0.5s, color 0.5s;
 
     &.tip,
@@ -454,7 +482,7 @@ const themeConfig = useData().theme.value
       border-color: var(--font-color-grey);
 
       html[theme='dark'] & {
-        background-color: rgba(157, 124, 216, 0.05);
+        background-color: rgba(158, 124, 216, 0.168);
         border-color: #383852;
       }
     }

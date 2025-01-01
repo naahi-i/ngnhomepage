@@ -126,7 +126,7 @@ const finalPosts = computed(() => {
 
     a {
       color: var(--font-color-grey);
-      transition: color 0.5s;
+      transition: text-shadow 0.5s, color 0.5s;
 
       &:hover {
         text-shadow: 0 0 3px var(--font-color-grey);
