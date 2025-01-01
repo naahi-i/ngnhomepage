@@ -220,10 +220,6 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .banner {
-    .welcome-text {
-      display: none;
-    }
-
     .welcome-box {
       padding-bottom: 0;
     }
