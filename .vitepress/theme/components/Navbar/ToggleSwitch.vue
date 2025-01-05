@@ -18,7 +18,7 @@ const toggles = {
     SpinePlayerEnabled: '阿罗娜',
     toTopEnabled: '回顶',
     Animation: '动画效果',
-    darkMode: 'Dark(施工中)'
+    darkMode: 'Dark'
 }
 
 // 页面加载时从 localStorage 读取状态并应用

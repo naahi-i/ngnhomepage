@@ -3,6 +3,7 @@
         <div class="ImgShowcase">
             <!-- <p>Image</p> -->
             <ImgShowcase />
+            <MusicShowcase></MusicShowcase>
             <ImgCard></ImgCard>
             <!-- <SignText></SignText> -->
         </div>
@@ -12,12 +13,10 @@
 import ImgShowcase from './ImgShowcase/index.vue';
 import SignText from './SignText.vue'
 import ImgCard from './ImgCard.vue';
+import MusicShowcase from './MusicShowcase.vue';
 </script>
 
 <style scoped lang="less">
-// .Showcase-list {
-//     margin: 50px auto;
-// }
 p {
     margin: 10px 0 20px 60px;
     font-size: 40px;

@@ -181,10 +181,9 @@ const move = () => {
 
   .downarrow {
     position: absolute;
-    bottom: 90px;
+    bottom: 10vh;
     cursor: pointer;
     z-index: 100;
-    animation: float-fade 2s ease-in-out infinite;
     font-size: 60px;
     color: var(--downarrow-color);
     text-shadow: 1px 0.8px 4px rgba(var(--blue-shadow-color), 1), 0 0 2px rgba(40, 135, 200, 0.2);
@@ -212,26 +211,6 @@ const move = () => {
       background-image: url(../assets/banner/banner_dark.jpg), url(../assets/banner/banner.jpg);
     }
     transition: background-image 0.5s; /* 添加过渡效果 */
-  }
-}
-
-@keyframes float-fade {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-}
-
-@keyframes fade-blur-in {
-  from {
-    filter: var(--blur-val);
-    transform: scale(1.5);
-  }
-  to {
-    filter: none;
-    transform: scale(1);
   }
 }
 

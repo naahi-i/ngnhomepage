@@ -53,11 +53,11 @@ const showcaseItems = ref([
 const currentIndex = ref(1);  // 初始索引为1
 const isScrolling = ref(false);
 const isTransitioning = ref(true);
-const itemHeight = ref(window.innerWidth <= 768 ? 310 : 410);
+const itemHeight = ref(window.innerWidth <= 768 ? 260 : 410);
 
 // 监听窗口大小变化
 window.addEventListener('resize', () => {
-    itemHeight.value = window.innerWidth <= 768 ? 310 : 410;
+    itemHeight.value = window.innerWidth <= 768 ? 260 : 410;
 });
 
 // 计算wrapper样式
@@ -204,7 +204,7 @@ const handleTouchEnd = (e: TouchEvent) => {
 @media (max-width: 768px) {
     .showcase-wrapper {
         width: 100vw;
-        height: 310px;
+        height: 260px;
         touch-action: none; // 禁用浏览器默认触摸行为
     }
 

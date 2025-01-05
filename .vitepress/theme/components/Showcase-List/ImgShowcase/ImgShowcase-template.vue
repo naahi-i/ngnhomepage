@@ -31,7 +31,7 @@ const mainbox = ref<HTMLElement | null>(null);
 
 <style scoped lang="less">
 .mainbox{
-    transition: all 0.8s ; /* 添加过渡效果 */
+    transition: all 0.8s ;
 }
 .mainbox {
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
@@ -112,7 +112,7 @@ const mainbox = ref<HTMLElement | null>(null);
 
 @media (max-width: 768px) {
     .mainbox {
-        height: 310px;
+        height: 260px;
         width: 90%;
         
         .item {
