@@ -40,7 +40,7 @@ const musicList = [
     },
     {
         title: "Dear Moments",
-        artist: "赤尾ひかる", 
+        artist: "赤尾ひかる",
         cover: "https://imgessl.kugou.com/stdmusic/20250101/20250101153640216055.jpg",
         link: "https://www.kugou.com/mixsong/4l4i0c47.html?fromsearch=dear%C2%A0moments"
     },
@@ -92,6 +92,8 @@ onMounted(() => {
     box-shadow: 0 4px 12px rgba(var(--blue-shadow-color), 0.15);
     margin: 50px auto;
     position: relative;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.5s ease;
+    -moz-transition: transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.5s ease;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.5s ease;
 
     .container-wrapper {
@@ -105,6 +107,13 @@ onMounted(() => {
         gap: 24px;
         z-index: 1;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+
+        &::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari, Edge */
+        }
     }
 
     .mini-container {
@@ -113,6 +122,8 @@ onMounted(() => {
         background-color: rgba(var(--blue-shadow-color), 0.03);
         box-shadow: 0 2px 8px rgba(var(--blue-shadow-color), 0.08);
         border-radius: 16px;
+        -webkit-transition: -webkit-transform 0.3s, background-color 0.5s ease;
+        -moz-transition: transform 0.3s, background-color 0.5s ease;
         transition: transform 0.3s, background-color 0.5s ease;
         display: flex;
         justify-content: center;
@@ -130,9 +141,13 @@ onMounted(() => {
             bottom: 0;
             background-size: cover;
             background-position: center;
+            -webkit-filter: blur(25px);
+            -moz-filter: blur(25px);
             filter: blur(25px);
             opacity: 0.15;
             z-index: 0;
+            -webkit-transition: opacity 0.3s;
+            -moz-transition: opacity 0.3s;
             transition: opacity 0.3s;
             background-image: var(--bg-image);
         }
@@ -152,7 +167,7 @@ onMounted(() => {
             width: 100%;
             padding: 15px;
             cursor: default;
-            
+
             .album-cover {
                 position: relative;
                 width: 120px;
@@ -160,15 +175,21 @@ onMounted(() => {
                 margin: 0 auto;
                 border-radius: 8px;
                 overflow: hidden;
+                -webkit-transition: -webkit-transform 0.3s ease, box-shadow 0.3s ease;
+                -moz-transition: transform 0.3s ease, box-shadow 0.3s ease;
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
 
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    -webkit-transition: -webkit-transform 0.3s ease;
+                    -moz-transition: transform 0.3s ease;
                     transition: transform 0.3s ease;
 
                     &:hover {
+                        -webkit-transform: scale(1.05);
+                        -moz-transform: scale(1.05);
                         transform: scale(1.05);
                     }
                 }
@@ -182,6 +203,10 @@ onMounted(() => {
                     font-size: 16px;
                     font-weight: 600;
                     margin-bottom: 5px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
                 }
 
                 .artist {
@@ -196,10 +221,15 @@ onMounted(() => {
                     padding: 8px 16px;
                     background: rgba(var(--blue-shadow-color), 0.08);
                     border-radius: 5px;
+                    -webkit-transform: skew(-5deg);
+                    -moz-transform: skew(-5deg);
+                    transform: skew(-5deg);
+                    -webkit-transition: all 0.3s ease;
+                    -moz-transition: all 0.3s ease;
                     transition: all 0.3s ease;
                     text-decoration: none;
                     color: var(--font-color);
-                    transform: skew(-5deg);
+
                     span {
                         font-size: 14px;
                     }
@@ -217,6 +247,12 @@ onMounted(() => {
     .MusicCard {
         width: 90vw;
         margin: 10px auto 30px;
+
+        .container-wrapper::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Edge */
+        }
+
         .container-wrapper {
             height: auto;
             max-height: none;
@@ -225,8 +261,11 @@ onMounted(() => {
             overflow-x: auto;
             overflow-y: hidden;
             padding: 0px;
-            gap: 16px;
+            gap: 0px;
+            -webkit-scroll-snap-type: x mandatory;
+            -ms-scroll-snap-type: x mandatory;
             scroll-snap-type: x mandatory;
+            -webkit-scroll-behavior: smooth;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             -ms-overflow-style: none;
@@ -237,6 +276,8 @@ onMounted(() => {
             flex: 0 0 85%;
             min-width: 100%;
             height: 160px;
+            -webkit-scroll-snap-align: center;
+            -ms-scroll-snap-align: center;
             scroll-snap-align: center;
             margin: 0 4px;
             border-radius: 24px;

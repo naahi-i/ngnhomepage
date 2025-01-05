@@ -14,6 +14,40 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.12.31
+### 🔧添加音乐展示盒
+  $\qquad$ **·** 添加音乐展示盒   
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-5-music-mobile.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">Mobile</div>
+      </div>  
+      <div style="text-align: center;">
+        <img src='./img/25-1-5-music-pc.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">PC</div>
+      </div>
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/3e2b1fc1297ece3846edfdfd4af61b94143e14b5)</sub>  
+
+# ⚙️2024.12.31
+### 🔧暗色模式
+  $\qquad$ **·** 添加暗色模式    
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-12-31-homepage.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">Homepage</div>
+      </div>  
+      <div style="text-align: center;">
+        <img src='./img/25-12-31-postlist.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">Postlist</div>
+      </div>
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/3e2b1fc1297ece3846edfdfd4af61b94143e14b5)</sub>  
+
 # ⚙️2024.12.27
 ### 🔧修改主页样式
   $\qquad$ **·** 去除容器倾斜   
