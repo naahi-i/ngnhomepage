@@ -110,7 +110,7 @@ class SiriWave {
     
     if (this.isMobile) {
       // 移动端只绘制一层波浪
-      this._drawLine(0.5, wave1Color, 1, 0.3, 6)
+      this._drawLine(1, wave2Color, 1, 0.25, 6)
     } else {
       this._drawLine(0.5, wave1Color, 1, 0.35, 6)
       this._drawLine(1, wave2Color, 1, 0.25, 6)
