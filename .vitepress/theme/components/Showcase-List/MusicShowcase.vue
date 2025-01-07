@@ -104,7 +104,6 @@ onMounted(() => {
         max-height: 620px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
         align-items: flex-start;
         padding: 24px;
         gap: 24px;
@@ -113,8 +112,6 @@ onMounted(() => {
         -webkit-overflow-scrolling: touch;
         -ms-overflow-style: none;
         scrollbar-width: none;
-        /* 优化滚动性能 */
-        overscroll-behavior: contain;
         scroll-behavior: smooth;
 
         /* 启用GPU加速 */
@@ -123,7 +120,6 @@ onMounted(() => {
 
         &::-webkit-scrollbar {
             display: none;
-            /* Chrome, Safari, Edge */
         }
     }
 
