@@ -32,6 +32,11 @@ const handleScroll = () => {
   }
 }
 
+// 添加移动端检测函数
+const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 onMounted(async () => {
   // 延迟1秒后执行
   await new Promise(r => setTimeout(r, 1000));
@@ -159,7 +164,10 @@ onMounted(async () => {
         blinkInterval = setTimeout(playBlinkAnimation, randomTime * 1000)
       }
 
-      window.addEventListener('mousemove', moveBones)
+      // 修改鼠标移动监听器的添加逻辑
+      if (!isMobileDevice()) {
+        window.addEventListener('mousemove', moveBones)
+      }
       playBlinkAnimation()
     },
     error: function (playerInstance, reason) {
@@ -169,7 +177,9 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
-  window.removeEventListener('mousemove', moveBones)
+  if (!isMobileDevice()) {
+    window.removeEventListener('mousemove', moveBones)
+  }
   window.removeEventListener('scroll', handleScroll)
   if (blinkInterval) clearTimeout(blinkInterval)
 })

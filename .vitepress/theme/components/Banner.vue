@@ -50,6 +50,7 @@ class SiriWave {
   ctx = this.canvas.getContext('2d')!
   run = false
   animationFrameID: number | null = null
+  isMobile = /iPhone|Windows|iPad|iPod|Android/i.test(navigator.userAgent)
 
   constructor() {
     this.canvas.width = this.width
@@ -69,10 +70,22 @@ class SiriWave {
     this.ctx.lineWidth = width || 1
     F = F || this.F
     noise = noise * this.MAX || this.noise
-    for (let i = -this.K; i <= this.K; i += 0.01) {
-      const x = this.width * ((i + this.K) / (this.K * 2))
-      const y = this.height / 2 + noise * Math.pow(Math.sin(i * 10 * attenuation), 1) * Math.sin(F * i - this.phase)
-      this.ctx.lineTo(x, y)
+    
+    // 移动端使用更简单的计算方式
+    const step = this.isMobile ? 0.05 : 0.01
+    if (this.isMobile) {
+      for (let i = -this.K; i <= this.K; i += step) {
+        const x = this.width * ((i + this.K) / (this.K * 2))
+        // 简化的波形计算
+        const y = this.height / 2 + noise * Math.sin(F * i - this.phase)
+        this.ctx.lineTo(x, y)
+      }
+    } else {
+      for (let i = -this.K; i <= this.K; i += step) {
+        const x = this.width * ((i + this.K) / (this.K * 2))
+        const y = this.height / 2 + noise * Math.pow(Math.sin(i * 10 * attenuation), 1) * Math.sin(F * i - this.phase)
+        this.ctx.lineTo(x, y)
+      }
     }
     this.ctx.lineTo(this.width, this.height)
     this.ctx.lineTo(0, this.height)
@@ -95,9 +108,19 @@ class SiriWave {
     const wave1Color = getComputedStyle(document.documentElement).getPropertyValue('--wave-color1').trim()
     const wave2Color = getComputedStyle(document.documentElement).getPropertyValue('--wave-color2').trim()
     
-    this._drawLine(0.5, wave1Color, 1, 0.35, 6)
-    this._drawLine(1, wave2Color, 1, 0.25, 6)
-    this.animationFrameID = requestAnimationFrame(this._draw.bind(this))
+    if (this.isMobile) {
+      // 移动端只绘制一层波浪
+      this._drawLine(0.5, wave1Color, 1, 0.3, 6)
+    } else {
+      this._drawLine(0.5, wave1Color, 1, 0.35, 6)
+      this._drawLine(1, wave2Color, 1, 0.25, 6)
+    }
+    
+    // 移动端降低刷新率
+    const frameDelay = this.isMobile ? 32 : 16  // 移动端约30fps，桌面端约60fps
+    setTimeout(() => {
+      this.animationFrameID = requestAnimationFrame(this._draw.bind(this))
+    }, frameDelay)
   }
 
   start() {
