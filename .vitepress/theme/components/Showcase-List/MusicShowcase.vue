@@ -1,7 +1,7 @@
 <template>
     <div class="MusicCard">
         <div class="container-wrapper">
-            <div class="mini-container" v-for="(item, index) in musicList" :key="index">
+            <div class="mini-container" v-for="(item, index) in musicData" :key="index">
                 <div class="music-content">
                     <!-- 专辑封面 -->
                     <div class="album-cover">
@@ -25,13 +25,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useStore } from '../../store'
+
 const { state } = useStore()
 const isDarkMode = computed(() => state.darkMode)
 
-// 示例音乐列表数据
-const musicList = [
+const musicData = ref([
     {
         title: "左手右手",
         artist: "橘猫烧鲷鱼",
@@ -68,16 +68,16 @@ const musicList = [
         cover: "https://imgessl.kugou.com/stdmusic/20210301/20210301155935530755.jpg",
         link: "https://www.kugou.com/mixsong/4vxwiaf3.html?fromsearch=%E6%B0%94%E8%B1%A1%E7%AB%99%E5%8F%B0"
     },
-]
+])
 
-// 在模板加载后设置背景图
+// 背景模糊
 onMounted(() => {
-    const containers = document.querySelectorAll('.mini-container');
+    const containers = document.querySelectorAll('.mini-container')
     containers.forEach((container, index) => {
-        const backgroundImage = musicList[index].cover;
-        (container as HTMLElement).style.setProperty('--bg-image', `url(${backgroundImage})`);
-    });
-});
+        const backgroundImage = musicData.value[index].cover;
+        (container as HTMLElement).style.setProperty('--bg-image', `url(${backgroundImage})`)
+    })
+})
 </script>
 
 <style scoped lang="less">
@@ -89,12 +89,15 @@ onMounted(() => {
     overflow: hidden;
     background-color: var(--foreground-color);
     border-radius: 24px;
-    box-shadow: 0 4px 12px rgba(var(--blue-shadow-color), 0.15);
-    margin: 50px auto;
+    box-shadow: 0 0px 8px rgba(var(--blue-shadow-color), 0.20);
+    margin: auto;
     position: relative;
+    user-select: none;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.5s ease;
     -moz-transition: transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.5s ease;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.5s ease;
+    transform: translateZ(0);
+    will-change: transform;
 
     .container-wrapper {
         width: 100%;
@@ -108,11 +111,19 @@ onMounted(() => {
         z-index: 1;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        /* 优化滚动性能 */
+        overscroll-behavior: contain;
+        scroll-behavior: smooth;
+
+        /* 启用GPU加速 */
+        transform: translateZ(0);
+        will-change: transform;
 
         &::-webkit-scrollbar {
-            display: none;  /* Chrome, Safari, Edge */
+            display: none;
+            /* Chrome, Safari, Edge */
         }
     }
 
@@ -120,7 +131,6 @@ onMounted(() => {
         flex: 0 0 calc(33.33% - 16px);
         height: 280px;
         background-color: rgba(var(--blue-shadow-color), 0.03);
-        box-shadow: 0 2px 8px rgba(var(--blue-shadow-color), 0.08);
         border-radius: 16px;
         -webkit-transition: -webkit-transform 0.3s, background-color 0.5s ease;
         -moz-transition: transform 0.3s, background-color 0.5s ease;
@@ -131,6 +141,9 @@ onMounted(() => {
         cursor: pointer;
         position: relative;
         overflow: hidden;
+        /* 使用transform代替position来优化性能 */
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
 
         &::before {
             content: '';
@@ -150,6 +163,9 @@ onMounted(() => {
             -moz-transition: opacity 0.3s;
             transition: opacity 0.3s;
             background-image: var(--bg-image);
+            /* 优化模糊效果性能 */
+            will-change: opacity;
+            backface-visibility: hidden;
         }
 
         &:hover {
@@ -186,12 +202,6 @@ onMounted(() => {
                     -webkit-transition: -webkit-transform 0.3s ease;
                     -moz-transition: transform 0.3s ease;
                     transition: transform 0.3s ease;
-
-                    &:hover {
-                        -webkit-transform: scale(1.05);
-                        -moz-transform: scale(1.05);
-                        transform: scale(1.05);
-                    }
                 }
             }
 
@@ -241,6 +251,10 @@ onMounted(() => {
             }
         }
     }
+
+    .loading {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -250,7 +264,6 @@ onMounted(() => {
 
         .container-wrapper::-webkit-scrollbar {
             display: none;
-            /* Chrome, Safari, Edge */
         }
 
         .container-wrapper {
@@ -262,13 +275,8 @@ onMounted(() => {
             overflow-y: hidden;
             padding: 0px;
             gap: 0px;
-            -webkit-scroll-snap-type: x mandatory;
-            -ms-scroll-snap-type: x mandatory;
             scroll-snap-type: x mandatory;
-            -webkit-scroll-behavior: smooth;
             scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: none;
             scrollbar-width: none;
         }
 

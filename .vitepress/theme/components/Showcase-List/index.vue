@@ -1,11 +1,22 @@
 <template>
     <div class="Showcase-list">
         <div class="ImgShowcase">
-            <!-- <p>Image</p> -->
-            <ImgShowcase />
-            <MusicShowcase></MusicShowcase>
-            <ImgCard></ImgCard>
-            <!-- <SignText></SignText> -->
+            <div class="section">
+                <h2 class="section-title">轮播图</h2>
+                <ImgShowcase />
+            </div>
+            <div class="section">
+                <h2 class="section-title">音乐</h2>
+                <MusicShowcase />
+            </div>
+            <div class="section">
+                <h2 class="section-title">游戏</h2>
+                <GameShowcase />
+            </div>
+            <div class="section">
+                <h2 class="section-title">SCHALE</h2>
+                <ImgCard />
+            </div>
         </div>
     </div>
 </template>
@@ -14,32 +25,60 @@ import ImgShowcase from './ImgShowcase/index.vue';
 import SignText from './SignText.vue'
 import ImgCard from './ImgCard.vue';
 import MusicShowcase from './MusicShowcase.vue';
+import GameShowcase from './GameShowcase.vue';
 </script>
 
 <style scoped lang="less">
-p {
-    margin: 10px 0 20px 60px;
-    font-size: 40px;
-    position: relative;
+.separator {
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(var(--blue-shadow-color), 0.15),
+        transparent
+    );
+    margin: 40px 0;
+    width: 100%;
+    transition: background 0.5s ease;
 
-    &::after {
-        content: '';
-        position: absolute;
-        left: -60px;
-        bottom: -5px;
-        width: 180px;
-        height: 3px;
-        background-color: var(--font-color-gold);
+    html[theme='dark'] & {
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(157, 124, 216, 0.15),
+            transparent
+        );
+    }
+}
+
+.section {
+    
+    .section-title {
+        font-size: 2em;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-top: 70px;
+        text-align: center;
+        transition: color 0.3s ease;
+        
+        &::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--font-color-gold);
+            margin: 10px auto;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
     }
 }
 
 @media (max-width: 768px) {
-    p {
-        margin: 0 0 10px 20px;
-        font-size: 24px;
-        &::after {
-            left: -20px;
-            width: 90px;
+    .section {
+        .section-title {
+            font-size: 1em;
+            margin-top: 30px;
         }
     }
 }

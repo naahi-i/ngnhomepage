@@ -26,12 +26,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import Showcase from './ImgShowcase-template.vue';
-import img1 from '../../img/win11-tan.png';
-import img2 from '../../img/pln.png';
-import img3 from '../../img/Cecilia.jpg';
-import img4 from '../../img/Tsukiyuki_Miyako.png';
-import img5 from '../../img/tlbk.jpg';
-import img6 from '../../img/Al1s.jpg';
+import img1 from '../../img/ImgShowcase/win11-tan.png';
+import img2 from '../../img/ImgShowcase/pln.png';
+import img3 from '../../img/ImgShowcase/Cecilia.jpg';
+import img4 from '../../img/ImgShowcase/Tsukiyuki_Miyako.png';
+import img5 from '../../img/ImgShowcase/tlbk.jpg';
+import img6 from '../../img/ImgShowcase/Al1s.jpg';
 
 // 保存原始的 showcaseItems
 const originalItems = [
@@ -162,7 +162,7 @@ const handleTouchEnd = (e: TouchEvent) => {
     position: relative;
     overflow: hidden;
     width: 65vw;
-    margin: auto;
+    margin: -20px auto;
     height: 410px; // 固定容器高度
     mask: linear-gradient(to bottom, transparent, black 4%, black 97%, transparent);
 }
@@ -205,6 +205,7 @@ const handleTouchEnd = (e: TouchEvent) => {
     .showcase-wrapper {
         width: 100vw;
         height: 260px;
+        margin: -20px auto;
         touch-action: none; // 禁用浏览器默认触摸行为
     }
 

@@ -23,7 +23,7 @@ const isDarkMode = computed(() => state.darkMode)
     background-color: var(--foreground-color);
     border-radius: 24px;
     box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.3); /* 调整阴影样式 */
-    margin: 50px auto;
+    margin: auto;
     position: relative;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s;
     &:hover {

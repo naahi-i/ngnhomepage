@@ -34,6 +34,7 @@ const mainbox = ref<HTMLElement | null>(null);
     transition: all 0.8s ;
 }
 .mainbox {
+    user-select: none;
     margin: 20px auto; /* 上下 margin 设置为 20px，左右 margin 自动 */
     height: 410px; 
     width: 95%;
