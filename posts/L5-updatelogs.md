@@ -14,6 +14,19 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.1.7
+### 🔧添加GameShowcase
+  $\qquad$ **·** 添加GameShowcase  
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-7-GameShowcase.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">GameShowcase</div>
+      </div>  
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/fc8d2a7ebc34008ff8d5e613c975f13368f9f440)</sub>  
+
 # ⚙️2024.12.31
 ### 🔧添加音乐展示盒
   $\qquad$ **·** 添加音乐展示盒   

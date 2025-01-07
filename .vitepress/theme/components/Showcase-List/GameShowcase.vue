@@ -134,7 +134,7 @@ onUnmounted(() => {
     .main-preview {
         background-color: var(--foreground-color);
         width: 100%;
-        height: 720px; // 调整总高度
+        height: 750px; // 调整总高度
         border-radius: 24px;
         overflow: hidden;
         position: relative;
@@ -159,7 +159,7 @@ onUnmounted(() => {
 
             .game-image {
                 position: relative;
-                height: 480px; // 调整图片区域高度
+                height: 510px; // 调整图片区域高度
                 background: transparent;
                 border-radius: 24px 24px 0 0;
                 overflow: hidden;
