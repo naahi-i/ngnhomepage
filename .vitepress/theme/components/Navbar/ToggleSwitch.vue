@@ -1,10 +1,19 @@
 <template>
-    <div v-for="(label, id) in toggles" :key="id">
-        <input type="checkbox" :id="id" :checked="state[id]" @change="toggleSwitch(id)">
-        <label :for="id" class="toggleSwitch" :class="{ 'cooling': id === 'darkMode' && isButtonCooling }">
-            <span class="text">{{ label }}</span>
-        </label>
+  <div class="toggle-container">
+    <div v-for="(label, id) in toggles" 
+         :key="id" 
+         class="toggle-item">
+      <span class="label">{{ label }}</span>
+      <input type="checkbox" 
+             :id="id" 
+             :checked="state[id]" 
+             @change="toggleSwitch(id)">
+      <label :for="id" 
+             class="toggleSwitch" 
+             :class="{ 'cooling': id === 'darkMode' && isButtonCooling }">
+      </label>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -60,58 +69,68 @@ const applyTheme = (isDark: boolean) => {
 </script>
 
 <style scoped lang="less">
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.toggle-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(var(--blue-shadow-color), 0.05);
+  border-radius: 12px;
+  transition: all 0.3s;
+
+  &:hover {
+    background: rgba(var(--blue-shadow-color), 0.06);
+  }
+
+  .label {
+    font-size: 15px;
+    color: var(--font-color-grey);
+    font-weight: 500;
+  }
+}
+
 input[type="checkbox"] {
-    display: none;
+  display: none;
 }
 
 .toggleSwitch {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    right: 22px;
-    width: 35px;
-    height: 20px;
-    background-color: rgb(82, 82, 82);
-    border-radius: 20px;
-    cursor: pointer;
-    transition-duration: .2s;
+  position: relative;
+  width: 46px;
+  height: 24px;
+  background: rgba(82, 82, 82, 0.3);
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.4s ease;
 
-    .text {
-        position: relative;
-        cursor: default;
-        white-space: nowrap;
-        right: -42px;
-        font-size: 12px;
-        user-select: none;
-        white-space: pre-line;
-    }
-}
-
-.toggleSwitch::after {
+  &::after {
     content: "";
     position: absolute;
-    height: 8px;
-    width: 8px;
-    left: 5px;
-    background-color: transparent;
+    left: 3px;
+    top: 3px;
+    width: 18px;
+    height: 18px;
+    background: var(--foreground-color);
     border-radius: 50%;
-    transition: transform 0.26s cubic-bezier(0.27, 0.2, 0.25, 1.51), background-color 0.1s;
-    box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
-    border: 3px solid var(--foreground-color);
-}
-
-input:checked + .toggleSwitch::after {
-    transform: translateX(85%);
-    background-color: var(--foreground-color);
+    transition: all 0.4s cubic-bezier(0.3, 1.5, 0.7, 1);
+  }
 }
 
 input:checked + .toggleSwitch {
-    background-color: rgb(66, 92, 139);
+  background: rgb(66, 92, 139);
+  
+  &::after {
+    transform: translateX(22px);
+  }
 }
 
 .cooling {
-    pointer-events: none;
-    opacity: 0.7;
+  opacity: 0.5;
+  pointer-events: none;
 }
 </style>
