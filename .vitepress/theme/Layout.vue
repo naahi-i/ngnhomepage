@@ -29,7 +29,7 @@
       <!-- <Tags v-else-if="page.filePath === 'posts/index.md'"></Tags> -->
       <PostViewer v-if="page.filePath !== 'index.md' && page.filePath !== 'posts/index.md'"></PostViewer>
     </main>
-    <!-- <Footer></Footer> -->
+    <Footer></Footer>
     <Fireworks v-if="state.fireworksEnabled"></Fireworks>
     <SpinePlayer v-show="state.SpinePlayerEnabled"></SpinePlayer>
     <ToTop v-if="state.toTopEnabled"></ToTop>

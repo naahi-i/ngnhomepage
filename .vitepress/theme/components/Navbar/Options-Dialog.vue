@@ -140,7 +140,7 @@ const closeDialog = (): void => {
 
 @media (max-width: 768px) {
   .options-dialog .options-dialog-content {
-    width: 90%;
+    width: 85%;
     top: 5%;
   }
 }

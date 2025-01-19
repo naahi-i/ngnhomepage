@@ -26,7 +26,6 @@ const toggles = {
     fireworksEnabled: '烟花',
     SpinePlayerEnabled: '阿罗娜',
     toTopEnabled: '回顶',
-    Animation: '动画效果',
     darkMode: 'Dark'
 }
 

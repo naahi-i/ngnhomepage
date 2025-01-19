@@ -11,7 +11,6 @@ interface StoreState {
   SpinePlayerEnabled: boolean
   toTopEnabled: boolean
   OptionsDialog: boolean
-  Animation: boolean
   darkMode: boolean
 }
 

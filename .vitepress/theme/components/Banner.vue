@@ -9,13 +9,11 @@
   >
     <slot></slot>
     <!-- 提示箭头 -->
-    <transition name="fade-slide">
       <span
         class="iconfont icon-downarrow downarrow"
         @click="move"
         v-if="!state.splashLoading && page.filePath === 'index.md'"
       ></span>
-    </transition>
     <canvas id="wave"></canvas>
     <video v-if="videoBanner" autoplay muted loop class="bg-video">
       <source src="../assets/banner/banner_video.mp4" type="video/mp4" />
@@ -71,22 +69,28 @@ class SiriWave {
     F = F || this.F
     noise = noise * this.MAX || this.noise
     
-    // 移动端使用更简单的计算方式
-    const step = this.isMobile ? 0.05 : 0.01
+    // 优化移动端性能
+    const step = this.isMobile ? 0.08 : 0.01 
+    const points: [number, number][] = []
+
     if (this.isMobile) {
       for (let i = -this.K; i <= this.K; i += step) {
         const x = this.width * ((i + this.K) / (this.K * 2))
-        // 简化的波形计算
         const y = this.height / 2 + noise * Math.sin(F * i - this.phase)
-        this.ctx.lineTo(x, y)
+        points.push([x, y])
       }
     } else {
       for (let i = -this.K; i <= this.K; i += step) {
         const x = this.width * ((i + this.K) / (this.K * 2))
         const y = this.height / 2 + noise * Math.pow(Math.sin(i * 10 * attenuation), 1) * Math.sin(F * i - this.phase)
-        this.ctx.lineTo(x, y)
+        points.push([x, y])
       }
     }
+
+    // 使用点阵绘制优化性能
+    this.ctx.beginPath()
+    this.ctx.moveTo(points[0][0], points[0][1])
+    points.forEach(point => this.ctx.lineTo(point[0], point[1]))
     this.ctx.lineTo(this.width, this.height)
     this.ctx.lineTo(0, this.height)
     this.ctx.fillStyle = color
@@ -241,9 +245,9 @@ const move = () => {
   height: 50vh;
 }
 
-.posts {
-  height: 135vh;
-}
+// .posts {
+//   height: 135vh;
+// }
 
 #wave {
   position: absolute;
@@ -266,9 +270,6 @@ const move = () => {
     .downarrow {
       font-size: 50px;
     }
-  }
-  .posts {
-    height: 140%;
   }
 }
 </style>

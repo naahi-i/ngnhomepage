@@ -2,7 +2,7 @@
     <div class="Showcase-list">
         <div class="ImgShowcase">
             <div class="section">
-                <h2 class="firstf-section-title">轮播图</h2>
+                <h2 class="firstf-section-title">Img橱窗</h2>
                 <ImgShowcase />
             </div>
             <div class="section">
