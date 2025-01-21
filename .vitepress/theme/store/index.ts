@@ -35,7 +35,16 @@ const state: StoreState = reactive({
   SpinePlayerEnabled: true,
   toTopEnabled: true,
   OptionsDialog: false,
-  darkMode: 'system',
+  darkMode: (() => {
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('darkMode') || 'system'
+      if (storedTheme === 'system') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      }
+      return storedTheme as 'light' | 'dark' | 'system'
+    }  
+    return 'system'
+  })(),
 })
 
 export function useStore() {

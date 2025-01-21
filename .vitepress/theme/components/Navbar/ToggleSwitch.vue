@@ -46,11 +46,12 @@ onMounted(() => {
     applyTheme(storedTheme);
 
     // 监听系统主题变化
-    if (storedTheme === 'system') {
+    if (selectedTheme.value === 'system') {
         window.matchMedia('(prefers-color-scheme: dark)')
             .addEventListener('change', e => {
-                document.documentElement.setAttribute('theme', e.matches ? 'dark' : 'light');
-            });
+                document.documentElement.setAttribute('theme', e.matches ? 'dark' : 'light')
+                state.darkMode = e.matches ? 'dark' : 'light'
+            })
     }
 
     // 读取其他开关状态
@@ -75,12 +76,12 @@ const toggleSwitch = (key: string) => {
 };
 
 const applyTheme = (theme: string) => {
+    let effectiveTheme = theme
     if (theme === 'system') {
-        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('theme', isDark ? 'dark' : 'light');
-    } else {
-        document.documentElement.setAttribute('theme', theme);
+        effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     }
+    document.documentElement.setAttribute('theme', effectiveTheme)
+    state.darkMode = effectiveTheme as 'light' | 'dark' | 'system'
 }
 </script>
 
