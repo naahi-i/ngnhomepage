@@ -15,6 +15,19 @@ head:
 
 ---
 # ⚙️2024.1.19
+### 🔧更改主题选择方式
+  $\qquad$ **·** 更改主题选择方式     
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-22-Themeselect.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">主题选择</div>
+      </div>  
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/cc2fed6fa81d7d2cb1c8ff53cec96e9694b8c5b0)</sub>
+
+# ⚙️2024.1.19
 ### 🔧修改下拉菜单为网页选项
   $\qquad$ **·** 修改下拉菜单为网页选项  
   $\qquad$ **·** 移动searchdialog至navbar，仅在页面为/posts时出现  
