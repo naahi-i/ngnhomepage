@@ -14,6 +14,25 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.1.19
+### 🔧修改下拉菜单为网页选项
+  $\qquad$ **·** 修改下拉菜单为网页选项  
+  $\qquad$ **·** 移动searchdialog至navbar，仅在页面为/posts时出现  
+  $\qquad$ **·** 修改汉堡菜单按钮为点阵按钮  
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-19-optionsdialog.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">选项</div>
+      </div>  
+      <div style="text-align: center;">
+        <img src='./img/25-1-19-grid-button.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">点阵按钮</div>
+      </div>  
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/c5511e5a217e0c36c7bb9d348b9e993286c43ff9)</sub>
+
 # ⚙️2024.1.7
 ### 🔧添加GameShowcase
   $\qquad$ **·** 添加GameShowcase  
