@@ -1,7 +1,7 @@
 <template>
     <div class="ImgCard">
-        <img :class="{ 'dark-mode': isDarkMode }" src="../img/SCHALE.png" alt="S.H.C.A.L.E" draggable="false" loading="lazy" />
-        <div v-show="isDarkMode" class="gradient-overlay"></div>
+        <img :class="{ 'dark-mode': computedDarkMode }" src="../img/SCHALE.png" alt="S.H.C.A.L.E" draggable="false" loading="lazy" />
+        <div v-show="computedDarkMode" class="gradient-overlay"></div>
         <div class="reflection"></div>
         <div class="reflection-secondary"></div>
     </div>
@@ -11,8 +11,13 @@
 import { computed } from 'vue'
 import { useStore } from '../../store'
 const { state } = useStore()
-// 从store获取暗色模式状态
-const isDarkMode = computed(() => state.darkMode)
+
+const computedDarkMode = computed(() => {
+    if (state.darkMode === 'system') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+    }
+    return state.darkMode === 'dark'
+})
 </script>
 
 <style scoped lang="less">
