@@ -72,7 +72,7 @@ const isDarkMode = computed(() => state.darkMode)
     .reflection, .reflection-secondary {
         position: absolute;
         top: -50%;
-        left: -20%;
+        left: -40%;
         height: 200%;
         pointer-events: none;
         transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
