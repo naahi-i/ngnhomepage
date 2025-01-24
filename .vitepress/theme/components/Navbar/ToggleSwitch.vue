@@ -38,21 +38,32 @@ const toggles = {
     toTopEnabled: '回顶'
 }
 
+let darkModeMediaQuery: MediaQueryList
+let handleSystemThemeChange: (e: MediaQueryListEvent | MediaQueryList) => void
+
 // 页面加载时从 localStorage 读取状态
 onMounted(() => {
     // 读取主题设置,如果没有存储值则默认使用system
-    const storedTheme = localStorage.getItem('darkMode') || 'system';
-    selectedTheme.value = storedTheme;
-    applyTheme(storedTheme);
-
-    // 监听系统主题变化
-    if (selectedTheme.value === 'system') {
-        window.matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', e => {
-                document.documentElement.setAttribute('theme', e.matches ? 'dark' : 'light')
-                state.darkMode = e.matches ? 'dark' : 'light'
-            })
+    const storedTheme = localStorage.getItem('darkMode')
+    selectedTheme.value = storedTheme || 'system'
+    
+    // 定义系统主题变化处理函数
+    darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    handleSystemThemeChange = (e: MediaQueryListEvent | MediaQueryList) => {
+        if (selectedTheme.value === 'system') {
+            const theme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('theme', theme)
+            state.darkMode = theme
+        }
     }
+
+    // 如果是system模式,启动监听
+    if (selectedTheme.value === 'system') {
+        handleSystemThemeChange(darkModeMediaQuery)
+        darkModeMediaQuery.addEventListener('change', handleSystemThemeChange)
+    }
+
+    applyTheme(selectedTheme.value)
 
     // 读取其他开关状态
     Object.keys(toggles).forEach((key) => {
@@ -66,6 +77,15 @@ onMounted(() => {
 const changeTheme = () => {
     state.darkMode = selectedTheme.value;
     localStorage.setItem('darkMode', selectedTheme.value);
+    
+    // 根据选择决定是否启用系统主题监听
+    if (selectedTheme.value === 'system') {
+        handleSystemThemeChange(darkModeMediaQuery)
+        darkModeMediaQuery.addEventListener('change', handleSystemThemeChange)
+    } else {
+        darkModeMediaQuery.removeEventListener('change', handleSystemThemeChange)
+    }
+    
     applyTheme(selectedTheme.value);
 };
 
