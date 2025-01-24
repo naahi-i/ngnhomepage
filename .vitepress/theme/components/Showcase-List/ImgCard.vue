@@ -2,6 +2,8 @@
     <div class="ImgCard">
         <img :class="{ 'dark-mode': isDarkMode }" src="../img/SCHALE.png" alt="S.H.C.A.L.E" draggable="false" loading="lazy" />
         <div v-show="isDarkMode" class="gradient-overlay"></div>
+        <div class="reflection"></div>
+        <div class="reflection-secondary"></div>
     </div>
 </template>
 
@@ -27,10 +29,17 @@ const isDarkMode = computed(() => state.darkMode)
     position: relative;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s;
     &:hover {
-            transform: scale(1.01);
-            box-shadow: 
-            0 4px 18px rgba(var(--blue-shadow-color), 0.3),
+        transform: scale(1.01);
+        box-shadow: 
+        0 4px 18px rgba(var(--blue-shadow-color), 0.3);
+        
+        .reflection {
+            left: 100%;
         }
+        .reflection-secondary {
+            left: 85%;
+        }
+    }
 
     img {
         width: 100%;
@@ -58,6 +67,45 @@ const isDarkMode = computed(() => state.darkMode)
         &:not([v-show="false"]) {
             opacity: 1;
         }
+    }
+
+    .reflection, .reflection-secondary {
+        position: absolute;
+        top: -50%;
+        left: -20%;
+        height: 200%;
+        pointer-events: none;
+        transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reflection {
+        width: 100px;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.12) 20%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.12) 80%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(25deg);
+        filter: blur(5px);
+        mix-blend-mode: soft-light;
+    }
+
+    .reflection-secondary {
+        width: 150px;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.08) 40%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(255, 255, 255, 0.08) 60%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(25deg);
+        filter: blur(8px);
+        mix-blend-mode: overlay;
     }
 }
 
