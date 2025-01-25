@@ -4,9 +4,9 @@
       <span class="label">主题</span>
       <div class="select-wrapper">
         <select v-model="selectedTheme" @change="changeTheme">
-          <option value="light">浅色</option>
-          <option value="dark">深色</option>
-          <option value="system">跟随系统</option>
+          <option value="light">Arona</option>
+          <option value="dark">Prana</option>
+          <option value="system">System</option>
         </select>
         <span class="select-arrow">▼</span>
       </div>
@@ -34,7 +34,7 @@ const selectedTheme = ref('system')
 // 定义可切换的项(移除darkMode)
 const toggles = {
     fireworksEnabled: '烟花',
-    SpinePlayerEnabled: '阿罗娜',
+    SpinePlayerEnabled: 'Spine',
     toTopEnabled: '回顶'
 }
 

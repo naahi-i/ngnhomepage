@@ -32,12 +32,9 @@ const computedDarkMode = computed(() => {
     box-shadow: 0 4px 8px rgba(var(--blue-shadow-color), 0.3); /* 调整阴影样式 */
     margin: auto;
     position: relative;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    transition: transform 0.3s ease-in-out;
     &:hover {
         transform: scale(1.01);
-        box-shadow: 
-        0 4px 18px rgba(var(--blue-shadow-color), 0.3);
-        
         .reflection {
             left: 100%;
         }
@@ -80,7 +77,7 @@ const computedDarkMode = computed(() => {
         left: -40%;
         height: 200%;
         pointer-events: none;
-        transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .reflection {
