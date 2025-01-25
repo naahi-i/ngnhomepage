@@ -210,7 +210,7 @@ onMounted(() => {
   initializeSpinePlayer(assets)
 })
 
-// 优化主题切换监听
+// 主题切换监听
 watch(() => state.darkMode, async (newTheme) => {
   const assets = newTheme === 'dark' ? spineAssets.prana : spineAssets.arona;
   await initializeSpinePlayer(assets);
@@ -223,7 +223,6 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
   if (blinkInterval) clearTimeout(blinkInterval)
   
-  // 清理容器内容即可
   if (playerContainer.value) {
     playerContainer.value.innerHTML = '';
   }

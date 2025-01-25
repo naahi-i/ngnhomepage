@@ -38,6 +38,9 @@ class SiriWave {
   K = 1
   F = 15
   speed = 0.1
+  // 为桌面端和移动端设置不同速度
+  desktopSpeed = 0.04
+  mobileSpeed = 0.02
   noise = 30
   phase = 0
   devicePixelRatio = window.devicePixelRatio || 1
@@ -48,7 +51,7 @@ class SiriWave {
   ctx = this.canvas.getContext('2d')!
   run = false
   animationFrameID: number | null = null
-  isMobile = /iPhone|Windows|iPad|iPod|Android/i.test(navigator.userAgent)
+  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 
   constructor() {
     this.canvas.width = this.width
@@ -159,8 +162,10 @@ class SiriWave {
 const initWave = () => {
   if (currentWave.value) currentWave.value.stop()
   currentWave.value = new SiriWave()
-  currentWave.value.setSpeed(0.01)
-  currentWave.value.start()
+  // 根据设备类型设置不同速度
+  const wave = currentWave.value
+  wave.setSpeed(wave.isMobile ? wave.mobileSpeed : wave.desktopSpeed)
+  wave.start()
 }
 
 const debounce = (func: () => void, wait: number) => {

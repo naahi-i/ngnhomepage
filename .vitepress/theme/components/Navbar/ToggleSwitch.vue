@@ -75,7 +75,7 @@ onMounted(() => {
 });
 
 const changeTheme = () => {
-    state.darkMode = selectedTheme.value;
+    state.darkMode = selectedTheme.value as 'system' | 'dark' | 'light';
     localStorage.setItem('darkMode', selectedTheme.value);
     
     // 根据选择决定是否启用系统主题监听
