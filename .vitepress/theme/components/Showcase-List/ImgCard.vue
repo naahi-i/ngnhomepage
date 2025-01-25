@@ -8,11 +8,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useStore } from '../../store'
 const { state } = useStore()
 
+const isClient = ref(false)
+onMounted(() => {
+    isClient.value = true
+})
+
 const computedDarkMode = computed(() => {
+    if (!isClient.value) return false
+    
     if (state.darkMode === 'system') {
         return window.matchMedia('(prefers-color-scheme: dark)').matches
     }

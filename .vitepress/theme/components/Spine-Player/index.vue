@@ -54,27 +54,6 @@ const isMobileDevice = () => {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
-// 修改预加载函数
-const preloadSpineAssets = (assets) => {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";  // 如果需要跨域
-    
-    img.onload = () => {
-      // 只预加载图片资源即可，不需要创建 TextureAtlas
-      resolve();
-    };
-    
-    img.onerror = () => {
-      reject(new Error('Failed to preload spine assets'));
-    };
-    
-    // 获取图片URL - 根据实际atlas和png的命名规则调整
-    const imgUrl = assets.atlasUrl.replace('.atlas', '.png');
-    img.src = imgUrl;
-  });
-};
-
 const initializeSpinePlayer = async (assets) => {
   try {
     // 清理旧的实例
