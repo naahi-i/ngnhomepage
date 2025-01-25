@@ -14,6 +14,19 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.1.25
+### 🔧添加普拉娜spine
+  $\qquad$ **·** 添加普拉娜spine  
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-25-prana.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">普拉娜spine</div>
+      </div>  
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/953d0094463523b7896e55d40eb6934673fad8e5)</sub>
+
 # ⚙️2024.1.19
 ### 🔧更改主题选择方式
   $\qquad$ **·** 更改主题选择方式     
