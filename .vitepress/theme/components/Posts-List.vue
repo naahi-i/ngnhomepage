@@ -251,6 +251,7 @@ const finalPosts = computed(() => {
       margin: 0 20px 30px 20px;
       background-size: cover;
       padding-bottom: 1px;
+      border-left: solid 1.5vh var(--pot-border-left);
     }
   }
   .tags {
