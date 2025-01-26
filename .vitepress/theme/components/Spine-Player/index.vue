@@ -45,7 +45,7 @@ const spineAssets = {
       {
         audio: '/spine_assets/audio/plana_04.ogg',
         animation: '99',
-        text: '正在待命，需要解决的任务还有很多。'
+        text: '正在待命，\n需要解决的任务还有很多。'
       },
       {
         audio: '/spine_assets/audio/plana_05.ogg',
@@ -109,9 +109,6 @@ let audioPlayer = null
 let currentCharacter = ref('arona')
 let audioPlayers = []
 
-// 添加客户端就绪状态
-const clientReady = ref(false)
-
 // 添加音频上下文管理器
 const AudioManager = {
   context: null,
@@ -119,7 +116,6 @@ const AudioManager = {
   currentSource: null,
 
   initialize() {
-    if (!clientReady.value) return
     if (!this.context) {
       this.context = new (window.AudioContext || window.webkitAudioContext)();
     }
@@ -201,7 +197,6 @@ const preloadAudio = async () => {
 }
 
 const handleScroll = () => {
-  if (!clientReady.value) return
   const bottomReached = Math.ceil(window.innerHeight + window.scrollY) >= document.body.offsetHeight
   const chatDialog = document.querySelector('.chatdialog')
   
@@ -218,9 +213,7 @@ const handleScroll = () => {
   }
 }
 
-// 添加移动端检测函数
 const isMobileDevice = () => {
-  if (!clientReady.value) return false
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
@@ -486,7 +479,7 @@ const cleanup = () => {
   }
 
   // 使用 WeakRef 来管理音频资源
-  if (clientReady.value && window.WeakRef) {
+  if (window.WeakRef) {
     audioPlayers = audioPlayers.filter(player => {
       const ref = new WeakRef(player)
       return ref.deref() !== null
@@ -531,18 +524,10 @@ const handleEvents = (event) => {
 }
 
 onMounted(() => {
-  // 设置客户端就绪状态
-  clientReady.value = true
-  
   const options = { passive: true }
   window.addEventListener('scroll', handleEvents, options)
   if (!isMobileDevice()) {
     window.addEventListener('mousemove', handleEvents, options)
-  }
-  
-  // 如果启用了Spine播放器，初始化
-  if (state.SpinePlayerEnabled) {
-    debouncedInitialize()
   }
 })
 
@@ -564,7 +549,7 @@ onUnmounted(() => {
   height: 500px;
   filter: drop-shadow(0 0 3px rgba(40, 42, 44, 0.42));
   transition: all 1s;
-  cursor: pointer; // 添加指针样式
+  cursor: pointer;
 }
 .chatdialog {
   position: fixed;
@@ -588,11 +573,12 @@ onUnmounted(() => {
   &:after {
     content: '';
     position: absolute;
-    left: 80px;
+    left: 75px;
     top: -10px;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: none; 
+    border-bottom: 10px solid rgba(255, 255, 255, 0.9);
+    border-top: none;
   }
 }
 
@@ -617,9 +603,9 @@ onUnmounted(() => {
     border-radius: 20px;
     
     &:after {
-      left: 40px;
+      left: 35px;
       border-width: 8px;
-      top: -6px;
+      top: -8px;
     }
   }
   
