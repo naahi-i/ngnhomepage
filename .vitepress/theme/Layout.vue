@@ -31,10 +31,10 @@
     </main>
     <Footer></Footer>
     <Fireworks v-if="state.fireworksEnabled"></Fireworks>
-    <SpinePlayer v-show="state.SpinePlayerEnabled"></SpinePlayer>
+    <SpinePlayer></SpinePlayer>
     <ToTop v-if="state.toTopEnabled"></ToTop>
     <audio id="background-music" loop>
-      <source src="./assets/banner/bgm.mp3" type="audio/mpeg" />
+      <source src="./assets/banner/Theme_22.ogg" type="audio/mpeg" />
     </audio>
   </template>
   <NotFound v-else></NotFound>

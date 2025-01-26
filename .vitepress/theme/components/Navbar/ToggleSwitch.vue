@@ -121,10 +121,6 @@ const applyTheme = (theme: string) => {
   border-radius: 12px;
   transition: all 0.3s;
 
-  &:hover {
-    background: rgba(var(--blue-shadow-color), 0.06);
-  }
-
   .label {
     font-size: 15px;
     color: var(--font-color-grey);

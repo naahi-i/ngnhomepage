@@ -5,8 +5,10 @@
       <div class="options-dialog-content">
         <button type="button" class="close-btn" @click="closeDialog">×</button>
         <span class="title">选项</span>
+        <div class="button-content">
+          <MusicControl></MusicControl>
+        </div>
         <div class="menu-content">
-          <!-- <MusicControl></MusicControl> -->
           <ToggleSwitch></ToggleSwitch>
         </div>
       </div>
@@ -96,16 +98,17 @@ const closeDialog = (): void => {
   color: var(--font-color-grey);
 }
 
-.menu-content {
+.menu-content,
+.button-content {
   width: calc(100% - 40px);
   margin: 20px;
-  margin-top: 30px;
+  padding: 20px;
   background-color: var(--search-input-bg);
   border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+}
+
+.button-content {
+  margin-bottom: -5px;
 }
 
 // 动画相关
