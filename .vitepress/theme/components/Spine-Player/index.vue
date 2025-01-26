@@ -109,6 +109,9 @@ let audioPlayer = null
 let currentCharacter = ref('arona')
 let audioPlayers = []
 
+// 添加客户端就绪状态
+const clientReady = ref(false)
+
 // 添加音频上下文管理器
 const AudioManager = {
   context: null,
@@ -116,6 +119,7 @@ const AudioManager = {
   currentSource: null,
 
   initialize() {
+    if (!clientReady.value) return
     if (!this.context) {
       this.context = new (window.AudioContext || window.webkitAudioContext)();
     }
@@ -197,6 +201,7 @@ const preloadAudio = async () => {
 }
 
 const handleScroll = () => {
+  if (!clientReady.value) return
   const bottomReached = Math.ceil(window.innerHeight + window.scrollY) >= document.body.offsetHeight
   const chatDialog = document.querySelector('.chatdialog')
   
@@ -215,6 +220,7 @@ const handleScroll = () => {
 
 // 添加移动端检测函数
 const isMobileDevice = () => {
+  if (!clientReady.value) return false
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
@@ -480,7 +486,7 @@ const cleanup = () => {
   }
 
   // 使用 WeakRef 来管理音频资源
-  if (window.WeakRef) {
+  if (clientReady.value && window.WeakRef) {
     audioPlayers = audioPlayers.filter(player => {
       const ref = new WeakRef(player)
       return ref.deref() !== null
@@ -525,10 +531,18 @@ const handleEvents = (event) => {
 }
 
 onMounted(() => {
+  // 设置客户端就绪状态
+  clientReady.value = true
+  
   const options = { passive: true }
   window.addEventListener('scroll', handleEvents, options)
   if (!isMobileDevice()) {
     window.addEventListener('mousemove', handleEvents, options)
+  }
+  
+  // 如果启用了Spine播放器，初始化
+  if (state.SpinePlayerEnabled) {
+    debouncedInitialize()
   }
 })
 
