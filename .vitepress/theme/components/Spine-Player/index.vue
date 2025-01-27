@@ -559,8 +559,8 @@ onUnmounted(() => {
   bottom: 25px;
   left: 0%;
   z-index: 100;
-  width: 16vw;
-  height: 32vw;
+  width: 15vw;
+  height: 30vw;
   filter: drop-shadow(0 0 3px rgba(40, 42, 44, 0.42));
   transition: all 1s;
   cursor: pointer;
