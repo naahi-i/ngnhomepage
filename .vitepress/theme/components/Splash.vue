@@ -1,13 +1,12 @@
 <template>
-  <div v-if="isVisible" class="splash-container" v-html="currentSvg"></div>
+  <div v-if="isVisible" class="splash-container" v-html="svgContent"></div>
 </template>
 
 <script setup>
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref } from 'vue'
 import anime from 'animejs'
-import { useStore } from '../store'
 
-const lightSvgContent = `<svg viewBox="0 0 1728 1117" preserveAspectRatio="xMinYMin slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+const svgContent = `<svg viewBox="0 0 1728 1117" preserveAspectRatio="xMinYMin slice" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2_5)">
 <g class="triangle-group">
 <path d="M606 -123L1061 666H151L606 -123Z"/>
@@ -31,7 +30,7 @@ const lightSvgContent = `<svg viewBox="0 0 1728 1117" preserveAspectRatio="xMinY
 </g>
 <g id="breathingParts">
 <path class="circle-path" fill-rule="evenodd" clip-rule="evenodd" d="M864 769C979.98 769 1074 674.98 1074 559C1074 443.02 979.98 349 864 349C748.02 349 654 443.02 654 559C654 674.98 748.02 769 864 769ZM864 749.909C969.436 749.909 1054.91 664.436 1054.91 559C1054.91 453.564 969.436 368.091 864 368.091C758.564 368.091 673.091 453.564 673.091 559C673.091 664.436 758.564 749.909 864 749.909Z"/>
-<path class="led-path" d="M934.636 392.273H792.727L757.091 447H970.909L934.636 392.273Z"/>
+<path class="led-path" class="led-path" d="M934.636 392.273H792.727L757.091 447H970.909L934.636 392.273Z"/>
 <path class="led-path" d="M969.636 450.182H897.727L934.636 504.273L969.636 450.182Z"/>
 <path class="led-path" d="M792.091 500.455L828.364 447L900.909 555.182L863.364 609.273L792.091 500.455Z"/>
 <path class="led-path" d="M900.909 667.182L865.909 612.455L903.5 558.364L973.455 667.182L937.818 721.909H796.545L760.273 667.182L796.545 612.455L832.818 667.182H900.909Z"/>
@@ -46,22 +45,9 @@ const lightSvgContent = `<svg viewBox="0 0 1728 1117" preserveAspectRatio="xMinY
 </defs>
 </svg>`
 
-const darkSvgContent = lightSvgContent // 使用相同的SVG模板
-
-const { state } = useStore()
-
-// 从localStorage读取
-const currentSvg = computed(() => {
-  if (typeof window !== 'undefined') {
-    const theme = localStorage.getItem('darkMode') || 'system'
-    if (theme === 'system') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? darkSvgContent : lightSvgContent
-    }
-    return theme === 'dark' ? darkSvgContent : lightSvgContent
-  }
-})
-
 const isVisible = ref(true)
+import { useStore } from '../store'
+const { state } = useStore()
 
 const createBreathingAnimation = () => {
   anime({
