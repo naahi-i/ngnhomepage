@@ -6,10 +6,10 @@
     @mouseleave="reset"
     :style="{ transform: `rotateY(${calcY}deg) rotateX(${calcX}deg)` }"
   >
-    <transition name="fade-up" appear>
+    <transition name="fade" appear>
       <span class="welcome-text">{{ welcomeText }}</span>
     </transition>
-    <transition name="fade-up" appear>
+    <transition name="fade" appear>
       <div
         class="info-box"
         :style="{
@@ -37,9 +37,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { ref, onMounted } from 'vue'
-
-import { useStore } from '../store'
-const { state } = useStore()
 
 const themeConfig = useData().theme.value
 const name = themeConfig.name
@@ -106,16 +103,7 @@ onMounted(() => {
   justify-content: center;
   z-index: 100;
   padding-bottom: 10vh;
-  transition: transform 0.2s;
-}
-
-.fade-up-enter-active {
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-.fade-up-enter-from {
-  opacity: 0;
-  transform: translateY(30px);
+  transition: transform 0.2s, color 0.5s, text-shadow 0.5s;
 }
 
 .welcome-text {
@@ -126,7 +114,6 @@ onMounted(() => {
   text-align: center;
   margin-bottom: 100px;
   user-select: none;
-  transition: color 0.5s, text-shadow 0.5s;
 }
 
 .info-box {
@@ -139,7 +126,6 @@ onMounted(() => {
   border-radius: 50px;
   box-shadow: var(--info-box-shadow);
   backdrop-filter: var(--blur-val) saturate(120%);
-  transition: backdrop-filter 0.5s; /* 添加过渡效果 */
 
   .avatar {
     position: absolute;

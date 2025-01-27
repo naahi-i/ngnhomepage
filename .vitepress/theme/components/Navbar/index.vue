@@ -72,7 +72,7 @@ const showSearchDialog = () => {
 }
 
 .posts {
-  height: 10vh;
+  height: 50vh;
 }
 
 header {

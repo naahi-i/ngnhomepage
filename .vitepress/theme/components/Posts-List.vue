@@ -1,6 +1,6 @@
 <template>
   <div class="container posts-content">
-    <div class="posts-list" name="list" tag="div">
+    <TransitionGroup class="posts-list" name="list" tag="div">
       <article class="post" v-for="post in postsList" :key="post.href">
         <header class="post-header">
           <div class="title">
@@ -27,7 +27,7 @@
           <p>{{ post.excerpt }}</p>
         </div>
       </article>
-    </div>
+    </TransitionGroup>
     <span v-if="totalPage > 1" class="pagination">
       <button :disabled="currPage === 1" :class="{ hide: currPage === 1 }" id="up" @click="currPage--">
         <i class="iconfont icon-arrow"></i>
@@ -74,6 +74,23 @@ const finalPosts = computed(() => {
 </script>
 
 <style scoped lang="less">
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+}
+
+.list-leave-active {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
 .posts-content {
   article,
   h1,

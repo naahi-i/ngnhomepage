@@ -3,7 +3,7 @@
     class="banner"
     :class="{
       postViewer: state.currPost.href,
-      posts: page.filePath === 'posts/index.md',
+      home: page.filePath === 'index.md',
       loadingComplete: !state.splashLoading,
     }"
   >
@@ -117,7 +117,7 @@ class SiriWave {
     
     if (this.isMobile) {
       // 移动端只绘制一层波浪
-      this._drawLine(0.5, wave1Color, 1, 0.35, 6)
+      this._drawLine(0.5, wave1Color, 1, 0.20, 6)
     } else {
       this._drawLine(0.5, wave1Color, 1, 0.35, 6)
       this._drawLine(1, wave2Color, 1, 0.25, 6)
@@ -203,7 +203,7 @@ const move = () => {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 50vh;
   mask: linear-gradient(to top, transparent, var(--general-background-color) 5%);
   perspective: 1000px;
   overflow: hidden;
@@ -246,13 +246,9 @@ const move = () => {
   }
 }
 
-.postViewer {
-  height: 50vh;
+.home {
+  height: 100vh;
 }
-
-// .posts {
-//   height: 135vh;
-// }
 
 #wave {
   position: absolute;

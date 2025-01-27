@@ -25,7 +25,7 @@ footer {
   justify-content: space-between;
   height: 72px;
   z-index: 100;
-  margin-top: 100px;
+  margin-top: 5vh;
   padding: 0 16px;
   box-sizing: border-box;
   border-radius: 30px 30px 0 0;

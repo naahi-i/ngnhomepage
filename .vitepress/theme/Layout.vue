@@ -4,30 +4,17 @@
     <main>
       <Navbar></Navbar>
       <Banner>
-        <!-- <template v-if="state.Animation"> -->
-        <!-- <transition name="fade" mode="out-in"> -->
-        <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
-        <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner>
-        <!-- </transition> -->
-        <!-- </template> -->
-        <!-- <template v-else> -->
-        <!-- <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox> -->
-        <!-- <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'"></PostInnerBanner> -->
-        <!-- </template> -->
-
+        <transition name="fade" mode="out-in">
+          <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'" :key="'welcome'"></WelcomeBox>
+          <PostInnerBanner v-else-if="page.filePath !== 'posts/index.md'" :key="'post-banner'"></PostInnerBanner>
+          <Tags v-else></Tags>
+        </transition>
       </Banner>
-
-      <!-- <template v-if="state.Animation"> -->
-      <!-- <transition name="post-list-fade" appear> -->
-      <!-- <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList> -->
-      <!-- </transition> -->
-      <!-- </template> -->
-      <!-- <template v-else> -->
-      <PostsList v-show="page.filePath === 'posts/index.md'"></PostsList>
-      <!-- </template> -->
+      <transition name="fade" mode="out-in">
+        <PostsList v-if="page.filePath === 'posts/index.md'"></PostsList>
+        <PostViewer v-else-if="page.filePath !== 'index.md' && page.filePath !== 'posts/index.md'"></PostViewer>
+      </transition>
       <ShowcaseList v-show="page.filePath === 'index.md'"></ShowcaseList>
-      <!-- <Tags v-else-if="page.filePath === 'posts/index.md'"></Tags> -->
-      <PostViewer v-if="page.filePath !== 'index.md' && page.filePath !== 'posts/index.md'"></PostViewer>
     </main>
     <Footer></Footer>
     <Fireworks v-if="state.fireworksEnabled"></Fireworks>
@@ -66,23 +53,15 @@ const { state } = useStore()
 </script>
 
 <style lang="less">
-// .fade-enter-active,
-// .fade-leave-active {
-//   transition: opacity 0.5s;
-// }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
 
-// .fade-enter-from,
-// .fade-leave-to {
-//   opacity: 0;
-// }
-
-// .post-list-fade-enter-active {
-//   transition: opacity 0.5s;
-// }
-
-// .post-list-fade-enter-from {
-//   opacity: 0;
-// }
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 
 html {
   scroll-behavior: smooth;
@@ -104,7 +83,7 @@ body {
   overflow-x: hidden;
   color: var(--font-color-grey);
   font-family: 'Blueaka', sans-serif;
-  transition: background-image 0.5s , background-color 0.5s;
+  transition: background-image 0.5s, background-color 0.5s;
 }
 
 :root[theme='light'] {

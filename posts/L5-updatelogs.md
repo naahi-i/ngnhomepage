@@ -14,6 +14,31 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.1.26
+### 🔧修改音乐控件样式，增加音量环
+  $\qquad$ **·** 修改音乐控件样式，增加音量环  
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-26-music-control.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">音乐控制环</div>
+      </div>  
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/cba66ae0fc57e1a2ecd239e1283229e3d0b4cf02)</sub>
+
+### 🔧添加spine语音
+  $\qquad$ **·** 添加spine语音  
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-26-spineaudio.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">spine语音</div>
+      </div>  
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/cba66ae0fc57e1a2ecd239e1283229e3d0b4cf02)</sub>
+
 # ⚙️2024.1.25
 ### 🔧添加普拉娜spine
   $\qquad$ **·** 添加普拉娜spine  

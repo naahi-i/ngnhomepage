@@ -1,10 +1,8 @@
 <template>
-  <transition name="fade-up" appear>
-    <div class="view-box container">
-      <content class="content" />
-      <Gitalk v-if="themeConfig.clientID"></Gitalk>
-    </div>
-  </transition>
+  <div class="view-box container">
+    <content class="content" />
+    <Gitalk v-if="themeConfig.clientID"></Gitalk>
+  </div>
 </template>
 <script setup lang="ts">
 import Gitalk from './Gitalk.vue'
@@ -51,18 +49,11 @@ watch(
 const themeConfig = useData().theme.value
 </script>
 <style lang="less">
-.fade-up-enter-from,
-.fade-up-leave-to {
-  opacity: 0;
-  transform: translateY(150vh);
-}
-
 .view-box {
   box-sizing: border-box;
-  width: 95vw !important;
   position: relative;
-  padding: 36px;
-  border-radius: 32px;
+  padding: 2vw;
+  border-radius: 2vw;
   border: solid 2px var(--foreground-color);
   background: var(--foreground-color);
   box-shadow: 0px 0px 8px rgb(var(--blue-shadow-color), 0.8);
@@ -511,8 +502,8 @@ const themeConfig = useData().theme.value
   iframe {
     max-width: 100%;
     border-radius: 8px;
-    filter: var(--img-brightness); /* 添加亮度过滤器 */
-    transition: filter 0.5s; /* 添加过渡效果 */
+    filter: var(--img-brightness);
+    transition: filter 0.5s;
   }
 
   code,
@@ -524,8 +515,8 @@ const themeConfig = useData().theme.value
 
 @media (max-width: 768px) {
   .view-box {
-    padding: 16px;
-    margin: 0 8px !important;
+    border-radius: 4vh;
+    padding: 2.5vh;
   }
 }
 </style>
