@@ -90,17 +90,36 @@ const darkSvgContent = `<svg viewBox="0 0 1728 1117" preserveAspectRatio="xMinYM
 </defs>
 </svg>`
 
-// 确保在动画开始前已经计算出正确的主题
+// 修改 darkMode 函数
 const darkMode = () => {
-  if (state.darkMode === 'system') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  if (typeof window !== 'undefined') {
+    try {
+      const storedTheme = window.localStorage.getItem('darkMode')
+
+      if (!storedTheme || storedTheme === 'system') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      }
+
+      return storedTheme
+    } catch (e) {
+      // 如果访问 localStorage 出错,返回默认主题
+      console.warn('Error accessing localStorage:', e)
+      return 'light'
+    }
   }
-  return state.darkMode
 }
 
-const currentSvg = computed(() => darkMode() === 'dark' ? darkSvgContent : lightSvgContent)
-const isVisible = ref(true)
 const { state } = useStore()
+
+// 更新computed属性
+const currentSvg = computed(() => {
+  const theme = darkMode()
+  // 同步更新state中的darkMode
+  state.darkMode = theme
+  return theme === 'dark' ? darkSvgContent : lightSvgContent
+})
+
+const isVisible = ref(true)
 
 const createBreathingAnimation = () => {
   anime({
@@ -129,12 +148,18 @@ const fadeOutSplash = () => {
 }
 
 onMounted(() => {
-  // 禁用页面滚动
-  document.body.style.overflow = 'hidden'
-  createBreathingAnimation()
-  setTimeout(() => {
-    fadeOutSplash()
-  }, Math.floor(Math.random() * 300) + 1200) // 随机等待时间
+  // 确保在客户端环境下运行
+  if (typeof window !== 'undefined') {
+    const theme = darkMode()
+    state.darkMode = theme
+    document.documentElement.setAttribute('theme', theme)
+
+    document.body.style.overflow = 'hidden'
+    createBreathingAnimation()
+    setTimeout(() => {
+      fadeOutSplash()
+    }, Math.floor(Math.random() * 300) + 1200)
+  }
 })
 </script>
 
@@ -150,6 +175,7 @@ onMounted(() => {
   align-items: center;
   background: linear-gradient(#b9e6f6, #ece5f4);
   z-index: 999;
+
   html[theme='dark'] & {
     background: linear-gradient(#c3bde9, #fee4ff);
   }
