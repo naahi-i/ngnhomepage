@@ -25,7 +25,7 @@ const spineAssets = {
     leftEyeBone: "L_Eye_01",
     frontHeadBone: "Head_Rot",
     backHeadBone: "Head_Back",
-    eyeRotationAngle: 76.307,
+    eyeRotationAngle: 97.331,
     voiceConfig: [
       {
         audio: '/spine_assets/audio/plana_02.ogg',
@@ -56,7 +56,7 @@ const spineAssets = {
   },
   arona: {
     skelUrl: "/spine_assets/arona_spr.skel",
-    atlasUrl: "/spine_assets/arona_spr.atlas", 
+    atlasUrl: "/spine_assets/arona_spr.atlas",
     idleAnimationName: "Idle_01",
     eyeCloseAnimationName: "Eye_Close_01",
     rightEyeBone: "R_Eye_01",
@@ -186,11 +186,11 @@ const AudioManager = {
 // 修改预加载音频函数
 const preloadAudio = async () => {
   if (!currentAssets.value) return false
-  
+
   AudioManager.initialize()
   AudioManager.gc() // 清理过期缓存
-  
-  const loadPromises = currentAssets.value.voiceConfig.map(pair => 
+
+  const loadPromises = currentAssets.value.voiceConfig.map(pair =>
     AudioManager.loadAudioFile(pair.audio)
   )
 
@@ -204,7 +204,7 @@ const handleScroll = () => {
   if (!clientReady.value) return
   const bottomReached = window.innerHeight + window.scrollY + 1 >= document.body.offsetHeight
   const chatDialog = document.querySelector('.chatdialog')
-  
+
   if (bottomReached) {
     playerContainer.value.style.left = '-50%'
     if (chatDialog) {
@@ -254,37 +254,37 @@ const handlePlayerClick = debounce(async (event) => {
   if (!isPlaying) {
     isPlaying = true
     isEyeControlDisabled.value = true
-    
+
     // 点击时重置眼睛位置
     resetBonesState.value?.()
-    
+
     const currentConfig = spineAssets[currentCharacter.value].voiceConfig
     let randomIndex
     do {
       randomIndex = Math.floor(Math.random() * currentConfig.length)
     } while (randomIndex === lastPlayedIndex && currentConfig.length > 1)
-    
+
     lastPlayedIndex = randomIndex
     const selectedPair = currentConfig[randomIndex]
-    
+
     try {
       const buffer = await AudioManager.loadAudioFile(selectedPair.audio);
       if (!buffer) throw new Error('音频加载失败');
-      
+
       currentDialog.value = selectedPair.text;
       showDialog.value = true;
-      
+
       currentAnimationState.addAnimation(2, selectedPair.animation, false, 0);
-      
+
       // 播放音频并等待结束
       await AudioManager.playAudio(buffer);
-      
+
       // 音频播放结束后清理状态
       isPlaying = false;
       isEyeControlDisabled.value = false;
       currentAnimationState.setEmptyAnimation(2, 0);
       showDialog.value = false;
-      
+
     } catch (error) {
       console.error('音频播放失败:', error);
       isPlaying = false;
@@ -303,7 +303,7 @@ const initializeSpinePlayer = async (assets) => {
     if (blinkInterval) {
       clearTimeout(blinkInterval);
     }
-    
+
     // 清理容器内容
     if (playerContainer.value) {
       playerContainer.value.innerHTML = '';
@@ -353,7 +353,7 @@ const initializeSpinePlayer = async (assets) => {
         function moveBones(event) {
           // 如果眼睛控制被禁用，直接返回
           if (isEyeControlDisabled.value) return
-          
+
           const containerRect = playerContainer.value.getBoundingClientRect()
 
           const mouseX = event.clientX - (containerRect.right - containerRect.width / 2)
@@ -407,25 +407,25 @@ const initializeSpinePlayer = async (assets) => {
             rightEyeBone.x = rightEyeCenterX
             rightEyeBone.y = rightEyeCenterY
           }
-      
+
           if (leftEyeBone) {
             leftEyeBone.x = leftEyeCenterX
             leftEyeBone.y = leftEyeCenterY
           }
-      
+
           if (frontHeadBone) {
             frontHeadBone.x = frontHeadCenterX
             frontHeadBone.y = frontHeadCenterY
           }
-      
+
           if (backHeadBone) {
             backHeadBone.x = backHeadCenterX
             backHeadBone.y = backHeadCenterY
           }
-      
+
           skeleton.updateWorldTransform()
         }
-      
+
         // 保存重置函数引用
         resetBonesState.value = resetBones
 
@@ -454,7 +454,7 @@ const initializeSpinePlayer = async (assets) => {
         console.error('Spine加载失败: ' + reason)
       }
     })
-  } catch(err) {
+  } catch (err) {
     console.error('Failed to initialize spine player:', err);
   }
 }
@@ -468,13 +468,13 @@ const currentAssets = computed(() => spineAssets[currentCharacter.value])
 const cleanup = () => {
   if (blinkInterval) clearTimeout(blinkInterval)
   if (eyeControlTimer) clearTimeout(eyeControlTimer)
-  
+
   // 清理鼠标移动监听
   if (moveBonesHandler && !isMobileDevice()) {
     window.removeEventListener('mousemove', moveBonesHandler)
     moveBonesHandler = null
   }
-  
+
   if (playerContainer.value) {
     playerContainer.value.innerHTML = ''
   }
@@ -496,11 +496,11 @@ const cleanup = () => {
 // 初始化函数 
 const initializeCharacter = async () => {
   cleanup()
-  
+
   if (!isEnabled.value || !playerContainer.value) return
-  
+
   currentCharacter.value = isDarkMode.value ? 'plana' : 'arona'
-  
+
   try {
     await Promise.all([
       preloadAudio(),
@@ -532,13 +532,13 @@ const handleEvents = (event) => {
 onMounted(() => {
   // 设置客户端就绪状态
   clientReady.value = true
-  
+
   const options = { passive: true }
   window.addEventListener('scroll', handleEvents, options)
   if (!isMobileDevice()) {
     window.addEventListener('mousemove', handleEvents, options)
   }
-  
+
   // 如果启用了Spine播放器，初始化
   if (state.SpinePlayerEnabled) {
     debouncedInitialize()
@@ -565,10 +565,11 @@ onUnmounted(() => {
   transition: all 1s;
   cursor: pointer;
 }
+
 .chatdialog {
   position: fixed;
   bottom: 10vw;
-  left: 2vw; 
+  left: 2vw;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 50px;
   padding: 18px 28px;
@@ -581,7 +582,7 @@ onUnmounted(() => {
   font-size: 16px;
   user-select: none;
   transition: all 1s;
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -609,18 +610,18 @@ onUnmounted(() => {
   .chatdialog {
     left: 2vw;
     bottom: 10vh;
-    min-width: auto; 
+    min-width: auto;
     padding: 12px 20px;
     font-size: 8px;
     border-radius: 20px;
-    
+
     &:after {
       left: 35px;
       border-width: 8px;
       top: -7px;
     }
   }
-  
+
   .playerContainer {
     width: 15vh;
     height: 30vh;
