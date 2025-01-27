@@ -33,7 +33,7 @@ head:
 
   <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
       <div style="text-align: center;">
-        <img src='./img/25-1-27-tag.png' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <img src='./img/25-1-27-tag.jpg' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
         <div style="font-size: 14px;">Splash</div>
       </div>  
     </div>
