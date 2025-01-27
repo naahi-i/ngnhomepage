@@ -28,7 +28,7 @@ footer {
   margin-top: 5vh;
   padding: 0 16px;
   box-sizing: border-box;
-  border-radius: 30px 30px 0 0;
+  border-radius: 32px 32px 0 0;
   border-top: solid 2px var(--foreground-color);
   border-left: solid 2px var(--foreground-color);
   border-right: solid 2px var(--foreground-color);

@@ -202,7 +202,7 @@ const preloadAudio = async () => {
 
 const handleScroll = () => {
   if (!clientReady.value) return
-  const bottomReached = Math.ceil(window.innerHeight + window.scrollY) >= document.body.offsetHeight
+  const bottomReached = window.innerHeight + window.scrollY + 1 >= document.body.offsetHeight
   const chatDialog = document.querySelector('.chatdialog')
   
   if (bottomReached) {
@@ -559,18 +559,16 @@ onUnmounted(() => {
   bottom: 25px;
   left: 0%;
   z-index: 100;
-  width: 300px;
-  height: 500px;
+  width: 16vw;
+  height: 32vw;
   filter: drop-shadow(0 0 3px rgba(40, 42, 44, 0.42));
   transition: all 1s;
   cursor: pointer;
 }
 .chatdialog {
   position: fixed;
-  bottom: 150px;
-  left: 50px; 
-  min-width: 120px;
-  max-width: 300px;
+  bottom: 10vw;
+  left: 2vw; 
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 50px;
   padding: 18px 28px;
@@ -587,7 +585,7 @@ onUnmounted(() => {
   &:after {
     content: '';
     position: absolute;
-    left: 75px;
+    left: 4vw;
     top: -10px;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
@@ -609,8 +607,8 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .chatdialog {
-    left: 10px;
-    bottom: 110px;
+    left: 2vw;
+    bottom: 10vh;
     min-width: auto; 
     padding: 12px 20px;
     font-size: 8px;
@@ -619,13 +617,13 @@ onUnmounted(() => {
     &:after {
       left: 35px;
       border-width: 8px;
-      top: -8px;
+      top: -7px;
     }
   }
   
   .playerContainer {
-    width: 120px;
-    height: 240px;
+    width: 15vh;
+    height: 30vh;
   }
 }
 </style>
