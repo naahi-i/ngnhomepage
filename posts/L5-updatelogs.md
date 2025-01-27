@@ -14,6 +14,32 @@ head:
 # 网页的更新与修改
 
 ---
+# ⚙️2024.1.27
+### 🔧Plana主题适配Splash
+  $\qquad$ **·** Plana主题适配Splash  
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-27-splash.png' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">Splash</div>
+      </div>  
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/60ef6cbfc8d18b521155a9525dd3135ca403f54d)</sub>
+
+### 🔧加回tag
+  $\qquad$ **·** 加回tag  
+  $\qquad$ **·** 添加过渡动画  
+
+  <div style="display: flex; gap: 20px; margin-top: 10px ;margin-left: 40px">
+      <div style="text-align: center;">
+        <img src='./img/25-1-27-tag.png' height='150px' width='auto' data-fancybox="gallery" style='border: 2px solid #ccc;' loading="lazy" alt='img'>
+        <div style="font-size: 14px;">Splash</div>
+      </div>  
+    </div>
+
+  $\qquad$ <sub>详细信息点击[这里](https://github.com/naahi-i/ngnhomepage/commit/801241f3c818d56787f15d0dc4e243cc9f41d102)</sub>
+
 # ⚙️2024.1.26
 ### 🔧修改音乐控件样式，增加音量环
   $\qquad$ **·** 修改音乐控件样式，增加音量环  
