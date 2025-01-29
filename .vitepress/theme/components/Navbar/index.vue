@@ -1,5 +1,5 @@
 <template>
-  <header :class="{ postViewer: state.currPost.href, posts: page.filePath === 'posts/index.md' }">
+  <header :class="{ home: page.filePath === 'index.md' }">
     <nav class="container">
       <span class="logo">
         <img @dragstart.prevent src="../../assets/icon/navLogo.svg" alt="" />
@@ -67,18 +67,15 @@ const showSearchDialog = () => {
 </script>
 
 <style scoped lang="less">
-.postViewer {
-  height: 50vh;
-}
 
-.posts {
-  height: 50vh;
+.home {
+  height: 100vh;
 }
 
 header {
-  height: 100vh;
+  height: 50vh;
   position: relative;
-
+  transition: height 0.8s;
   nav {
     display: flex;
     align-items: center;

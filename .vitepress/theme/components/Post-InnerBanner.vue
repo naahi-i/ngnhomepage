@@ -1,17 +1,16 @@
 <template>
-  <div class="post-banner" v-show="state.currPost.title">
-    <h1 class="title">{{ state.currPost.title }}</h1>
-    <span class="status"
-      >发布于
-      {{
-      Intl.DateTimeFormat('zh-CN', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      }).format(new Date(state.currPost.create))
-    }}
-      | 约{{ state.currPost.wordCount }}字</span>
-  </div>
+    <div class="post-banner" v-show="state.currPost.title">
+      <h1 class="title">{{ state.currPost.title }}</h1>
+      <span class="status">发布于
+        {{
+          Intl.DateTimeFormat('zh-CN', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+          }).format(new Date(state.currPost.create))
+        }}
+        | 约{{ state.currPost.wordCount }}字</span>
+    </div>
 </template>
 <script setup lang="ts">
 import { useStore } from '../store'
@@ -26,7 +25,6 @@ const { state } = useStore()
   color: var(--post-InnerBanner-color);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   z-index: 100;
-  transition: color 0.5s; /* 添加过渡效果 */
 
   .title {
     font-size: 80px;

@@ -12,6 +12,9 @@ export interface ThemeConfig {
   motto: string[]
   social: { icon: string; url: string }[]
 
+  //spine
+  spineVoiceLang: 'zh' | 'jp'
+
   //footer
   footerName: string
   poweredList: { name: string; url: string }[]
@@ -65,8 +68,8 @@ export default defineConfigWithTheme<ThemeConfig>({
   sitemap: {
     hostname: 'https://ngnhomepage.top',
   },
-  title: "Sensei 柠果柠",
-  description: "Sensei 柠果柠",
+  title: 'Sensei 柠果柠',
+  description: 'Sensei 柠果柠',
   themeConfig: {
     // navBar
     menuList: [
@@ -76,7 +79,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     //banner区配置
     videoBanner: false,
-    name: "Sensei 柠果柠",
+    name: 'Sensei 柠果柠',
     welcomeText: 'Ciallo～(∠・ω< )⌒',
     motto: [
       '历史给人类的教训就是，人类从不会从历史中汲取教训。',
@@ -96,6 +99,9 @@ export default defineConfigWithTheme<ThemeConfig>({
       { icon: 'bilibili', url: 'https://space.bilibili.com/2082433753' },
       { icon: 'tw', url: 'https://x.com/GuoPian97866?t=9TWIkJfhH9kFa53uUm1EUw&s=09' },
     ],
+
+    //spine语音配置，可选zh/jp
+    spineVoiceLang: 'jp',
 
     //footer配置
     footerName: 'Sensei',
