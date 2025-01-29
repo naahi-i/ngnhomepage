@@ -68,7 +68,7 @@ onUnmounted(() => {
   position: fixed;
   z-index: 100;
   right: -200px;
-  filter: drop-shadow(0 0 3px rgba(40, 42, 44, 0.42));
+  filter: drop-shadow(0 0 4px #7171a9);
   transition: all 0.6s ease;
   img {
     width: 105px;
