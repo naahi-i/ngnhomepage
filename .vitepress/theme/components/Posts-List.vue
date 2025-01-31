@@ -168,13 +168,14 @@ const finalPosts = computed(() => {
 
   .meta-info-bar {
     display: flex;
+    align-items: center;
     margin-bottom: 7px;
 
     .time {
       cursor: pointer;
       font-size: 14px;
       color: var(--font-color-grey);
-      margin: 2px 5px 0 0;
+      margin: 0 5px 0 0;
     }
 
     .seperator::before {
@@ -354,7 +355,7 @@ const finalPosts = computed(() => {
     font-size: 14px;
     .time {
       font-size: 10px !important;
-      margin: 3px 2px 0 0!important;
+      margin: 0 2px 0 0 !important;
     }
   }
   .pagination {
