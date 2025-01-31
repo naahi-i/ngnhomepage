@@ -2,6 +2,7 @@
 title: 更新日志
 date: 2024-9-17
 tags: [text]
+pinned: true
 head:
   - - meta
     - name: description

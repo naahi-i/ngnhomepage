@@ -67,7 +67,6 @@ const showSearchDialog = () => {
 </script>
 
 <style scoped lang="less">
-
 .home {
   height: 100vh;
 }
@@ -76,6 +75,7 @@ header {
   height: 50vh;
   position: relative;
   transition: height 0.8s;
+
   nav {
     display: flex;
     align-items: center;
@@ -112,6 +112,7 @@ header {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+
     ul {
       width: 100%;
       display: flex;
@@ -203,7 +204,6 @@ header {
     color: var(--font-color-grey);
     width: 25px; // 添加固定宽度
     text-align: center; // 居中对齐
-
   }
 
   .nav-controls {
@@ -245,6 +245,7 @@ header {
 
           a {
             font-size: 16px;
+
             &:hover {
               transform: none;
             }

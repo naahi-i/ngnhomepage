@@ -7,9 +7,11 @@
             <div class="title-dot"></div>
             <h1 class="name">
               <a :href="base + post.href">{{ post.title }}</a>
+              <span v-if="post.pinned" class="iconfont icon-pinned pinned"></span>
             </h1>
           </div>
           <div class="meta-info-bar">
+            <span class="iconfont icon-time time"></span>
             <div class="time-info">
               <time datetime="">{{ formatDate(post.create) }}</time>
             </div>
@@ -17,9 +19,7 @@
           </div>
           <ul class="tags">
             <li v-for="tag in post.tags" :key="tag">
-              <a :href="`${base}tags/`" @click="state.currTag = tag"
-                ><i class="iconfont icon-tag"></i> {{ tag }}</a
-              >
+              <a :href="`${base}tags/`" @click="state.currTag = tag"><i class="iconfont icon-tag"></i> {{ tag }}</a>
             </li>
           </ul>
         </header>
@@ -92,6 +92,7 @@ const finalPosts = computed(() => {
 }
 
 .posts-content {
+
   article,
   h1,
   ul {
@@ -128,17 +129,23 @@ const finalPosts = computed(() => {
 
   .title {
     position: relative;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 
     .title-dot {
       width: 4px;
-      height: 20px;
+      height: 25px;
       position: absolute;
       left: -16px;
-      top: 9.5px;
+      top: 8px;
       background: var(--pot-border-left);
       border-radius: 2px;
       transition: background 0.5s;
+    }
+
+    .name {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
     a {
@@ -151,9 +158,24 @@ const finalPosts = computed(() => {
     }
   }
 
+  .pinned {
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--font-color-grey);
+    transform: rotate(-135deg);
+    margin-top: 2px;
+  }
+
   .meta-info-bar {
     display: flex;
-    margin-bottom: 6px;
+    margin-bottom: 7px;
+
+    .time {
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--font-color-grey);
+      margin: 2px 5px 0 0;
+    }
 
     .seperator::before {
       content: '';
@@ -189,6 +211,7 @@ const finalPosts = computed(() => {
       border-radius: 5px;
       transition: all 0.5s;
       font-size: 20px;
+
       i {
         font-size: 18px;
       }
@@ -203,10 +226,11 @@ const finalPosts = computed(() => {
 
 .excerpt {
   padding: 0 40px;
+
   p {
-      margin: 18px 0 15px 0;
-      font-size: 20px;
-    }
+    margin: 18px 0 15px 0;
+    font-size: 20px;
+  }
 }
 
 .pagination {
@@ -215,6 +239,7 @@ const finalPosts = computed(() => {
   font-size: 25px;
   justify-content: space-between;
   margin-top: 50px;
+
   span {
     z-index: 900;
   }
@@ -248,6 +273,7 @@ const finalPosts = computed(() => {
   from {
     transform: translateX(0) rotate(-0.25turn);
   }
+
   to {
     transform: translateX(10px) rotate(-0.25turn);
   }
@@ -257,6 +283,7 @@ const finalPosts = computed(() => {
   from {
     transform: translateX(0) rotate(0.25turn);
   }
+
   to {
     transform: translateX(-10px) rotate(0.25turn);
   }
@@ -271,43 +298,63 @@ const finalPosts = computed(() => {
       border-left: solid 1.5vh var(--pot-border-left);
     }
   }
+
   .tags {
     margin-bottom: 0px;
+
     li {
-    padding-top: 2px;
-    margin-right: 14px;
+      padding-top: 2px;
+      margin-right: 14px;
 
-    a {
-      padding: 1px 5px;
-      border-radius: 5px;
-      font-size: 15px;
+      a {
+        padding: 1px 5px;
+        border-radius: 5px;
+        font-size: 15px;
 
-      i {
-        font-size: 12px;
+        i {
+          font-size: 12px;
+        }
       }
     }
   }
-}
+
   .excerpt {
     padding: 0 40px;
+
     p {
       margin: 10px 0 15px 0;
       font-size: 13px;
 
     }
   }
+
   .post-header {
     padding: 20px 35px 0;
+
     .name {
       font-size: 22px;
+      gap: 8px !important; // 调整间距
     }
+
     .title {
-        margin-bottom: 6px;
+      margin-bottom: 9px;
+
       .title-dot {
         height: 18px;
         top: 5px;
         left: -10px;
       }
+    }
+
+    .pinned {
+      font-size: 14px;
+    }
+  }
+  .meta-info-bar {
+    font-size: 14px;
+    .time {
+      font-size: 10px !important;
+      margin: 3px 2px 0 0!important;
     }
   }
   .pagination {
