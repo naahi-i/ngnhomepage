@@ -18,7 +18,7 @@
                                 <template v-if="currentGame.miniImages?.length">
                                     <div v-for="(img, index) in currentGame.miniImages" :key="index" class="chibi-item">
                                         <img :src="img" :alt="`${currentGame.title}-${index + 1}`" draggable="false"
-                                            loading="lazy">
+                                            loading="lazy" data-fancybox="gallery">
                                     </div>
                                 </template>
                                 <div v-else class="chibi-item">
