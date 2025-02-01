@@ -104,8 +104,6 @@ const finalPosts = computed(() => {
 .posts-list {
   position: relative;
   overflow-wrap: break-word;
-  margin-top: 5vh;
-  z-index: 90;
 
   .post {
     display: flex;
@@ -119,7 +117,7 @@ const finalPosts = computed(() => {
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
-    box-shadow: 0px 0px 8px rgba(var(--blue-shadow-color), 0.8);
+    box-shadow: 0px 0px 8px rgb(var(--blue-shadow-color), 0.8);
     transition: all 0.5s;
   }
 }
@@ -129,14 +127,14 @@ const finalPosts = computed(() => {
 
   .title {
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     .title-dot {
       width: 4px;
-      height: 25px;
+      height: 27px;
       position: absolute;
       left: -16px;
-      top: 8px;
+      top: 5px;
       background: var(--pot-border-left);
       border-radius: 2px;
       transition: background 0.5s;
@@ -167,13 +165,12 @@ const finalPosts = computed(() => {
 
   .meta-info-bar {
     display: flex;
-    align-items: center;
     margin-bottom: 7px;
 
     .time {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--font-color-grey);
-      margin: 0 5px 0 0;
+      margin: 3px 2px 0 0;
     }
 
     .seperator::before {
@@ -193,6 +190,7 @@ const finalPosts = computed(() => {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  padding: 0;
   margin-bottom: 6px;
 
   li {
@@ -209,11 +207,6 @@ const finalPosts = computed(() => {
       background-color: var(--btn-background);
       border-radius: 5px;
       transition: all 0.5s;
-      font-size: 20px;
-
-      i {
-        font-size: 18px;
-      }
 
       &:hover {
         background-color: var(--btn-hover);
@@ -225,33 +218,24 @@ const finalPosts = computed(() => {
 
 .excerpt {
   padding: 0 40px;
-
-  p {
-    margin: 18px 0 15px 0;
-    font-size: 20px;
-  }
 }
 
 .pagination {
   display: flex;
-  color: black;
-  font-size: 25px;
+  align-items: center;
   justify-content: space-between;
   margin-top: 50px;
-
-  span {
-    z-index: 900;
-  }
+  padding: 0;
 
   button {
     background-color: transparent;
-    border: none;
+    border-style: none;
     cursor: pointer;
   }
 
   .hide {
     opacity: 0;
-    cursor: default;
+    cursor: auto;
   }
 
   .icon-arrow {
@@ -291,39 +275,10 @@ const finalPosts = computed(() => {
 @media (max-width: 768px) {
   .posts-list {
     .post {
-      margin: 0 20px 30px 20px;
+      padding-bottom: 10px;
+      margin: 0 16px 30px 16px;
       background-size: cover;
-      padding-bottom: 1px;
       border-left: solid 1.5vh var(--pot-border-left);
-    }
-  }
-
-  .tags {
-    margin-bottom: 0px;
-
-    li {
-      padding-top: 2px;
-      margin-right: 14px;
-
-      a {
-        padding: 1px 5px;
-        border-radius: 5px;
-        font-size: 15px;
-
-        i {
-          font-size: 12px;
-        }
-      }
-    }
-  }
-
-  .excerpt {
-    padding: 0 40px;
-
-    p {
-      margin: 10px 0 15px 0;
-      font-size: 13px;
-
     }
   }
 
@@ -331,8 +286,7 @@ const finalPosts = computed(() => {
     padding: 20px 35px 0;
 
     .name {
-      font-size: 22px;
-      gap: 8px !important; // 调整间距
+      font-size: 24px;
     }
 
     .title {
@@ -340,24 +294,57 @@ const finalPosts = computed(() => {
 
       .title-dot {
         height: 18px;
-        top: 5px;
-        left: -10px;
+        top: 6px;
       }
     }
 
     .pinned {
       font-size: 14px;
     }
-  }
-  .meta-info-bar {
-    font-size: 14px;
-    .time {
-      font-size: 10px !important;
-      margin: 0 2px 0 0 !important;
+
+    .meta-info-bar {
+      margin-bottom: 6px;
+      font-size: 12px;
+
+      .time {
+        font-size: 8px !important;
+        margin: 3px 2px 0 0 !important;
+      }
+
+      .seperator::before {
+        margin: 0 8px;
+      }
     }
   }
+
+  .tags {
+    li {
+      padding-top: 4px;
+      margin-right: 8px;
+
+      a {
+        font-size: 11px;
+        padding: 4px 6px;
+
+        .icon-tag {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  .excerpt {
+    padding: 0 36px;
+    margin-bottom: 0px;
+    font-size: 12px;
+  }
+
   .pagination {
-    font-size: 18px;
+    margin-top: 32px;
+
+    .icon-arrow {
+      font-size: 32px;
+    }
   }
 }
 </style>
