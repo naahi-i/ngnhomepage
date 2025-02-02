@@ -2,12 +2,12 @@
   <div class="container posts-content">
     <TransitionGroup class="posts-list" name="list" tag="div">
       <article class="post" v-for="post in postsList" :key="post.href">
+        <span v-if="post.pinned" class="pinned"></span>
         <header class="post-header">
           <div class="title">
             <div class="title-dot"></div>
             <h1 class="name">
               <a :href="base + post.href">{{ post.title }}</a>
-              <span v-if="post.pinned" class="iconfont icon-pinned pinned"></span>
             </h1>
           </div>
           <div class="meta-info-bar">
@@ -119,6 +119,17 @@ const finalPosts = computed(() => {
     background-repeat: no-repeat;
     box-shadow: 0px 0px 8px rgb(var(--blue-shadow-color), 0.8);
     transition: all 0.5s;
+    .pinned {
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      top: -8px;
+      right: -8px;
+      border-radius: 50px;
+      background: var(--icon-pinned) no-repeat;
+      background-size: contain;
+      box-shadow: 0 0 6px rgba(var(--blue-shadow-color), 0.7);
+    }
   }
 }
 
@@ -156,21 +167,16 @@ const finalPosts = computed(() => {
     }
   }
 
-  .pinned {
-    font-size: 20px;
-    color: var(--font-color-grey);
-    transform: rotate(-135deg);
-    margin-top: 2px;
-  }
-
   .meta-info-bar {
     display: flex;
     margin-bottom: 7px;
+    opacity: 0.75;
 
     .time {
       font-size: 13px;
       color: var(--font-color-grey);
       margin: 3px 2px 0 0;
+      font-weight: bold;
     }
 
     .seperator::before {
@@ -279,6 +285,12 @@ const finalPosts = computed(() => {
       margin: 0 16px 30px 16px;
       background-size: cover;
       border-left: solid 1.5vh var(--pot-border-left);
+      .pinned {
+        width: 27px; // 调整移动端大小
+        height: 27px;
+        top: -2px; // 调整移动端位置
+        right: 12px;
+      }
     }
   }
 
@@ -296,10 +308,6 @@ const finalPosts = computed(() => {
         height: 18px;
         top: 6px;
       }
-    }
-
-    .pinned {
-      font-size: 14px;
     }
 
     .meta-info-bar {

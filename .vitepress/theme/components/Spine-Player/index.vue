@@ -228,7 +228,7 @@ const handleScroll = () => {
   } else {
     playerContainer.value.style.left = '0%'
     if (chatDialog) {
-      chatDialog.style.left = isMobileDevice() ? '10px' : '50px'
+      chatDialog.style.left = isMobileDevice() ? '10px' : '2vw'
     }
   }
 }
