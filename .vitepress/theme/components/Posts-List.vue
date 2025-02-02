@@ -128,7 +128,7 @@ const finalPosts = computed(() => {
       border-radius: 50px;
       background: var(--icon-pinned) no-repeat;
       background-size: contain;
-      box-shadow: 0 0 6px rgba(var(--blue-shadow-color), 0.7);
+      box-shadow: 0 0 6px rgba(var(--blue-shadow-color), 0.65);
     }
   }
 }
