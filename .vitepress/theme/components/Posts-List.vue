@@ -286,9 +286,9 @@ const finalPosts = computed(() => {
       background-size: cover;
       border-left: solid 1.5vh var(--pot-border-left);
       .pinned {
-        width: 27px; // 调整移动端大小
+        width: 27px;
         height: 27px;
-        top: -2px; // 调整移动端位置
+        top: -2px;
         right: 12px;
       }
     }
