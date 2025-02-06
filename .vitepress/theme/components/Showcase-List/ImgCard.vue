@@ -1,6 +1,6 @@
 <template>
     <div class="ImgCard">
-        <img :class="{ 'dark-mode': computedDarkMode }" src="../img/SCHALE.png" alt="S.H.C.A.L.E" draggable="false" loading="lazy" />
+        <img :class="{ 'dark-mode': computedDarkMode }" src="../img/SCHALE.webp" alt="S.H.C.A.L.E" draggable="false" loading="lazy" />
         <div v-show="computedDarkMode" class="gradient-overlay"></div>
         <div class="reflection"></div>
         <div class="reflection-secondary"></div>

@@ -26,12 +26,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import Showcase from './ImgShowcase-template.vue';
-import img1 from '../../img/ImgShowcase/win11-tan.png';
-import img2 from '../../img/ImgShowcase/pln.png';
-import img3 from '../../img/ImgShowcase/Cecilia.jpg';
-import img4 from '../../img/ImgShowcase/Tsukiyuki_Miyako.png';
-import img5 from '../../img/ImgShowcase/tlbk.jpg';
-import img6 from '../../img/ImgShowcase/Al1s.jpg';
+import img1 from '../../img/ImgShowcase/win11-tan.webp';
+import img2 from '../../img/ImgShowcase/pln.webp';
+import img3 from '../../img/ImgShowcase/Cecilia.webp';
+import img4 from '../../img/ImgShowcase/Tsukiyuki_Miyako.webp';
+import img5 from '../../img/ImgShowcase/tlbk.webp';
+import img6 from '../../img/ImgShowcase/Al1s.webp';
 
 // 保存原始的 showcaseItems
 const originalItems = [

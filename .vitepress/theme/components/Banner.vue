@@ -238,9 +238,9 @@ const move = () => {
   }
 
   .bg-img {
-    background-image: url(../assets/banner/banner.jpg);
+    background-image: url(../assets/banner/banner.webp);
     html[theme="dark"] & {
-      background-image: url(../assets/banner/banner_dark.jpg), url(../assets/banner/banner.jpg);
+      background-image: url(../assets/banner/banner_dark.webp), url(../assets/banner/banner.webp);
     }
     transition: background-image 0.5s; /* 添加过渡效果 */
   }

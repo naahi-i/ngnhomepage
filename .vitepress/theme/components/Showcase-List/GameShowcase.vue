@@ -44,15 +44,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import game1 from '../img/GameShowcase/Yard.jpg';
-import game2 from '../img/GameShowcase/scp.jpg';
-import game3 from '../img/GameShowcase/Aliya.jpg';
-import mini1 from '../img/GameShowcase/Ghost2.png';
-import mini2 from '../img/GameShowcase/Show My Cat.png';
-import mini3 from '../img/GameShowcase/Hold Haa Lou Ling4.png';
-import mini4 from '../img/GameShowcase/Hold Tlipoca1.png';
-import mini5 from '../img/GameShowcase/Cat4.png';
-import mini6 from '../img/GameShowcase/09.png';
+import game1 from '../img/GameShowcase/Yard.webp';
+import game2 from '../img/GameShowcase/scp.webp';
+import game3 from '../img/GameShowcase/Aliya.webp';
+import mini1 from '../img/GameShowcase/Ghost2.webp';
+import mini2 from '../img/GameShowcase/Show My Cat.webp';
+import mini3 from '../img/GameShowcase/Hold Haa Lou Ling4.webp';
+import mini4 from '../img/GameShowcase/Hold Tlipoca1.webp';
+import mini5 from '../img/GameShowcase/Cat4.webp';
+import mini6 from '../img/GameShowcase/09.webp';
 
 interface Game {
     previewImage: string;

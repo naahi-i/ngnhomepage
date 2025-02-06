@@ -1,6 +1,6 @@
 <template>
   <div class="not-found">
-    <img src="../assets/NotFound.png" alt="" />
+    <img src="../assets/NotFound.webp" alt="" />
     <span>页面不存在</span>
     <span class="band"><a :href="base">回到主页</a></span>
   </div>
