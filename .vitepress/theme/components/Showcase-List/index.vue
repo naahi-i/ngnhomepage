@@ -17,6 +17,10 @@
                 <h2 class="section-title">SCHALE</h2>
                 <ImgCard />
             </div>
+            <div class="section">
+                <h2 class="section-title">Github Heatmap</h2>
+                <GithubHeatmap />
+            </div>
         </div>
     </div>
 </template>
@@ -25,6 +29,7 @@ import ImgShowcase from './ImgShowcase/index.vue';
 import ImgCard from './ImgCard.vue';
 import MusicShowcase from './MusicShowcase.vue';
 import GameShowcase from './GameShowcase.vue';
+import GithubHeatmap from './GithubHeatmap.vue';
 </script>
 
 <style scoped lang="less">
