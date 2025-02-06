@@ -7,10 +7,12 @@
       <Transition name="fade" mode="out-in">
         <img v-if="isCalendarView" key="calendar"
           src="https://raw.githubusercontent.com/naahi-i/naahi-i/main/metrics.plugin.isocalendar.svg"
-          alt="Metrics ISO Calendar" />
+          alt="Metrics ISO Calendar"
+          draggable="false" />
         <img v-else key="graph"
           src="https://github-readme-activity-graph.vercel.app/graph?username=naahi-i&theme=github-compact&hide_border=true&radius=16"
-          alt="Activity Graph" />
+          alt="Activity Graph"
+          draggable="false" />
       </Transition>
     </div>
   </div>
