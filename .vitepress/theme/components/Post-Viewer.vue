@@ -66,12 +66,10 @@ const themeConfig = useData().theme.value
     linear-gradient(1turn, rgba(159, 219, 252, 0.15) 3%, transparent 0);
   background-size: 20px 20px;
   background-position: 50%;
-
   html[theme='dark'] & {
     background-image: linear-gradient(90deg, rgba(207, 198, 254, 0.08) 3%, transparent 0),
       linear-gradient(1turn, rgba(207, 198, 254, 0.08) 3%, transparent 0);
   }
-
   /**
  * Paragraph and inline elements
  * -------------------------------------------------------------------------- */
@@ -400,7 +398,6 @@ const themeConfig = useData().theme.value
 
   /**
  * Custom Block
- * todo: 恢复暗色icon
  * -------------------------------------------------------------------------- */
 
   .custom-block {
@@ -429,20 +426,28 @@ const themeConfig = useData().theme.value
       border-color: #57b6f6;
       color: #005e86;
 
+      .custom-block-title {
+        &::before {
+          content: var(--icon-tip);
+        }
+      }
+
       html[theme='dark'] & {
         background-color: rgba(158, 124, 216, 0.18);
         border-color: #9e7cd8ae;
         color: #e0e0e6;
-
-        .custom-block-title {
-          color: #b8a5e3;
-        }
       }
     }
 
     &.info {
       background-color: #f3f5f7;
       border-color: var(--font-color-grey);
+
+      .custom-block-title {
+        &::before {
+          content: var(--icon-info);
+        }
+      }
 
       html[theme='dark'] & {
         background-color: rgba(108, 182, 255, 0.161);
@@ -460,6 +465,12 @@ const themeConfig = useData().theme.value
       color: #6b5900;
       background-color: #fff7d0;
 
+      .custom-block-title {
+        &::before {
+          content: var(--icon-warning);
+        }
+      }
+
       html[theme='dark'] & {
         background-color: rgba(231, 192, 0, 0.1);
         color: #f0d87d;
@@ -474,6 +485,12 @@ const themeConfig = useData().theme.value
       border-color: #d58d86;
       color: #4d0000;
       background-color: #ffe6e6;
+
+      .custom-block-title {
+        &::before {
+          content: var(--icon-danger);
+        }
+      }
 
       html[theme='dark'] & {
         background-color: rgba(213, 141, 134, 0.1);
