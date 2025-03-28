@@ -97,7 +97,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
       { icon: 'bilibili', url: 'https://space.bilibili.com/2082433753' },
-      { icon: 'tw', url: 'https://x.com/GuoPian97866?t=9TWIkJfhH9kFa53uUm1EUw&s=09' },
+      { icon: 'tw', url: 'https://twitter.com/Limoni_27' },
     ],
 
     //spine语音配置，可选zh/jp
