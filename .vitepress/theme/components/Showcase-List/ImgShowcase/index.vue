@@ -27,7 +27,7 @@
 import { ref, computed } from 'vue';
 import Showcase from './ImgShowcase-template.vue';
 import img1 from '../../img/ImgShowcase/win11-tan.webp';
-import img2 from '../../img/ImgShowcase/pln.webp';
+import img2 from '../../img/ImgShowcase/my.webp';
 import img3 from '../../img/ImgShowcase/Cecilia.webp';
 import img4 from '../../img/ImgShowcase/Tsukiyuki_Miyako.webp';
 import img5 from '../../img/ImgShowcase/tlbk.webp';
@@ -36,7 +36,7 @@ import img6 from '../../img/ImgShowcase/Al1s.webp';
 // 保存原始的 showcaseItems
 const originalItems = [
     { imageSrc: img1, title: 'Windows11-tan', subtitle2: 'win11娘可爱捏', isReversed: false, imgHeight: '100%', imgOffsetX: '15px' },
-    { imageSrc: img2, title: '普拉娜', subtitle2: '阿洛娜前辈？', isReversed: true, imgHeight: '140%', imgOffsetX: '0px' },
+    { imageSrc: img2, title: '百濑美月', subtitle2: '唔啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊', isReversed: true, imgHeight: '140%', imgOffsetX: '0px' },
     { imageSrc: img3, title: '塞西莉亚', subtitle2: '简直就是小天使', isReversed: false, imgHeight: '130%', imgOffsetX: '0px' },
     { imageSrc: img4, title: '月雪宫子', subtitle2: '这里是RABBIT1、现在作战开始。', isReversed: true, imgHeight: '100%', imgOffsetX: '-25px' },
     { imageSrc: img5, title: '特莉波卡', subtitle2: '是小死神', isReversed: false, imgHeight: '100%', imgOffsetX: '0px' },

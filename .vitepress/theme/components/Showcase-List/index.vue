@@ -2,7 +2,7 @@
     <div class="Showcase-list">
         <div class="ImgShowcase">
             <div class="section">
-                <h2 class="firstf-section-title">Img橱窗</h2>
+                <h2 class="firstf-section-title">橱窗</h2>
                 <ImgShowcase />
             </div>
             <div class="section">
@@ -10,7 +10,7 @@
                 <MusicShowcase />
             </div>
             <div class="section">
-                <h2 class="section-title">游戏</h2>
+                <h2 class="section-title">酱酱</h2>
                 <GameShowcase />
             </div>
             <div class="section">
