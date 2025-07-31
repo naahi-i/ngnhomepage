@@ -68,8 +68,8 @@ export default defineConfigWithTheme<ThemeConfig>({
   sitemap: {
     hostname: 'https://ngnhomepage.top',
   },
-  title: 'Sensei 柠果柠',
-  description: 'Sensei 柠果柠',
+  title: 'Sensei 柠白柠',
+  description: 'Sensei 柠白柠',
   themeConfig: {
     // navBar
     menuList: [
@@ -79,7 +79,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     //banner区配置
     videoBanner: false,
-    name: 'Sensei 柠果柠',
+    name: 'Sensei 柠白柠',
     welcomeText: 'Ciallo～(∠・ω< )⌒',
     motto: [
       '历史给人类的教训就是，人类从不会从历史中汲取教训。',
@@ -93,10 +93,11 @@ export default defineConfigWithTheme<ThemeConfig>({
       '时间啊，停止吧，你是多么美丽。',
       '与其说是为了纪念，更像是为了忘却。',
       '失去人性，失去很多；失去兽性，失去一切。',
+      'いらっしゃいませっ',
     ],
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
-      { icon: 'bilibili', url: 'https://space.bilibili.com/2082433753' },
+      // { icon: 'bilibili', url: 'https://space.bilibili.com/2082433753' },
       { icon: 'tw', url: 'https://twitter.com/Limoni_27' },
     ],
 
