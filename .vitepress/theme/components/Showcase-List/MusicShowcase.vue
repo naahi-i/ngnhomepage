@@ -33,10 +33,10 @@ const isDarkMode = computed(() => state.darkMode)
 
 const musicData = ref([
     {
-        title: "左手右手",
-        artist: "橘猫烧鲷鱼",
-        cover: "https://imgessl.kugou.com/stdmusic/20230115/20230115190109485431.jpg",
-        link: "https://www.kugou.com/mixsong/7whk9h49.html?fromsearch=%E5%B7%A6%E6%89%8B%E5%8F%B3%E6%89%8B"
+        title: "心拍数♯0822",
+        artist: "Akie秋绘",
+        cover: "//y.qq.com/music/photo_new/T002R300x300M0000024Yoan3vZATh_2.jpg?max_age=2592000",
+        link: "https://www.bilibili.com/video/BV1xs411e7mh/"
     },
     {
         title: "Dear Moments",
@@ -45,28 +45,28 @@ const musicData = ref([
         link: "https://www.kugou.com/mixsong/4l4i0c47.html?fromsearch=dear%C2%A0moments"
     },
     {
-        title: "你在我眼中绽放",
-        artist: "云汐",
-        cover: "https://imgessl.kugou.com/stdmusic/20250101/20250101183029303259.jpg",
-        link: "https://www.kugou.com/mixsong/8mgurp84.html?fromsearch=%E4%BD%A0%E5%9C%A8%E6%88%91%E7%9C%BC%E4%B8%AD%E7%BB%BD%E6%94%BE"
+        title: "桜のような恋でした ",
+        artist: "鹿乃",
+        cover: "http://imge.kugou.com/stdmusic/20190922/20190922181805708351.jpg",
+        link: "https://www.bilibili.com/video/BV1HP411U7XU/"
     },
     {
-        title: "阿拉斯加海湾",
-        artist: "蓝心羽",
-        cover: "https://imgessl.kugou.com/stdmusic/20201204/20201204170202620240.jpg",
-        link: "https://www.kugou.com/mixsong/4p4uihc1.html?fromsearch=%E9%98%BF%E6%8B%89%E6%96%AF%E5%8A%A0%E6%B5%B7%E6%B9%BE"
+        title: "天ノ弱",
+        artist: "Akie秋绘",
+        cover: "//y.qq.com/music/photo_new/T002R300x300M000002EV44m1zkFax_2.jpg?max_age=2592000",
+        link: "https://www.bilibili.com/video/BV1vs411W7iK/"
     },
     {
-        title: "这世界很美的吧",
-        artist: "Zyboy忠宇",
-        cover: "https://imgessl.kugou.com/stdmusic/20230921/20230921141215121637.jpg",
-        link: "https://www.kugou.com/mixsong/96y7k1d2.html?fromsearch=%E8%BF%99%E4%B8%96%E7%95%8C%E5%BE%88%E7%BE%8E%E5%90%A7"
+        title: "Lettersong 致十年后的我",
+        artist: "Akie秋绘",
+        cover: "http://imge.kugou.com/stdmusic/20220406/20220406002906669022.jpg",
+        link: "https://www.bilibili.com/video/BV1Nx411w7sE/"
     },
     {
-        title: "气象站台",
-        artist: "Uu (刘梦妤)",
-        cover: "https://imgessl.kugou.com/stdmusic/20210301/20210301155935530755.jpg",
-        link: "https://www.kugou.com/mixsong/4vxwiaf3.html?fromsearch=%E6%B0%94%E8%B1%A1%E7%AB%99%E5%8F%B0"
+        title: "ひだまりの場所",
+        artist: "星空鉄道とシロの旅",
+        cover: "//y.qq.com/music/photo_new/T002R300x300M000002Qbfpu4CeDWI_1.jpg?max_age=2592000",
+        link: "https://www.bilibili.com/video/BV1WN411Q7sb/"
     },
 ])
 

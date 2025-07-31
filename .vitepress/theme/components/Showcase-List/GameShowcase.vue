@@ -13,19 +13,6 @@
                                 <button @click="playGame">Steam链接</button>
                             </div>
                         </div>
-                        <div class="chibi-section">
-                            <div class="chibi-container">
-                                <template v-if="currentGame.miniImages?.length">
-                                    <div v-for="(img, index) in currentGame.miniImages" :key="index" class="chibi-item">
-                                        <img :src="img" :alt="`${currentGame.title}-${index + 1}`" draggable="false"
-                                            loading="lazy" data-fancybox="gallery">
-                                    </div>
-                                </template>
-                                <div v-else class="chibi-item">
-                                    <div class="placeholder">暂无小图展示</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </transition>
             </div>
@@ -47,12 +34,8 @@ import { ref } from 'vue';
 import game1 from '../img/GameShowcase/Yard.webp';
 import game2 from '../img/GameShowcase/scp.webp';
 import game3 from '../img/GameShowcase/Aliya.webp';
-import mini1 from '../img/GameShowcase/Ghost2.webp';
-import mini2 from '../img/GameShowcase/Show My Cat.webp';
-import mini3 from '../img/GameShowcase/Hold Haa Lou Ling4.webp';
-import mini4 from '../img/GameShowcase/Hold Tlipoca1.webp';
-import mini5 from '../img/GameShowcase/Cat4.webp';
-import mini6 from '../img/GameShowcase/09.webp';
+import game4 from '../img/GameShowcase/noir.webp';
+import game5 from '../img/GameShowcase/bf1.webp';
 
 interface Game {
     previewImage: string;
@@ -67,7 +50,6 @@ const gameList = ref<Game[]>([
         previewImage: game1,
         title: "Yog-Sothoth's Yard",
         description: '犹格索托斯的庭院',
-        miniImages: [mini1, mini2, mini3, mini4, mini5, mini6],
         Link: 'https://store.steampowered.com/app/2194530?snr=5000_5100__'
     },
     {
@@ -81,6 +63,18 @@ const gameList = ref<Game[]>([
         title: "彼方的她-Aliya ",
         description: '千年以外的对话',
         Link: 'https://store.steampowered.com/app/700330?snr=5000_5100__'
+    },
+    {
+        previewImage: game4,
+        title: "星空列车与白的旅行",
+        description: '星空鉄道とシロの旅',
+        Link: 'https://store.steampowered.com/app/1567800/_/'
+    },
+    {
+        previewImage: game5,
+        title: "Battlefield™ 1",
+        description: 'EA',
+        Link: 'https://store.steampowered.com/app/1238840/Battlefield_1/'
     },
 ]);
 
@@ -134,7 +128,7 @@ onUnmounted(() => {
     .main-preview {
         background-color: var(--foreground-color);
         width: 100%;
-        height: 750px; // 调整总高度
+        height: 510px; // 调整总高度
         border-radius: 24px;
         overflow: hidden;
         position: relative;
@@ -234,72 +228,6 @@ onUnmounted(() => {
                     height: 10px;
                     background: linear-gradient(to bottom, transparent, var(--foreground-color));
                     pointer-events: none;
-                }
-            }
-
-            .chibi-section {
-                flex: 1;
-                padding: 20px 24px;
-                background-color: var(--foreground-color);
-                border-radius: 0 0 24px 24px;
-                border-top: none;
-                position: relative;
-                height: 240px; // 添加固定高度
-                overflow: hidden;
-
-                h3 {
-                    margin-bottom: 20px;
-                    font-size: 1.5em;
-                    color: var(--text-color);
-                }
-
-                .chibi-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                    border-radius: 15px;
-                    max-height: 200px;
-                    overflow-y: auto;
-                    overflow-x: hidden;
-
-                    // 自定义滚动条样式
-                    &::-webkit-scrollbar {
-                        width: 6px;
-                    }
-
-                    &::-webkit-scrollbar-track {
-                        display: none;
-                    }
-
-                    &::-webkit-scrollbar-thumb {
-                        background: rgba(var(--blue-shadow-color), 0.2);
-                        border-radius: 3px;
-                    }
-
-                    .chibi-item {
-                        flex: 1;
-                        min-width: 200px;
-                        height: 200px; // 固定项目高度
-                        border-radius: 16px;
-                        background: rgba(var(--blue-shadow-color), 0.05);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        transition: all 0.3s ease;
-
-                        .placeholder {
-                            color: var(--text-color);
-                            opacity: 0.5;
-                            font-size: 1.2em;
-                        }
-
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: contain;
-                            filter: var(--img-brightness);
-                        }
-                    }
                 }
             }
         }
@@ -403,37 +331,6 @@ onUnmounted(() => {
                             padding: 8px 20px;
                             font-size: 14px;
                             border-radius: 6px;
-                        }
-                    }
-                }
-
-                .chibi-section {
-                    height: 100px;
-                    padding: 12px;
-
-                    .chibi-container {
-                        flex-wrap: nowrap;
-                        overflow-x: auto;
-                        overflow-y: hidden;
-                        max-height: none;
-                        gap: 12px;
-                        -webkit-overflow-scrolling: touch;
-                        scroll-snap-type: x mandatory;
-                        scrollbar-width: none;
-
-                        &::-webkit-scrollbar {
-                            display: none;
-                        }
-
-                        .chibi-item {
-                            min-width: 120px;
-                            height: 120px;
-                            border-radius: 12px;
-                            scroll-snap-align: start;
-
-                            .placeholder {
-                                font-size: 1em;
-                            }
                         }
                     }
                 }
