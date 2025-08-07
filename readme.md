@@ -3,10 +3,6 @@
 
 ## [**>让我看看<**](https://ngnhomepage.top)  
 
-## ⚙️正在：重新设计和布局页面元素  
-面向GPT编程  
-优化在学了在学了 T T  
-
 ## 主题配置
 **音乐** **首页背景** **头像**在`.vitepress/theme/assets/banner`  
 可单独设置暗色模式首页背景，命名为`banner_dark.jpg`
