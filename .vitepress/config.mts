@@ -98,7 +98,8 @@ export default defineConfigWithTheme<ThemeConfig>({
     social: [
       { icon: 'github', url: 'https://github.com/naahi-i/' },
       // { icon: 'bilibili', url: 'https://space.bilibili.com/2082433753' },
-      { icon: 'tw', url: 'https://twitter.com/Limoni_27' },
+      { icon: 'tw', url: 'https://twitter.com/Nishiro27' },
+      { icon: 'tw', url: 'https://www.muskviewer.com/Nishiro27' },
     ],
 
     //spine语音配置，可选zh/jp
